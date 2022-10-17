@@ -6,5 +6,8 @@ export const appRoutes: Routes = [
   {
     path: 'signup', component: UserComponent,
     children: [{ path: '', component: SignUpComponent }]
+  },
+  {
+    path: '', redirectTo: '/signup', pathMatch: 'full'
   }
 ]
