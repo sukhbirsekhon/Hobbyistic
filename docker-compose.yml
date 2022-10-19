@@ -1,0 +1,32 @@
+version: "3.8"
+
+services:
+  angular:
+    container_name: hobbyistic-angular
+    image: angular
+    restart: always
+    build: ./hobbyistic/
+    ports: 
+      - "4200:4200"
+    links:
+      - node
+    depends_on:
+      - node
+  node:
+    container_name: hobbyistic-node
+    image: node
+    restart: always
+    build: ./server/
+    ports: 
+      - "3000:3000"
+    links:
+      - mongo
+    depends_on:
+      - mongo
+  mongo:
+    container_name: hobbyistic-mongo
+    image: mongo
+    volumes:
+      - ./data:/data/db
+    ports:
+      - '27017:27017'
