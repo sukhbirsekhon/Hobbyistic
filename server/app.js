@@ -1,9 +1,11 @@
 require('./config/config');
 require('./models/db');
+require('./config/passport');
 
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const session = require('express-session');
 
 var app = express();
 
@@ -13,6 +15,7 @@ const rtsIndex = require('./routes/index.router');
 app.use(bodyParser.json());
 app.use(cors());
 app.use('/api', rtsIndex);
+app.use(session({ secret: 'afunhobby', cookie: { maxAge: 60000 }, resave: false, saveUninitialized: false  }));
 
 // error handler
 app.use((err, req, res, next) => {
