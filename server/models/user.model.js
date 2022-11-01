@@ -1,5 +1,8 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+var crypto = require('crypto');
+var secret = require('../config').secret;
 
 // user table schema for Hobbyistic database table
 var userSchema = new mongoose.Schema({
@@ -27,7 +30,6 @@ userSchema.path('email').validate((val) => {
 }, 'Email format is invalid');
 
 // Event happen when user data is saved
-// 
 userSchema.pre('save', function (next) {
     bcrypt.genSalt(10, (err, salt) => {
         bcrypt.hash(this.password, salt, (err, hash) => {
@@ -37,4 +39,27 @@ userSchema.pre('save', function (next) {
         });
     });
 });
+
+userSchema.methods.validateLogin = function(password) {
+    return bcrypt.compareSync(password, this.password);
+};
+
+userSchema.methods.generateJWT = function() {
+    let today = new Date();
+    let exp = new Date(today);
+    exp.setDate(today.getDate() + 60);
+    return jwt.sign({
+        id: this._id,
+        email: this.email,
+        exp: parseInt(exp.getTime() / 1000),
+    }, secret);
+};
+
+userSchema.methods.toAuthJSON = function(){
+    return {
+        email: this.email,
+        token: this.generateJWT(),
+    };
+};
+
 mongoose.model('User', userSchema);
