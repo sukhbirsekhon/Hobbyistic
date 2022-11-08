@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap');
+
+input
+{
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1.8em;
+    margin-top: 0.5em;
+}
+
+#submit
+{
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
