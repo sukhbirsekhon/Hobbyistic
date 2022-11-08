@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-var crypto = require('crypto');
-var secret = require('../config').secret;
+const crypto = require('crypto');
+const secret = require('../config').secret;
 
 // user table schema for Hobbyistic database table
 var userSchema = new mongoose.Schema({
@@ -50,14 +50,12 @@ userSchema.methods.generateJWT = function() {
     exp.setDate(today.getDate() + 60);
     return jwt.sign({
         id: this._id,
-        email: this.email,
         exp: parseInt(exp.getTime() / 1000),
     }, secret);
 };
 
 userSchema.methods.toAuthJSON = function(){
     return {
-        email: this.email,
         token: this.generateJWT(),
     };
 };
