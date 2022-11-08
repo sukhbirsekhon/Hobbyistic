@@ -11,4 +11,16 @@ input
 {
     margin-top: 1em;
     margin-bottom: 1em;
+    background-color: #386150;
+    color: #DBE4EE;
+    cursor: pointer;
+    border-radius: 5%;
 }
+
+#submit:hover
+{
+    background-color: #DBE4EE;
+    color: #4A442D;
+}
+
+
