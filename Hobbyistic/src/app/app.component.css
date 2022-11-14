@@ -1,15 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Caveat&display=swap');
 
-img
-{
-    margin-left: 45em;
-}
-
 h1
 {
     font-family: 'Caveat', cursive;
     text-align: center;
     padding-top: 0.35em;
+    margin: 0em;
     font-size: 5rem;
     color: #DBE4EE;
 }

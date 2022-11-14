@@ -16,12 +16,17 @@ form p
 {
     margin: 0;
     text-align: left;
-    padding-left: 3em;
+    padding-left: 3.5em;
 }
 
-form p:not(:first-of-type)
+form p:not(:first-of-type):not(:last-of-type)
 {
     padding-top: 2em;
+}
+
+form p:last-of-type
+{
+    padding-top: 0.5em;
 }
 
 #submit, #login
@@ -39,5 +44,3 @@ form p:not(:first-of-type)
     background-color: #DBE4EE;
     color: #4A442D;
 }
-
-
