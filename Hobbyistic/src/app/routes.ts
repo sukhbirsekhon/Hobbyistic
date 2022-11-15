@@ -5,8 +5,12 @@ import { LoginComponent } from "./user/login/login.component";
 
 export const appRoutes: Routes = [
   {
-    path: 'login', component: UserComponent, 
+    path: 'login', component: UserComponent,
     children: [{ path: '', component: LoginComponent }]
+  },
+  {
+    path: 'signup', component: UserComponent,
+    children: [{ path: '', component: SignUpComponent }]
   },
   {
     path: '', redirectTo: '/login', pathMatch: 'full'
