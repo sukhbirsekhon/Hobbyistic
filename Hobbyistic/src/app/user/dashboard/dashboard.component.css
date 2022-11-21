@@ -1,0 +1,139 @@
+.hobbies
+{
+    font-family: 'Caveat', cursive;
+    text-decoration: none;
+    font-size: 4em;
+    text-align: center;
+}
+
+.titleLayout, .iconLayout
+{
+    border-bottom: 0.075em solid #333;
+}
+
+.titleLayout
+{
+    text-align: center;
+    border-left: 0.075em solid #333;
+    border-right: 0.075em solid #333;
+    border-bottom-left-radius: 5%;
+}
+
+.iconLayout
+{
+    padding-top: 2em;
+    padding-bottom: 1em;
+    border-right: 0.075em solid #333;
+    border-bottom-right-radius: 5%;
+    text-align: center;
+}
+
+.iconLayout img
+{
+    border: 1px solid #333;
+}
+
+.iconLayout img:hover
+{
+    background-color: #DBE4EE;
+}
+
+img:not(#addIcon)
+{
+    width: 3em;
+}
+
+.centerAlign
+{
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+    text-align: center;
+}
+
+#addIcon
+{
+    width: 10em;
+}
+
+#addIcon:hover
+{
+    background-color: #DBE4EE;
+    border-radius: 100%;
+}
+
+p, .hobbies, h2
+{
+    color: #DBE4EE;
+}
+
+.template
+{
+    margin-top: 2em;
+    background-color: #DBE4EE;
+    border: .35em solid #333;
+    border-radius: 7.5%;
+}
+
+.template p
+{
+    text-align: center;
+    font-weight: bold;
+    padding-top: 1em;
+}
+
+.template a
+{
+    font-size: 2.5em;
+    color: #386150;
+    text-decoration: none;
+}
+
+.template a:hover
+{
+    text-decoration: underline;
+}
+
+.template img
+{
+    margin-top: 1em;
+}
+
+.template img:hover
+{
+    border: 1px solid #333;
+}
+
+h2
+{
+    text-align: center;
+    font-size: 4.5em;
+    padding-top: .25em;
+    padding-bottom: .5em;
+}
+
+.boxLayout
+{
+    border-right: 0.075em solid #333;
+    border-left: 0.075em solid #333;
+    border-bottom: 0.75em solid #333;
+    border-bottom-left-radius: 5%;
+    border-bottom-right-radius: 5%;
+}
+
+@media screen and (max-width: 768px) {
+    .titleLayout
+    {
+        display: none;
+    }
+
+    .iconLayout
+    {
+        border: none;
+        text-align: right;
+    }
+
+    .iconLayout img
+    {
+        margin-top: 1.5em;
+    }
+}

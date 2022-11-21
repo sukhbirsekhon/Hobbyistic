@@ -1,6 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Caveat&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap');
 
+body:not(h1)
+{
+    font-family: 'Quicksand', sans-serif;
+    color: #333;
+}
+
+body
+{
+    background-color: #386150;
+}
+
 h1
 {
     color: #DBE4EE;
@@ -11,17 +22,16 @@ h1
     margin-bottom: 0.5em;
 }
 
+.alignMid
+{
+    text-align: center;
+}
+
 h2
 {
     font-size: 2.5em;
     font-weight: bold;
     margin-top: 1em;
-}
-
-body:not(h1)
-{
-    font-family: 'Quicksand', sans-serif;
-    color: #333;
 }
 
 input
@@ -42,7 +52,7 @@ p:not(:last-of-type)
 
 p:last-of-type
 {
-    margin-top: 0.25em;
+    margin-top: .25em;
 }
 
 .alignMid
@@ -67,16 +77,11 @@ p:last-of-type
     margin-left: 1em;
 }
 
-body
-{
-    background-color: #386150;
-}
-
 .identify
 {
     background-color: #DBE4EE;
     border-radius: 5%;
-    border: 0.075em solid #333;
+    border: 0.075em solid #4A442D;
 }
 
 #login
@@ -92,7 +97,7 @@ body
     padding-top: 0.25em;
     margin-top: 1em;
     margin-bottom: 1em;
-    border: .075em solid #333;
+    border: .075em solid #4A442D;
 }
 
 a
@@ -103,7 +108,7 @@ a
 #login:hover
 {
     background-color: #DBE4EE;
-    color: #333;
+    color: #4A442D;
 }
 
 @media screen and (max-width: 600px){
@@ -122,5 +127,3 @@ a
         padding-bottom: .5em;
     }
 }
-
-

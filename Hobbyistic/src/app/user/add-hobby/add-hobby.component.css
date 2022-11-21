@@ -1,6 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Caveat&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap');
 
+body:not(h1)
+{
+    font-family: 'Quicksand', sans-serif;
+    color: #333;
+}
+
+body
+{
+    background-color: #386150;
+}
+
+.container
+{
+    margin-top: 5em;
+}
+
 h1
 {
     color: #DBE4EE;
@@ -11,17 +27,16 @@ h1
     margin-bottom: 0.5em;
 }
 
+.alignMid
+{
+    text-align: center;
+}
+
 h2
 {
     font-size: 2.5em;
     font-weight: bold;
     margin-top: 1em;
-}
-
-body:not(h1)
-{
-    font-family: 'Quicksand', sans-serif;
-    color: #333;
 }
 
 input
@@ -42,7 +57,7 @@ p:not(:last-of-type)
 
 p:last-of-type
 {
-    margin-top: 0.25em;
+    margin-top: .25em;
 }
 
 .alignMid
@@ -67,32 +82,27 @@ p:last-of-type
     margin-left: 1em;
 }
 
-body
-{
-    background-color: #386150;
-}
-
 .identify
 {
     background-color: #DBE4EE;
     border-radius: 5%;
-    border: 0.075em solid #333;
+    border: 0.075em solid #4A442D;
 }
 
-#login
+#add
 {
     background-color: #386150;
-    text-decoration: none;
     color: #DBE4EE;
-    border-radius: 5%;
-    font-size: 1.5em;
-    padding-left: 1em;
-    padding-right: 1em;
-    padding-bottom: 0.25em;
     padding-top: 0.25em;
     margin-top: 1em;
-    margin-bottom: 1em;
-    border: .075em solid #333;
+}
+
+#cancel
+{
+    background-color: #4A442D;
+    color: #DBE4EE;
+    padding-top: 0.25em;
+    margin-top: 1em;
 }
 
 a
@@ -100,10 +110,22 @@ a
     cursor: pointer;
 }
 
-#login:hover
+#cancel, #add
+{
+    text-decoration: none;
+    border-radius: 5%;
+    font-size: 1.5em;
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-bottom: 0.25em;
+    margin-bottom: 1em;
+    border: .075em solid #4A442D;
+}
+
+#add:hover, #cancel:hover
 {
     background-color: #DBE4EE;
-    color: #333;
+    color: #4A442D;
 }
 
 @media screen and (max-width: 600px){
@@ -120,6 +142,15 @@ a
     {
         padding-top: 0.5em;
         padding-bottom: .5em;
+    }
+}
+
+@media screen and (max-width: 425px){
+    
+    #cancel
+    {
+        margin-top: 0;
+        padding-top: 0;
     }
 }
 
