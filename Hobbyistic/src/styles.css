@@ -4,13 +4,16 @@
 body:not(h1)
 {
     font-family: 'Quicksand', sans-serif;
-    color: #4A442D;
+    color: #333;
 }
 
 body
 {
     background-color: #386150;
 }
+
+
+
 
 
 

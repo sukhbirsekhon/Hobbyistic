@@ -10,14 +10,16 @@ import { SignUpComponent } from './user/sign-up/sign-up.component';
 
 import { appRoutes } from './routes';
 import { LoginComponent } from './user/login/login.component';
-import { DashboardComponent } from './user/main/dashboard/dashboard.component';
+import { DashboardComponent } from './user/dashboard/dashboard.component';
 import { MainComponent } from './user/main/main.component';
-import { SettingsComponent } from './user/main/settings/settings.component';
-import { CalendarComponent } from './user/main/dashboard/calendar/calendar.component';
-import { ChecklistComponent } from './user/main/dashboard/checklist/checklist.component';
-import { StatisticsComponent } from './user/main/dashboard/statistics/statistics.component';
-import { ExternalLinksComponent } from './user/main/dashboard/external-links/external-links.component';
-import { MotivationComponent } from './user/main/dashboard/motivation/motivation.component';
+import { SettingsComponent } from './user/settings/settings.component';
+import { CalendarComponent } from './user/dashboard/calendar/calendar.component';
+import { ChecklistComponent } from './user/dashboard/checklist/checklist.component';
+import { StatisticsComponent } from './user/dashboard/statistics/statistics.component';
+import { ExternalLinksComponent } from './user/dashboard/external-links/external-links.component';
+import { MotivationComponent } from './user/dashboard/motivation/motivation.component';
+import { AddHobbyComponent } from './user/add-hobby/add-hobby.component';
+import { EditHobbyComponent } from './user/edit-hobby/edit-hobby.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { MotivationComponent } from './user/main/dashboard/motivation/motivation
     ChecklistComponent,
     StatisticsComponent,
     ExternalLinksComponent,
-    MotivationComponent
+    MotivationComponent,
+    AddHobbyComponent,
+    EditHobbyComponent
   ],
   imports: [
     BrowserModule,

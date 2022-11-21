@@ -1,8 +1,7 @@
-.title
+.hobbies
 {
     font-family: 'Caveat', cursive;
     text-decoration: none;
-    cursor: pointer;
     font-size: 4em;
     text-align: center;
 }
@@ -62,7 +61,7 @@ img:not(#addIcon)
     border-radius: 100%;
 }
 
-p, .title, h2
+p, .hobbies, h2
 {
     color: #DBE4EE;
 }
