@@ -1,1 +1,19 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Caveat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap');
+
+body:not(h1)
+{
+    font-family: 'Quicksand', sans-serif;
+    color: #333;
+}
+
+body
+{
+    background-color: #386150;
+}
+
+
+
+
+
+

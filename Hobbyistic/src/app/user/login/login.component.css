@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap');
+
+body:not(h1)
+{
+    font-family: 'Quicksand', sans-serif;
+    color: #333;
+}
+
+body
+{
+    background-color: #386150;
+}
+
+h1
+{
+    color: #DBE4EE;
+    font-family: 'Caveat', cursive;
+    font-size: 5em;
+    padding-top: 0.5em;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+.alignMid
+{
+    text-align: center;
+}
+
+h2
+{
+    font-size: 2.5em;
+    font-weight: bold;
+    margin-top: 1em;
+}
+
+input
+{
+    font-size: 2em;
+}
+
+p
+{
+    font-size: 1.25em;
+    margin-bottom: 0;
+}
+
+p:not(:last-of-type)
+{
+    margin-top: 1em;
+}
+
+p:last-of-type
+{
+    margin-top: .25em;
+}
+
+.alignMid
+{
+    text-align: center;
+}
+
+.alignMid p
+{
+    margin-bottom: 0;
+}
+
+.spacingBtm
+{
+    padding-top: 2em;
+    padding-bottom: 2em;
+}
+
+.alignleft
+{
+    text-align: left;
+    margin-left: 1em;
+}
+
+.identify
+{
+    background-color: #DBE4EE;
+    border-radius: 5%;
+    border: 0.075em solid #4A442D;
+}
+
+#login
+{
+    background-color: #386150;
+    text-decoration: none;
+    color: #DBE4EE;
+    border-radius: 5%;
+    font-size: 1.5em;
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-bottom: 0.25em;
+    padding-top: 0.25em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    border: .075em solid #4A442D;
+}
+
+a
+{
+    cursor: pointer;
+}
+
+#login:hover
+{
+    background-color: #DBE4EE;
+    color: #4A442D;
+}
+
+@media screen and (max-width: 600px){
+    .identify
+    {
+        border-radius: 0%;
+    }
+
+}
+
+@media screen and (max-width: 769px){
+    
+    h2
+    {
+        padding-top: 0.5em;
+        padding-bottom: .5em;
+    }
+}

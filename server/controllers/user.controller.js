@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const User = mongoose.model('User');
 const passport = require('passport');
-var auth = require('../routes/auth');
+const auth = require('../routes/auth');
 
 // Register function called up /api/register route
 // The req object will be use to extract user info and store it in the mongodb database
@@ -25,6 +25,21 @@ module.exports.register = (req, res, next) => {
 
     });
 }
+
+
+
+module.exports.testauth = (req, res, next) => {
+    if (req.auth == null) {
+        return res.sendStatus(401); 
+    }
+    User.findById(req.auth.id).then(function(user){
+        if (!user) { 
+            return res.sendStatus(401); 
+        }
+    return res.sendStatus(200)
+    })(req, res, next);
+}
+
 
 module.exports.login = (req, res, next) => {
     if(!req.body.user.email){
