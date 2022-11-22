@@ -1,5 +1,5 @@
 <div class="container">
-  
+
   <div class="row">
 
     <div class="col-sm-0 col-md-3 col-lg-3"></div>
@@ -7,40 +7,40 @@
     <div class="col-sm-12 col-md-6 col-lg-6">
 
       <div class="row">
-          
+
         <div class="col-sm-3 col-md-1.75 col-lg-3"></div>
-        
+
         <div class="col-sm-6 col-md-8.5 col-lg-6">
           <h1 class="alignMid">Hobbyistic</h1>
         </div>
-        
+
         <div class="col-sm-3 col-md-1.75 col-lg-3"></div>
-        
+
       </div>
 
       <div class="row">
-          
+
         <div class="col-sm-0 col-md-1.75 col-lg-2"></div>
-        
+
         <div class="col-sm-12 col-md-8.5 col-lg-8 identify">
-          
+
           <div class="row">
-            
+
             <div class="col-sm-12 col-md-12 col-lg-12">
 
               <div class="row">
-                
+
                 <div class="col-sm-3 col-md-3 col-lg-3"></div>
-        
+
                 <div class="col-sm-6 col-md-6 col-lg-6">
                   <h2 class="alignMid">Sign Up</h2>
                 </div>
-        
+
                 <div class="col-sm-3 col-md-3 col-lg-3"></div>
 
               </div>
 
-              <form #signUpForm="ngForm">
+              <form #signUpForm="ngForm" (ngSubmit)="onSignup(signUpForm)">
                 <p class="alignleft">Name</p>
                 <input class="alignleft" type="text" #name="ngModel" [(ngModel)]="userService.selectedUser.name" name="name"
                 required [ngClass]="{'invalid-textbox' :signUpForm.submitted && !name.valid }">
@@ -65,21 +65,22 @@
                 <p class="alignleft">Already have one? <a routerLink="/login">Go back</a>.</p>
 
                 <div class="row">
-                          
+
                   <div class="col-sm-3 col-md-3 col-lg-3"></div>
-                  
+
                   <div class="col-sm-6 col-md-6 col-lg-6">
-                    <p class="alignMid spacingBtm"><a routerLink="/login" type="submit" value="Register" id="login">Register</a></p>
+                    <!-- <p class="alignMid spacingBtm"><a type="submit" value="Sign up" id="login">Register</a></p> -->
+                    <input type = "submit" value = "Sign Up">
                   </div>
-                  
+
                   <div class="col-sm-3 col-md-3 col-lg-3"></div>
-                
+
                 </div>
-              
+
               </form>
 
             </div>
-          
+
           </div>
 
         </div>
@@ -87,7 +88,7 @@
         <div class="col-sm-0 col-md-1.75 col-lg-2"></div>
 
       </div>
-    
+
     </div>
 
     <div class="col-sm-0 col-md-3 col-lg-3"></div>
