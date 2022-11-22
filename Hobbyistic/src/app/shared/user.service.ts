@@ -20,7 +20,16 @@ export class UserService {
     .subscribe(response =>{
       console.log(response);
       this.router.navigate(['/login']);
-  })
+    })
+  }
 
+  AuthenticateUser(name: string, email: string, password: string) {
+    const user: User = {name:name, email: email, password: password}
+    console.log('23')
+    this.http.post("http://localhost:3000/api/login", user)
+    .subscribe(response =>{
+      console.log(response);
+      this.router.navigate(['/main']);
+    })
   }
 }
