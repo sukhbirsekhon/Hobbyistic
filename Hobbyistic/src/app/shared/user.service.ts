@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-
+import { HttpClient } from "@angular/common/http";
 import { User } from './user.model';
 
 @Injectable({
@@ -11,5 +11,14 @@ export class UserService {
     email: '',
     password: ''
   };
-  constructor() { }
+  constructor(private http: HttpClient) { }
+
+  CreateUser(name: string, email: string, password: string){
+    const user: User = {name:name, email: email, password: password}
+    this.http.post("http://localhost:3000/api/register", user)
+    .subscribe(response =>{
+      console.log(response);
+  })
+
+  }
 }
