@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { User } from './user.model';
 import { Hobby } from './hobby.model';
 import {Router} from '@angular/router';
@@ -32,13 +32,18 @@ export class UserService {
       var token = [JSON.stringify(response)][0].slice(18, [JSON.stringify(response)][0].length - 3)
       console.log(token)
       localStorage.setItem('token', token)
-      // this.router.navigate(['/main']);
+      this.router.navigate(['/main']);
     })
   }
 
   AddHobby(name: string) {
+    let header = new HttpHeaders().set(
+      'Authorization',
+       `Bearer ${localStorage.getItem('token')!}`
+    );
     const hobby: Hobby = {name:name}
-    this.http.post("http://localhost:3000/api/hobby", {hobby})
+    console.log('inside add hobby')
+    this.http.post("http://localhost:3000/api/hobby", {hobby}, {headers: header})
     .subscribe(response =>{
       console.log(response);
       this.router.navigate(['/main']);
