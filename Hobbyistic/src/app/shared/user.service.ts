@@ -43,6 +43,7 @@ export class UserService {
     );
     const hobby: Hobby = {name:name}
     console.log('inside add hobby')
+    console.log({hobby})
     this.http.post("http://localhost:3000/api/hobby", {hobby}, {headers: header})
     .subscribe(response =>{
       console.log(response);
