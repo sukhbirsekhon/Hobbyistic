@@ -27,11 +27,11 @@
                   <div class="col-sm-3 col-md-3 col-lg-2"></div>
 
                 </div>
-                
+
                 <form #addHobbyForm="ngForm" (ngSubmit)="onAddHobby(addHobbyForm)">
-                  
+
                   <p class="alignleft">Hobby Name</p>
-                  
+
                   <input class="alignleft" type="text" #name="ngModel" [(ngModel)]="userService.selectedUser.name" name="name"/>
                   <!--<p class="alignleft">Choose Widgets</p>
                   <input class="alignleft" placeholder="COMING SOON"/>-->

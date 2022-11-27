@@ -1,44 +1,44 @@
 <div class="container">
-  
+
     <div class="row">
-  
+
       <div class="col-sm-0 col-md-2 col-lg-3"></div>
-  
+
       <div class="col-sm-12 col-md-8 col-lg-6">
-  
+
         <div class="row">
-            
+
           <div class="col-sm-0 col-md-1 col-lg-1"></div>
-          
+
           <div class="col-sm-12 col-md-10 col-lg-10 identify">
-            
+
             <div class="row">
-              
+
               <div class="col-sm-12 col-md-12 col-lg-12">
-                
+
                 <div class="row">
-                  
+
                   <div class="col-sm-3 col-md-3 col-lg-2"></div>
-                  
+
                   <div class="col-sm-6 col-md-6 col-lg-8">
                     <h2 class="alignMid">Edit Hobby</h2>
                   </div>
-                  
+
                   <div class="col-sm-3 col-md-3 col-lg-2"></div>
-                
+
                 </div>
-                <form>
+                <form #editHobbyForm="ngForm" (ngSubmit)="onEditHobby(editHobbyForm)">
                   <p class="alignleft">Hobby Name</p>
-                  <input class="alignleft" value="Hobby Name"/>
+                  <input class="alignleft" type="text" #name="ngModel" [(ngModel)]="userService.selectedUser.name" name="name" value="Hobby Name"/>
                   <!--<p class="alignleft">Choose Widgets</p>
                   <input class="alignleft" placeholder="COMING SOON"/>-->
-                  
+
                   <div class="row">
-                    
+
                     <div class="col-sm-3 col-md-3 col-lg-3">
                         <p class="alignMid spacingBtm"><input id="add" value="Update" type="submit"></p>
                     </div>
-                    
+
                     <div class="col-sm-6 col-md-6 col-lg-6">
                         <p class="alignMid spacingBtm"><input routerLink="/main" id="cancel" value="Discard" type="submit"></p>
                     </div>
@@ -46,25 +46,25 @@
                     <div class="col-sm-3 col-md-3 col-lg-3">
                         <p class="alignMid spacingBtm"><img src="../assets/images/delete.svg" alt="Delete" routerLink="/main" value="deleteHobby"></p>
                     </div>
-                  
+
                   </div>
-  
+
                 </form>
-            
+
               </div>
-            
+
             </div>
-  
+
           </div>
-  
+
           <div class="col-sm-0 col-md-1 col-lg-1"></div>
-  
+
         </div>
-      
+
       </div>
-  
+
       <div class="col-sm-0 col-md-2 col-lg-3"></div>
-  
+
     </div>
-  
+
   </div>
