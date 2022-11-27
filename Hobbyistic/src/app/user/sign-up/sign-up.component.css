@@ -11,6 +11,12 @@ h1
     margin-bottom: 0.5em;
 }
 
+label
+{
+    color: red;
+    font-size: 1.25em;
+}
+
 h2
 {
     font-size: 2.5em;
@@ -58,7 +64,7 @@ p:last-of-type
 .spacingBtm
 {
     padding-top: 2em;
-    padding-bottom: 2em;
+    padding-bottom: 1em;
 }
 
 .alignleft
@@ -89,8 +95,6 @@ body
     padding-left: 1em;
     padding-right: 1em;
     padding-bottom: 0.25em;
-    padding-top: 0.25em;
-    margin-top: 1em;
     margin-bottom: 1em;
     border: .075em solid #333;
 }
