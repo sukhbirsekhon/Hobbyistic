@@ -59,11 +59,10 @@ export class UserService {
     let hobbies: string[] = []
     this.http.get("http://localhost:3000/api/hobby", {headers: header})
     .subscribe(response =>{
-      var data = JSON.stringify(response);
-      var parseData = JSON.parse(data);
-      console.log(parseData)
-      for (var i = 0; i < parseData.length; i++) {
-        hobbies.push(parseData[i].name)
+      var data = JSON.parse(JSON.stringify(response));
+      console.log(data)
+      for (var i = 0; i < data.length; i++) {
+        hobbies.push(data[i].name)
       }
     })
     return hobbies;
