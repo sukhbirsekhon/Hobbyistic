@@ -7,6 +7,12 @@ body:not(h1)
     color: #333;
 }
 
+label
+{
+    color: red;
+    font-size: 1.25em;
+}
+
 body
 {
     background-color: #386150;
@@ -68,7 +74,7 @@ p:last-of-type
 .spacingBtm
 {
     padding-top: 2em;
-    padding-bottom: 2em;
+    padding-bottom: 1em;
 }
 
 .alignleft
@@ -94,8 +100,6 @@ p:last-of-type
     padding-left: 1em;
     padding-right: 1em;
     padding-bottom: 0.25em;
-    padding-top: 0.25em;
-    margin-top: 1em;
     margin-bottom: 1em;
     border: .075em solid #4A442D;
 }

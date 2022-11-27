@@ -65,6 +65,14 @@ p:last-of-type
     text-align: center;
 }
 
+p
+{
+    margin: 0;
+    padding: 0;
+    width: fit-content;
+    height: fit-content;
+}
+
 .alignMid p
 {
     margin-bottom: 0;
@@ -72,8 +80,7 @@ p:last-of-type
 
 .spacingBtm
 {
-    padding-top: 2em;
-    padding-bottom: 2em;
+    padding-bottom: 1em;
 }
 
 .alignleft
@@ -95,6 +102,7 @@ p:last-of-type
     color: #DBE4EE;
     padding-top: 0.25em;
     margin-top: 1em;
+    margin-left: 0.75em;
 }
 
 #cancel

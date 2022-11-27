@@ -2,15 +2,15 @@
 
     <div class="row">
 
-      <div class="col-sm-0 col-md-3 col-lg-3"></div>
+      <div class="col-sm-0 col-md-2 col-lg-3"></div>
 
-      <div class="col-sm-12 col-md-6 col-lg-6">
+      <div class="col-sm-12 col-md-8 col-lg-6">
 
         <div class="row">
 
-          <div class="col-sm-0 col-md-1.75 col-lg-2"></div>
+          <div class="col-sm-0 col-md-1 col-lg-1"></div>
 
-          <div class="col-sm-12 col-md-8.5 col-lg-8 identify">
+          <div class="col-sm-12 col-md-10 col-lg-10 identify">
 
             <div class="row">
 
@@ -27,24 +27,27 @@
                   <div class="col-sm-3 col-md-3 col-lg-2"></div>
 
                 </div>
+                
                 <form #addHobbyForm="ngForm" (ngSubmit)="onAddHobby(addHobbyForm)">
+                  
                   <p class="alignleft">Hobby Name</p>
+                  
                   <input class="alignleft" type="text" #name="ngModel" [(ngModel)]="userService.selectedUser.name" name="name"/>
-                  <p class="alignleft">Choose Widgets</p>
-                  <input class="alignleft" placeholder="COMING SOON"/>
+                  <!--<p class="alignleft">Choose Widgets</p>
+                  <input class="alignleft" placeholder="COMING SOON"/>-->
 
-                  <div class="row">
+                    <div class="row">
 
-                    <div class="col-sm-6 col-md-6 col-lg-6">
-                        <!-- <p class="alignMid spacingBtm"><a routerLink="/main" id="add" value="updateHobbies">Add</a></p> -->
-                        <input type = "submit" value = "Add Hobby">
+                      <div class="col-sm-6 col-md-6 col-lg-6">
+                          <!-- <p class="alignMid spacingBtm"><a routerLink="/main" id="add" value="updateHobbies">Add</a></p> -->
+                          <p class="alignMid spacingBtm"><input type = "submit" value = "Add Hobby" id="add"></p>
+                      </div>
+
+                      <div class="col-sm-6 col-md-4 col-lg-6">
+                          <p class="alignMid spacingBtm"><input routerLink="/main" id="cancel" value="Cancel" type="submit"></p>
+                      </div>
+
                     </div>
-
-                    <div class="col-sm-6 col-md-6 col-lg-6">
-                        <p class="alignMid spacingBtm"><a routerLink="/main" id="cancel">Cancel</a></p>
-                    </div>
-
-                  </div>
 
                 </form>
 
@@ -54,13 +57,13 @@
 
           </div>
 
-          <div class="col-sm-0 col-md-1.75 col-lg-2"></div>
+          <div class="col-sm-0 col-md-1 col-lg-1"></div>
 
         </div>
 
       </div>
 
-      <div class="col-sm-0 col-md-3 col-lg-3"></div>
+      <div class="col-sm-0 col-md-2 col-lg-3"></div>
 
     </div>
 

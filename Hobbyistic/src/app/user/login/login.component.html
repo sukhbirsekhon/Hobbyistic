@@ -66,16 +66,17 @@
                 <input class="alignleft" type="text" #email="ngModel" [(ngModel)]="userService.selectedUser.email" name="email"
                 required [pattern]="emailRegex"  [ngClass]="{'invalid-textbox' :logInForm.submitted && !email.valid }">
                 <div *ngIf="logInForm.submitted && email.errors">
-                  <label *ngIf="email.errors" class="validation-message">Email field is required and must be valid!</label>
+                  <label *ngIf="email.errors" class="validation-message alignleft">Email field is required and must be valid!</label>
                 </div>
 
                 <p class="alignleft">Password</p>
                 <input class="alignleft" type="password" #password="ngModel" [(ngModel)]="userService.selectedUser.password" name="password"
                 minlength="4" required [ngClass]="{'invalid-textbox' :logInForm.submitted && !password.valid }">
                 <div *ngIf="logInForm.submitted && password.errors">
-                  <label *ngIf="password.errors" class="validation-message">Password field is required and must be 6 characters long! </label>
+                  <label *ngIf="password.errors" class="validation-message alignleft">Password field is required and must be 6 characters long! </label>
                 </div>
-
+                
+                <p class="alignleft">Don't have an account? <a routerLink="/signup" id="register">Register here</a>.</p>
 
                 <div class="row">
 
@@ -83,7 +84,7 @@
 
                   <div class="col-sm-6 col-md-6 col-lg-6">
                     <!-- <p class="alignMid spacingBtm"><a type="submit" value="Sign up" id="login">Register</a></p> -->
-                    <input type = "submit" value = "LogIn">
+                    <p class="alignMid spacingBtm"><input type = "submit" value = "Login" id="login"></p>
                   </div>
 
                   <div class="col-sm-3 col-md-3 col-lg-3"></div>

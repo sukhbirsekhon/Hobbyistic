@@ -50,4 +50,22 @@ export class UserService {
       this.router.navigate(['/main']);
     })
   }
+
+  GetAllHobbies(): string[] {
+    let header = new HttpHeaders().set(
+      'Authorization',
+       `Bearer ${localStorage.getItem('token')!}`
+    );
+    let hobbies: string[] = []
+    this.http.get("http://localhost:3000/api/hobby", {headers: header})
+    .subscribe(response =>{
+      var data = JSON.stringify(response);
+      var parseData = JSON.parse(data);
+      console.log(parseData)
+      for (var i = 0; i < parseData.length; i++) {
+        hobbies.push(parseData[i].name)
+      }
+    })
+    return hobbies;
+  }
 }
