@@ -25,7 +25,7 @@ export const appRoutes: Routes = [
     children: [{ path: '', component: AddHobbyComponent}]
   },
   {
-    path: 'edit-hobby', component: UserComponent,
+    path: 'edit-hobby/:id', component: UserComponent,
     children: [{ path: '', component: EditHobbyComponent}]
   },
   {
