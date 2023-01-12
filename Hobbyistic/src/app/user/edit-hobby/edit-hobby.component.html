@@ -27,9 +27,9 @@
                   <div class="col-sm-3 col-md-3 col-lg-2"></div>
                 
                 </div>
-                <form>
+                <form #editHobbyForm="ngForm" (ngSubmit)="onEditHobby(editHobbyForm)">
                   <p class="alignleft">Hobby Name</p>
-                  <input class="alignleft" value="{{hobby.name}}"/>
+                  <input class="alignleft" [ngModelOptions]="{standalone: true}" [(ngModel)]="hobby.name" name="{{hobby.name}}"/>
                   <!--<p class="alignleft">Choose Widgets</p>
                   <input class="alignleft" placeholder="COMING SOON"/>-->
                   
@@ -44,7 +44,7 @@
                     </div>
 
                     <div class="col-sm-3 col-md-3 col-lg-3">
-                        <p class="alignMid spacingBtm"><img src="../assets/images/delete.svg" alt="Delete" routerLink="/main" value="deleteHobby"></p>
+                        <p class="alignMid spacingBtm"><img src="../assets/images/delete.svg" alt="Delete" routerLink="/main" value="deleteHobby" (click)="deleteHobby()"></p>
                     </div>
                   
                   </div>
