@@ -8,10 +8,7 @@ var hobbySchema = new mongoose.Schema({
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
-        required: 'Must be associated with a user '
-    },
-    extLinks: {
-        links: [{ type: String }],
+        required: 'Must be associated with a user'
     }
 });
 
@@ -19,7 +16,8 @@ hobbySchema.methods.toJSON = function(hobby){
     return {
         id: this._id,
         name: this.name,
-        extLinks: this.extLinks
+        //examples below of ref query
+        //extLinks: this.extLinks
         //favorited: user ? user.isFavorite(this._id) : false,
         //author: this.author.toProfileJSONFor(user)
     };

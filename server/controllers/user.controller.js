@@ -3,43 +3,21 @@ const User = mongoose.model('User');
 const passport = require('passport');
 const auth = require('../routes/auth');
 
-// Register function called up /api/register route
-// The req object will be use to extract user info and store it in the mongodb database
+
 module.exports.register = (req, res, next) => {
-    console.log(req.body)
-    // create a variable for user.model.js and use its schema
     let user = new User();
     user.name = req.body.name;
     user.email = req.body.email;
     user.password = req.body.password;
-    user.save((err, doc) => {
-        if (!err)
-            res.send(doc);
-        else {
-            // The error code 11000 is for duplication of object
-            if (err.code == 11000)
-                res.status(422).send(['Duplicate email address found']);
-            else
-                return next(err);
-        }
-
-    });
+    user.save()
+        .then(doc => res.send(doc))
+        .catch(err => {
+            if (err.code === 11000) {
+                return res.status(422).send(["Duplicate email address found."]);
+            }
+            next(err);
+        });
 }
-
-
-
-module.exports.testauth = (req, res, next) => {
-    if (req.auth == null) {
-        return res.sendStatus(401); 
-    }
-    User.findById(req.auth.id).then(function(user){
-        if (!user) { 
-            return res.sendStatus(401); 
-        }
-    return res.sendStatus(200)
-    })(req, res, next);
-}
-
 
 module.exports.login = (req, res, next) => {
     if(!req.body.user.email){
