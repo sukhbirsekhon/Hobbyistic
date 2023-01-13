@@ -27,10 +27,10 @@
             <div class="template">
                 <div class="row">
                     <div class="col-lg-8 centerAlign">
-                        <p><a routerLink="/dashboard">{{hobby}}</a></p>
+                        <p><a routerLink="/dashboard">{{hobby.name}}</a></p>
                     </div>
                     <div class="col-lg-4 centerAlign">
-                        <img src="../assets/images/edit.png" alt="Edit" routerLink="/edit-hobby"/>
+                        <img src="../assets/images/edit.png" alt="Edit" [routerLink]="['/edit-hobby', hobby.id]"/>
                     </div>
                 </div> 
             </div>

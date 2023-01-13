@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { User } from './user.model';
 import { Hobby } from './hobby.model';
 import {Router} from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -51,20 +52,26 @@ export class UserService {
     })
   }
 
-  GetAllHobbies(): string[] {
-    let header = new HttpHeaders().set(
-      'Authorization',
-       `Bearer ${localStorage.getItem('token')!}`
-    );
-    let hobbies: string[] = []
-    this.http.get("http://localhost:3000/api/hobby", {headers: header})
-    .subscribe(response =>{
-      var data = JSON.parse(JSON.stringify(response));
-      console.log(data)
-      for (var i = 0; i < data.length; i++) {
-        hobbies.push(data[i].name)
-      }
-    })
-    return hobbies;
+  GetAllHobbies(): Observable<Hobby[]> {
+    let header = new HttpHeaders().set('Authorization',`Bearer ${localStorage.getItem('token')!}`);
+    return this.http.get<Hobby[]>("http://localhost:3000/api/hobby", {headers: header});
   }
+
+  GetSingleHobby(hobby: Hobby): Observable<Hobby> {
+    let header = new HttpHeaders().set('Authorization',`Bearer ${localStorage.getItem('token')!}`);
+    return this.http.get<Hobby>("http://localhost:3000/api/hobby/" + hobby.id, {headers: header});
+  }
+
+  updateHobby(hobby: Hobby): Observable<Hobby> {
+    let header = new HttpHeaders().set('Authorization',`Bearer ${localStorage.getItem('token')!}`);
+    return this.http.put<Hobby>("http://localhost:3000/api/hobby/" + hobby.id, {hobby}, {headers: header});
+  }
+
+  deleteHobby(hobby: Hobby): Observable<any> {
+    console.log("Delete should have been sent")
+    let header = new HttpHeaders().set('Authorization',`Bearer ${localStorage.getItem('token')!}`);
+    return this.http.delete("http://localhost:3000/api/hobby/" + hobby.id, {headers: header});
+  }
+
+
 }
