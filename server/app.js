@@ -24,6 +24,9 @@ app.use((err, req, res, next) => {
         Object.keys(err.errors).forEach(key => validationErr.push(err.errors[key].message));
         res.status(422).send(validationErr)
     }
+    else {
+        next(err);
+    }
 });
 
 // start backend server if everything went well

@@ -10,13 +10,13 @@
 			"name": "Login",
 			"request": {
 				"auth": {
-					"type": "bearer"
+					"type": "noauth"
 				},
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"user\": {\n        \"email\": \"1234@gmail.com\",\n        \"password\": \"password\"\n    } \n}",
+					"raw": "{\n    \"user\": {\n        \"email\": \"1@2.com\",\n        \"password\": \"123456\"\n    } \n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -46,7 +46,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"name\": \"Pinto\",\n    \"email\": \"changewhendsendingnewpost@gmail.com\",\n    \"password\": \"password\"\n}",
+					"raw": "{\n    \"name\": \"John Appleseed\",\n    \"email\": \"jappleseed@example.com\",\n    \"password\": \"eU17n50x&*ZyWBnAzolYQ4E\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -62,62 +62,6 @@
 					"path": [
 						"api",
 						"register"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Endpoint Authentication Test",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNjEzMmYyZjYyNTNmOTdmMTZmYzQxOCIsImV4cCI6MTY3MzEzODU0MiwiaWF0IjoxNjY3OTU0NTQyfQ.WbkUQEifDupXbiGhHFKK-MZv7eDxcjzPxCeFi-pdx38",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [
-					{
-						"key": "",
-						"value": "",
-						"type": "text",
-						"disabled": true
-					},
-					{
-						"key": "",
-						"value": "",
-						"type": "text",
-						"disabled": true
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:3000/api/testauth/",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"api",
-						"testauth",
-						""
 					]
 				}
 			},
@@ -179,7 +123,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"hobby\": {\n        \"name\": \"erica is the best gf ever\"\n    }\n}",
+					"raw": "{\n    \"hobby\": {\n        \"name\": \"a pet chicken\"\n    }\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -187,7 +131,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/hobby/636af8cd16c22d643afd36ef",
+					"raw": "http://localhost:3000/api/hobby/636af8cd16c22d643af",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -196,7 +140,7 @@
 					"path": [
 						"api",
 						"hobby",
-						"636af8cd16c22d643afd36ef"
+						"636af8cd16c22d643af"
 					]
 				}
 			},
@@ -231,7 +175,7 @@
 					"query": [
 						{
 							"key": "",
-							"value": null,
+							"value": "",
 							"disabled": true
 						}
 					]
@@ -255,7 +199,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/api/hobby/636af8cd16c22d643afd36ef",
+					"raw": "http://localhost:3000/api/hobby/63bf8886116a71a6f981791c",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -264,7 +208,276 @@
 					"path": [
 						"api",
 						"hobby",
-						"636af8cd16c22d643afd36ef"
+						"63bf8886116a71a6f981791c"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Widgets",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Bearer Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/hobby/63c16370f4086ef7240fd9ab/widgets",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"hobby",
+						"63c16370f4086ef7240fd9ab",
+						"widgets"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Task Widget (TESTING)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Bearer Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/hobby/63c16370f4086ef7240fd9ab/widgets/tasks",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"hobby",
+						"63c16370f4086ef7240fd9ab",
+						"widgets",
+						"tasks"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Task",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Bearer Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\n    \"task\": \"MEEEPMEEEEEEP\",\n    \"completed\": true    \n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/hobby/63c16370f4086ef7240fd9ab/widgets/tasks",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"hobby",
+						"63c16370f4086ef7240fd9ab",
+						"widgets",
+						"tasks"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Task",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Bearer Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"task\": \"PURPLE CATS\",\n    \"completed\": false  \n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/hobby/63c16370f4086ef7240fd9ab/widgets/tasks/63c1814ab8923ff43dec8053",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"hobby",
+						"63c16370f4086ef7240fd9ab",
+						"widgets",
+						"tasks",
+						"63c1814ab8923ff43dec8053"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Task",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Bearer Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/hobby/63c16370f4086ef7240fd9ab/widgets/tasks/63c1814ab8923ff43dec8053",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"hobby",
+						"63c16370f4086ef7240fd9ab",
+						"widgets",
+						"tasks",
+						"63c1814ab8923ff43dec8053"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Notes",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Bearer Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"task\": \"PURPLE CATS\",\n    \"completed\": false  \n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/hobby/63c16370f4086ef7240fd9ab/widgets/tasks/63c1814ab8923ff43dec8053",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"hobby",
+						"63c16370f4086ef7240fd9ab",
+						"widgets",
+						"tasks",
+						"63c1814ab8923ff43dec8053"
 					],
 					"query": [
 						{
@@ -285,7 +498,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "{{Bearer Token}}",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYmY4ODdjMTE2YTcxYTZmOTgxNzkxNSIsImV4cCI6MTY3ODcyNzk0NiwiaWF0IjoxNjczNTQ3NTQ2fQ.6zF-BtsBylh5npIg44HKTCOUDWMho61Yrj32vGklS7s",
 							"type": "string"
 						}
 					]
