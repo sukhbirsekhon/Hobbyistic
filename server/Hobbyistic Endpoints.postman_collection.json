@@ -237,7 +237,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/api/hobby/63c16370f4086ef7240fd9ab/widgets",
+					"raw": "http://localhost:3000/api/hobby/63c4a1783caf01cc865147b1/widgets",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -246,15 +246,8 @@
 					"path": [
 						"api",
 						"hobby",
-						"63c16370f4086ef7240fd9ab",
+						"63c4a1783caf01cc865147b1",
 						"widgets"
-					],
-					"query": [
-						{
-							"key": "",
-							"value": null,
-							"disabled": true
-						}
 					]
 				}
 			},
@@ -317,7 +310,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\n    \"task\": \"MEEEPMEEEEEEP\",\n    \"completed\": true    \n}",
+					"raw": "{\n\n    \"tasks\": \"MEEEPMEEEEEEP\",\n    \"completed\": true    \n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -366,7 +359,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"task\": \"PURPLE CATS\",\n    \"completed\": false  \n}",
+					"raw": "{\n    \"task\": \"PURPLE CATSdssddsds\",\n    \"completed\": true\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -374,7 +367,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/hobby/63c16370f4086ef7240fd9ab/widgets/tasks/63c1814ab8923ff43dec8053",
+					"raw": "http://localhost:3000/api/hobby/63c16370f4086ef7240fd9ab/widgets/tasks/63c1830a51e0ef209813abf2",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -386,7 +379,7 @@
 						"63c16370f4086ef7240fd9ab",
 						"widgets",
 						"tasks",
-						"63c1814ab8923ff43dec8053"
+						"63c1830a51e0ef209813abf2"
 					],
 					"query": [
 						{
@@ -415,7 +408,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/api/hobby/63c16370f4086ef7240fd9ab/widgets/tasks/63c1814ab8923ff43dec8053",
+					"raw": "http://localhost:3000/api/hobby/63c16370f4086ef7240fd9ab/widgets/tasks/63c16370f4086ef7240fd9af",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -427,7 +420,7 @@
 						"63c16370f4086ef7240fd9ab",
 						"widgets",
 						"tasks",
-						"63c1814ab8923ff43dec8053"
+						"63c16370f4086ef7240fd9af"
 					],
 					"query": [
 						{
@@ -457,7 +450,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"task\": \"PURPLE CATS\",\n    \"completed\": false  \n}",
+					"raw": "{\n    \"note\": \"life is like a box of warm apple to do, not eat a cake\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -465,7 +458,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/hobby/63c16370f4086ef7240fd9ab/widgets/tasks/63c1814ab8923ff43dec8053",
+					"raw": "http://localhost:3000/api/hobby/63c16370f4086ef7240fd9ab/widgets/notes",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -476,8 +469,7 @@
 						"hobby",
 						"63c16370f4086ef7240fd9ab",
 						"widgets",
-						"tasks",
-						"63c1814ab8923ff43dec8053"
+						"notes"
 					],
 					"query": [
 						{
@@ -522,6 +514,78 @@
 							"key": "",
 							"value": null,
 							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get External Links",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Bearer Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/hobby/63c4a1783caf01cc865147b1/widgets/externallinks",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"hobby",
+						"63c4a1783caf01cc865147b1",
+						"widgets",
+						"externallinks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get External Links from Query",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Bearer Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/hobby/63c4a1783caf01cc865147b1/widgets/externallinks?query=how to improve squat snatch ",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"hobby",
+						"63c4a1783caf01cc865147b1",
+						"widgets",
+						"externallinks"
+					],
+					"query": [
+						{
+							"key": "query",
+							"value": "how to improve squat snatch "
 						}
 					]
 				}

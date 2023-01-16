@@ -1,5 +1,13 @@
 const mongoose = require('mongoose');
 
+const externalLinksWidgetSchema = new mongoose.Schema({
+    links: [{
+        title: { type: String, required: false },
+        link: { type: String, required: true },
+        snippet: { type: String, required: false }
+    }]
+});
+
 const taskWidgetSchema = new mongoose.Schema({
     tasks: [{
         task: { type: String, required: true },
@@ -25,6 +33,7 @@ const widgetsSchema = new mongoose.Schema({
     },
     taskWidget: taskWidgetSchema,
     notesWidget: notesWidgetSchema,
+    externalLinksWidget: externalLinksWidgetSchema
  });
 
  const Widgets = mongoose.model('Widgets', widgetsSchema);
@@ -43,7 +52,8 @@ widgetsSchema.methods.toJSON = function() {
         user: this.user,
         hobby: this.hobby,
         taskWidget: this.taskWidget,
-        notesWidget: this.notesWidget
+        notesWidget: this.notesWidget,
+        externalLinksWidget: this.externalLinksWidget
     };
 };
 

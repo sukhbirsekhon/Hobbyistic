@@ -27,5 +27,8 @@ router.delete('/hobby/:hobbyId/widgets/tasks/:taskId', auth.required, widgetsCon
 //notes
 router.put('/hobby/:hobbyId/widgets/notes', auth.required, widgetsController.updateNotes);
 
+//external links
+router.get('/hobby/:hobbyId/widgets/externallinks', auth.required, widgetsController.getExternalLinksWithQuery);
+
 
 module.exports = router;

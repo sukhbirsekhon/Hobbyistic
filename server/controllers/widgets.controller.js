@@ -4,6 +4,7 @@ const Hobby = mongoose.model('Hobby');
 const Widgets = mongoose.model('Widgets');
 const passport = require('passport');
 const auth = require('../routes/auth')
+const widgetService = require('../services/widgets.service')
 
 module.exports.getWigets = (req, res, next) => {
     if (req.auth == null) {
@@ -142,4 +143,36 @@ module.exports.updateNotes = (req, res, next) => {
     });
 }
 
+module.exports.getExternalLinksWithQuery = (req, res, next) => {
+    if (req.auth == null) {
+        return res.status(401).json({errors: {user: "Unauthorized"}}); 
+    }
+    User.findById(req.auth.id).then(function(user){
+        if (!user) { 
+            return res.status(401).json({errors: {user: "Unauthorized"}}); 
+        }
+        let query = req.query.query;
+        if ((query != null &&  query != '')) {
+            return widgetService.getExternalLinks(query).then((externalLinks) => {
+                Widgets.findOneAndUpdate({user: req.auth.id, hobby: req.params.hobbyId}, { $set: { 'externalLinksWidget.links': externalLinks }}, {new: true}, (err, updatedWidget) => {
+                    if (err) {
+                        return next(err);
+                    } else {
+                        return res.json(updatedWidget);
+                    }
+                });
+            });
+        } else {
+            Widgets.findOne({user: req.auth.id, hobby: req.params.hobbyId}, (err, widgets) => {
+                if (err) {
+                    return next(err);
+                }
+                if (!widgets) {
+                    return res.status(404).json({errors: {widget: "Widget not found"}});
+                }
+                return res.json(widgets.toJSON());
+            }); 
+        }       
+    });
+}
 

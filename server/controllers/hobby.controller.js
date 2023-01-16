@@ -19,7 +19,6 @@ module.exports.addHobby = (req, res, next) => {
         hobby.user = req.auth.id;
         hobby.save((err, doc) => {
             if (!err) {
-                //create default widgets
                 const newWidget = new Widgets({
                     user: req.auth.id,
                     hobby: doc._id,
@@ -31,6 +30,9 @@ module.exports.addHobby = (req, res, next) => {
                     },
                     notesWidget: {
                         note: 'simple note'
+                    },
+                    externalLinksWidget: {
+
                     }
                 });
                 newWidget.save((error, widget) => {
@@ -38,8 +40,7 @@ module.exports.addHobby = (req, res, next) => {
                         console.log('could not setup default widgets');
                         console.log(error);
                     } else {
-                        // widget saved successfully
-                        //doc will send later
+                        //sending doc later
                     }
                 });
                 res.send(doc);
@@ -49,24 +50,6 @@ module.exports.addHobby = (req, res, next) => {
         });
     });
 }
-
-/*
-module.exports.getHobbies = (req, res, next) => {
-    if (req.auth == null) {
-        return res.sendStatus(401); 
-    }
-    User.findById(req.auth.id).then(function(user){
-        if (!user) { 
-            return res.sendStatus(401); 
-    }});
-    Hobby.find({ "user": { _id: req.auth.id}}).then(function(hobbies){
-        return res.send(hobbies)
-    });
-    (req, res, next);
-}
-*/
-
-
 
 module.exports.getHobbies = (req, res, next) => {
     if (req.auth == null) {
@@ -84,23 +67,6 @@ module.exports.getHobbies = (req, res, next) => {
             });
     });
 }
-
-/*
-module.exports.getSingleHobby = (req, res, next) => {
-    if (req.auth == null) {
-        return res.sendStatus(401); 
-    }
-    User.findById(req.auth.id).then(function(user){
-        if (!user) { 
-            return res.sendStatus(401); 
-    }});
-    Hobby.findOne({ "user": { _id: req.auth.id}, "_id": {_id: req.params.hobbyId}}).then(function(hobby){
-        return res.send(hobby)
-    });
-    (req, res, next);
-}
-*/
-
 
 module.exports.getSingleHobby = (req, res, next) => {
     if (req.auth == null) {
