@@ -25,8 +25,8 @@ console.log(googleScraper("Learn how to play the drums").then(console.log));
 
 
 module.exports.getExternalLinks = async function(query) {
-    const API_KEY = 'AIzaSyDqJgrekgtxzPl0FVOrLre7gI32JR_6erw';
-    const SEARCH_ENGINE = 'd010d577a9cff45bf'
+    const API_KEY = process.env.GOOGLE_CUSTOM_SEARCH_API_KEY
+    const SEARCH_ENGINE = process.env.GOOGLE_CUSTOM_SEARCH_ENGINE
     try {
         const response = await axios.get('https://www.googleapis.com/customsearch/v1', {
         params: {
