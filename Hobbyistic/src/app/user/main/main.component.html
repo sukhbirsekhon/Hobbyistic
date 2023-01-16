@@ -1,12 +1,10 @@
 <div class="container">
-    <div class="row">
+    <div class="row topLayout">
         <div class="col-lg-3 titleLayout">
-            <p><a class="title">Hobbyistic</a></p>
+            <h2>Dashboard</h2>
         </div>
         <div class="col-sm-12 col-md-6 col-lg-6 boxLayout">
-            <div>
-                <h2>My Hobbies</h2>
-            </div>
+            <p><a class="title">Hobbyistic</a></p>  
         </div>
         <div class="col-md-6 col-lg-3 iconLayout">
             <div class="row">
@@ -22,25 +20,28 @@
             </div>
         </div>
     </div>
-    <div class="row">
-        <div *ngFor="let hobby of hobbies"><div class="col-lg-3">
-            <div class="template">
-                <div class="row">
-                    <div class="col-lg-8 centerAlign">
-                        <p><a routerLink="/dashboard">{{hobby.name}}</a></p>
-                    </div>
-                    <div class="col-lg-4 centerAlign">
-                        <img src="../assets/images/edit.png" alt="Edit" [routerLink]="['/edit-hobby', hobby.id]"/>
-                    </div>
-                </div> 
-            </div>
+    <div class="row myHobbiesTxt">
+        <div class="col-lg-10">
+            <h2>My Hobbies</h2>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-lg-5"></div>
-        <div class="col-lg-2 centerAlign">
+        <div class="col-lg-2">
             <img src="../assets/images/add.svg" alt="Add" routerLink="/add-hobby" id="addIcon"/>
         </div>
-        <div class="col-lg-5"></div>
+    </div>
+    <div class="row hobbyBox">
+        <div *ngFor="let hobby of hobbies">
+            <div class="col-lg-3">
+                <div class="template">
+                    <div class="row">
+                        <div class="col-lg-8 centerAlign">
+                            <p><a routerLink="/dashboard">{{hobby.name}}</a></p>
+                        </div>
+                        <div class="col-lg-4 centerAlign">
+                            <img src="../assets/images/edit.png" alt="Edit" [routerLink]="['/edit-hobby', hobby.id]"/>
+                        </div>
+                    </div> 
+                </div>
+            </div>
+        </div>
     </div>
 </div>

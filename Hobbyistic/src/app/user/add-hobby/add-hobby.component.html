@@ -1,70 +1,60 @@
 <div class="container">
-
-    <div class="row">
-
-      <div class="col-sm-0 col-md-2 col-lg-3"></div>
-
-      <div class="col-sm-12 col-md-8 col-lg-6">
-
-        <div class="row">
-
-          <div class="col-sm-0 col-md-1 col-lg-1"></div>
-
-          <div class="col-sm-12 col-md-10 col-lg-10 identify">
-
-            <div class="row">
-
-              <div class="col-sm-12 col-md-12 col-lg-12">
-
-                <div class="row">
-
-                  <div class="col-sm-3 col-md-3 col-lg-2"></div>
-
-                  <div class="col-sm-6 col-md-6 col-lg-8">
-                    <h2 class="alignMid">Add Hobby</h2>
-                  </div>
-
-                  <div class="col-sm-3 col-md-3 col-lg-2"></div>
-
-                </div>
-                
-                <form #addHobbyForm="ngForm" (ngSubmit)="onAddHobby(addHobbyForm)">
-                  
-                  <p class="alignleft">Hobby Name</p>
-                  
-                  <input class="alignleft" type="text" #name="ngModel" [(ngModel)]="userService.selectedUser.name" name="name"/>
-                  <!--<p class="alignleft">Choose Widgets</p>
-                  <input class="alignleft" placeholder="COMING SOON"/>-->
-
-                    <div class="row">
-
-                      <div class="col-sm-6 col-md-6 col-lg-6">
-                          <!-- <p class="alignMid spacingBtm"><a routerLink="/main" id="add" value="updateHobbies">Add</a></p> -->
-                          <p class="alignMid spacingBtm"><input type = "submit" value = "Add Hobby" id="add"></p>
-                      </div>
-
-                      <div class="col-sm-6 col-md-4 col-lg-6">
-                          <p class="alignMid spacingBtm"><input routerLink="/main" id="cancel" value="Cancel" type="submit"></p>
-                      </div>
-
-                    </div>
-
-                </form>
-
+  <div class="row topLayout">
+      <div class="col-lg-3 titleLayout">
+          <h2>Dashboard</h2>
+      </div>
+      <div class="col-sm-12 col-md-6 col-lg-6 boxLayout">
+          <p><a class="title">Hobbyistic</a></p>  
+      </div>
+      <div class="col-md-6 col-lg-3 iconLayout">
+          <div class="row">
+              <div class="col-md-4 col-lg-4">
+                  <img src="../assets/images/Logout.png" alt="Logout" routerLink="/login"/>
               </div>
-
-            </div>
-
+              <div class="col-md-4 col-lg-4">
+                  <img src="../assets/images/Home.png" alt="Home"/>
+              </div>
+              <div class="col-md-4 col-lg-4">
+                  <img src="../assets/images/Settings.png" alt="Settings"/>
+              </div>
           </div>
-
-          <div class="col-sm-0 col-md-1 col-lg-1"></div>
-
+      </div>
+  </div>
+  <div class="row myHobbiesTxt">
+      <div class="col-lg-10">
+          <h2>Add Hobby</h2>
+      </div>
+      <div class="col-lg-2">
+          <img src="../assets/images/add.svg" alt="Cancel" routerLink="/main" id="addIcon"/>
+      </div>
+  </div>
+  <div class="row hobbyBox">
+    <form #addHobbyForm="ngForm" (ngSubmit)="onAddHobby(addHobbyForm)">
+      <div class="row topSpace">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-2">
+          <p class="addHobbytxt">Hobby Name:</p>
         </div>
-
+        <div class="col-lg-2">
+          <input class="addHobbyInput" type="text" #name="ngModel" [(ngModel)]="userService.selectedUser.name" name="name"/>
+        </div>
+        <div class="col-lg-6"></div>
       </div>
 
-      <div class="col-sm-0 col-md-2 col-lg-3"></div>
+      <div class="row topSpace leftSpace">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-1"></div>
+        <div class="col-lg-2"><p class="addHobbytxt"><input type = "submit" value = "Add Hobby" id="add"></p></div>
+        <div class="col-lg-2"><p class="addHobbytxt"><input routerLink="/main" id="cancel" value="Cancel" type="submit"></p></div>
+        <div class="col-lg-2"></div>
+        <div class="col-lg-2"></div>
+        <div class="col-lg-1"></div>
+      </div>
+      
+      <!--<p class="alignleft">Choose Widgets</p>
+      <input class="alignleft" placeholder="COMING SOON"/>-->
 
-    </div>
+    </form>
 
   </div>
+</div>

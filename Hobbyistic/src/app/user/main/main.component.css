@@ -3,35 +3,9 @@
     font-family: 'Caveat', cursive;
     text-decoration: none;
     cursor: pointer;
-    font-size: 4em;
+    font-size: 5em;
     text-align: center;
-}
-
-.titleLayout, .iconLayout
-{
-    border-bottom: 0.075em solid #333;
-}
-
-.titleLayout
-{
-    text-align: center;
-    border-left: 0.075em solid #333;
-    border-right: 0.075em solid #333;
-    border-bottom-left-radius: 5%;
-}
-
-.iconLayout
-{
-    padding-top: 2em;
-    padding-bottom: 1em;
-    border-right: 0.075em solid #333;
-    border-bottom-right-radius: 5%;
-    text-align: center;
-}
-
-.iconLayout img
-{
-    border: 1px solid #333;
+    padding-top: 1em;
 }
 
 .iconLayout img:hover
@@ -53,12 +27,14 @@ img:not(#addIcon)
 
 #addIcon
 {
-    width: 10em;
+    margin-top: 1.5em;
+    width: 4em;
+    float: right;
 }
 
 #addIcon:hover
 {
-    background-color: #DBE4EE;
+    background-color: #386150;
     border-radius: 100%;
 }
 
@@ -70,15 +46,15 @@ p, .title, h2
 .template
 {
     margin-top: 2em;
+    margin-bottom: 2em;
     background-color: #DBE4EE;
-    border: .35em solid #333;
-    border-radius: 7.5%;
+    border: .15em solid #333;
+    border-radius: 2.5px;
 }
 
 .template p
 {
     text-align: center;
-    font-weight: bold;
     padding-top: 1em;
 }
 
@@ -107,18 +83,52 @@ p, .title, h2
 h2
 {
     text-align: center;
-    font-size: 4.5em;
-    padding-top: .25em;
-    padding-bottom: .5em;
+    font-size: 3em;
+    margin-top: 0;
+    padding-top: 0.5em;
+}
+
+.topLayout
+{
+    background-color: #386150;
+    border-bottom: 0.4em solid #333;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-right: 0.15em solid #333;
+    border-left: 0.15em solid #333;
+}
+
+.hobbyBox
+{
+    border: 1px solid #333;
+    border-radius: 2.5px;
 }
 
 .boxLayout
 {
-    border-right: 0.075em solid #333;
-    border-left: 0.075em solid #333;
-    border-bottom: 0.75em solid #333;
-    border-bottom-left-radius: 5%;
-    border-bottom-right-radius: 5%;
+    text-align: center; 
+}
+
+.titleLayout
+{
+    padding-top: 0.5em;
+}
+
+.iconLayout
+{
+    padding-top: 2.5em;
+    text-align: center;
+}
+
+.myHobbiesTxt h2
+{
+    color: black;
+}
+
+.myHobbiesTxt
+{
+    padding-top: 1.5em;
+    padding-left: 12em;
 }
 
 @media screen and (max-width: 768px) {
