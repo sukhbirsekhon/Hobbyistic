@@ -1,70 +1,61 @@
 <div class="container">
-  
-    <div class="row">
-  
-      <div class="col-sm-0 col-md-2 col-lg-3"></div>
-  
-      <div class="col-sm-12 col-md-8 col-lg-6">
-  
-        <div class="row">
-            
-          <div class="col-sm-0 col-md-1 col-lg-1"></div>
-          
-          <div class="col-sm-12 col-md-10 col-lg-10 identify">
-            
-            <div class="row">
-              
-              <div class="col-sm-12 col-md-12 col-lg-12">
-                
-                <div class="row">
-                  
-                  <div class="col-sm-3 col-md-3 col-lg-2"></div>
-                  
-                  <div class="col-sm-6 col-md-6 col-lg-8">
-                    <h2 class="alignMid">Edit Hobby</h2>
-                  </div>
-                  
-                  <div class="col-sm-3 col-md-3 col-lg-2"></div>
-                
-                </div>
-                <form #editHobbyForm="ngForm" (ngSubmit)="onEditHobby(editHobbyForm)">
-                  <p class="alignleft">Hobby Name</p>
-                  <input class="alignleft" [ngModelOptions]="{standalone: true}" [(ngModel)]="hobby.name" name="{{hobby.name}}"/>
-                  <!--<p class="alignleft">Choose Widgets</p>
-                  <input class="alignleft" placeholder="COMING SOON"/>-->
-                  
-                  <div class="row">
-                    
-                    <div class="col-sm-3 col-md-3 col-lg-3">
-                        <p class="alignMid spacingBtm"><input id="add" value="Update" type="submit"></p>
-                    </div>
-                    
-                    <div class="col-sm-6 col-md-6 col-lg-6">
-                        <p class="alignMid spacingBtm"><input routerLink="/main" id="cancel" value="Discard" type="submit"></p>
-                    </div>
-
-                    <div class="col-sm-3 col-md-3 col-lg-3">
-                        <p class="alignMid spacingBtm"><img src="../assets/images/delete.svg" alt="Delete" routerLink="/main" value="deleteHobby" (click)="deleteHobby()"></p>
-                    </div>
-                  
-                  </div>
-  
-                </form>
-            
-              </div>
-            
-            </div>
-  
-          </div>
-  
-          <div class="col-sm-0 col-md-1 col-lg-1"></div>
-  
-        </div>
-      
+  <div class="row topLayout">
+      <div class="col-lg-3 titleLayout">
+          <h2>Dashboard</h2>
       </div>
-  
-      <div class="col-sm-0 col-md-2 col-lg-3"></div>
-  
-    </div>
-  
+      <div class="col-sm-12 col-md-6 col-lg-6 boxLayout">
+          <p><a class="title">Hobbyistic</a></p>  
+      </div>
+      <div class="col-md-6 col-lg-3 iconLayout">
+          <div class="row">
+              <div class="col-md-4 col-lg-4">
+                  <img src="../assets/images/Logout.png" alt="Logout" routerLink="/login"/>
+              </div>
+              <div class="col-md-4 col-lg-4">
+                  <img src="../assets/images/Home.png" alt="Home"/>
+              </div>
+              <div class="col-md-4 col-lg-4">
+                  <img src="../assets/images/Settings.png" alt="Settings"/>
+              </div>
+          </div>
+      </div>
   </div>
+  <div class="row myHobbiesTxt">
+      <div class="col-lg-10">
+          <h2>Edit Hobby</h2>
+      </div>
+      <div class="col-lg-2">
+          <img src="../assets/images/add.svg" alt="Cancel" routerLink="/main" id="addIcon"/>
+      </div>
+  </div>
+  <div class="row hobbyBox">
+    <form #editHobbyForm="ngForm" (ngSubmit)="onEditHobby(editHobbyForm)">
+      <div class="row topSpace">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-2">
+          <p class="addHobbytxt">Hobby Name:</p>
+        </div>
+        <div class="col-lg-2">
+          <input class="addHobbyInput" [ngModelOptions]="{standalone: true}" [(ngModel)]="hobby.name" name="{{hobby.name}}"/>
+        </div>
+        <div class="col-lg-1"></div>
+        <div class="col-lg-5"><p><img src="../assets/images/delete.svg" class="deleteBtn" style="width: 2.25em" alt="Delete" routerLink="/main" value="deleteHobby" (click)="deleteHobby()"></p></div>
+      </div>
+
+      <div class="row topSpace leftSpace">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-1"></div>
+        <div class="col-lg-2"><p class="addHobbytxt"><input id="add" value="Update" type="submit"></p></div>
+        <div class="col-lg-2"><p class="addHobbytxt"><input routerLink="/main" id="cancel" value="Discard" type="submit"></p></div>
+        <div class="col-lg-2"></div>
+        <div class="col-lg-2"></div>
+        <div class="col-lg-1"></div>
+      </div>
+      
+      <!--<p class="alignleft">Choose Widgets</p>
+      <input class="alignleft" placeholder="COMING SOON"/>-->
+
+    </form>
+
+  </div>
+</div>

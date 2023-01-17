@@ -1,172 +1,210 @@
-@import url('https://fonts.googleapis.com/css2?family=Caveat&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap');
-
-body:not(h1)
+.title
 {
-    font-family: 'Quicksand', sans-serif;
-    color: #333;
-}
-
-body
-{
-    background-color: #386150;
-}
-
-img
-{
-    text-align: center;
-    width: 3em;
-    margin-top: 1.5em;
-    vertical-align: middle;
-}
-
-img:hover
-{
-    border: .075em solid #333;
-    cursor: pointer;
-}
-
-.container
-{
-    margin-top: 5em;
-}
-
-h1
-{
-    color: #DBE4EE;
     font-family: 'Caveat', cursive;
+    text-decoration: none;
+    cursor: pointer;
     font-size: 5em;
-    padding-top: 0.5em;
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
-}
-
-.alignMid
-{
     text-align: center;
+    padding-top: 1em;
 }
 
-h2
-{
-    font-size: 2.5em;
-    font-weight: bold;
-    margin-top: 1em;
-}
-
-input
-{
-    font-size: 2em;
-}
-
-p
-{
-    font-size: 1.25em;
-    margin-bottom: 0;
-}
-
-p:not(:last-of-type)
-{
-    margin-top: 1em;
-}
-
-p:last-of-type
-{
-    margin-top: .25em;
-}
-
-.alignMid
-{
-    text-align: center;
-}
-
-.alignMid p
-{
-    margin-bottom: 0;
-}
-
-.spacingBtm
-{
-    padding-bottom: 1em;
-}
-
-.alignleft
-{
-    text-align: left;
-    margin-left: 1em;
-}
-
-.identify
+.iconLayout img:hover
 {
     background-color: #DBE4EE;
-    border-radius: 5%;
-    border: 0.075em solid #4A442D;
+}
+
+img:not(#addIcon)
+{
+    width: 3em;
+}
+
+.centerAlign
+{
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+    text-align: center;
+}
+
+#addIcon
+{
+    margin-top: 1.5em;
+    width: 4em;
+    float: right;
+    rotate: -45deg;
+}
+
+#addIcon:hover
+{
+    background-color: #ff6459;
+    border-radius: 100%;
 }
 
 #add
 {
+    float: right;
     background-color: #386150;
-    color: #DBE4EE;
-    padding-top: 0.25em;
-    margin-top: 1em;
-    margin-left: 0.75em;
-}
-
-#cancel
-{
-    background-color: #4A442D;
-    color: #DBE4EE;
-    padding-top: 0.25em;
-    margin-top: 1em;
-    margin-left: 2em;
-}
-
-a
-{
-    cursor: pointer;
-}
-
-#cancel, #add
-{
     text-decoration: none;
-    border-radius: 5%;
-    font-size: 1.5em;
-    padding-left: 1em;
-    padding-right: 1em;
-    padding-bottom: 0.25em;
+    color: #DBE4EE;
+    border-radius: 2.5px;
+    padding-left: 0.6em;
+    padding-right: 0.6em;
+    padding-bottom: 0.2em;
     margin-bottom: 1em;
     border: .075em solid #4A442D;
 }
 
-#add:hover, #cancel:hover
+#add:hover
 {
     background-color: #DBE4EE;
     color: #4A442D;
 }
 
-@media screen and (max-width: 600px){
-    .identify
-    {
-        border-radius: 0%;
-    }
-
+p, .title, h2
+{
+    color: #DBE4EE;
 }
 
-@media screen and (max-width: 769px){
-    
-    h2
-    {
-        padding-top: 0.5em;
-        padding-bottom: .5em;
-    }
+form
+{
+    padding-top: 2em;
+    padding-bottom: 2em;
 }
 
-@media screen and (max-width: 425px){
-    
-    #cancel
-    {
-        margin-top: 0;
-        padding-top: 0;
-    }
+.template
+{
+    margin-top: 2em;
+    margin-bottom: 2em;
+    background-color: #DBE4EE;
+    border: .15em solid #333;
+    border-radius: 2.5px;
 }
 
+.template p
+{
+    text-align: center;
+    padding-top: 1em;
+}
 
+.template a
+{
+    font-size: 2.5em;
+    color: #386150;
+    text-decoration: none;
+}
+
+.template a:hover
+{
+    text-decoration: underline;
+}
+
+.template img
+{
+    margin-top: 1em;
+}
+
+.template img:hover
+{
+    border: 1px solid #333;
+}
+
+h2
+{
+    text-align: center;
+    font-size: 3em;
+    margin-top: 0;
+    padding-top: 0.5em;
+}
+
+.topLayout
+{
+    background-color: #386150;
+    border-bottom: 0.4em solid #333;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-right: 0.15em solid #333;
+    border-left: 0.15em solid #333;
+}
+
+.hobbyBox
+{
+    padding-left: 7em;
+    border: 1px solid #333;
+    border-radius: 2.5px;
+}
+
+.leftSpace
+{
+    padding-left: 7em;
+}
+
+.deleteBtn
+{
+    border: 1px solid black;
+    padding: 0.2em;
+}
+
+.deleteBtn:hover
+{
+    border: none;
+}
+
+.topSpace
+{
+    padding-top: 1.5em;
+}
+
+.boxLayout
+{
+    text-align: center; 
+}
+
+.titleLayout
+{
+    padding-top: 0.5em;
+}
+
+.iconLayout
+{
+    padding-top: 2.5em;
+    text-align: center;
+}
+
+.myHobbiesTxt h2
+{
+    color: black;
+}
+
+.myHobbiesTxt
+{
+    padding-top: 1.5em;
+    padding-left: 12em;
+}
+
+.addHobbytxt
+{
+    color: black;
+    font-size: 1.5em;
+}
+
+.addHobbyInput
+{
+    font-size: 1.5em;
+}
+
+@media screen and (max-width: 768px) {
+    .titleLayout
+    {
+        display: none;
+    }
+
+    .iconLayout
+    {
+        border: none;
+        text-align: right;
+    }
+
+    .iconLayout img
+    {
+        margin-top: 1.5em;
+    }
+}
