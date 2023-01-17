@@ -20,6 +20,16 @@ Node.JS - MongoDB - Express - Angular
 
 ## API Documementation
 
+### .ENV Config
+
+You will need to supply your own API Keys in the .env file to access external API services & for security provide your own JWT keys.
+
+```
+GOOGLE_CUSTOM_SEARCH_API_KEY='[YOUR_KEY_HERE]'
+GOOGLE_CUSTOM_SEARCH_ENGINE='[YOUR_KEY_HERE]
+JWT_AUTH_KEY='[YOUR_KEY_HERE]'
+```
+
 ### Running the API
 
 *Use a bash/zsh interpreter, ensure you are in root directory of repository, have docker installed, and have npm cli*

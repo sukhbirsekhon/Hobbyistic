@@ -1,3 +1,4 @@
+require('dotenv').config();
 require('./config/config');
 require('./models/db');
 require('./config/passport');
@@ -15,7 +16,7 @@ const rtsIndex = require('./routes/index.router');
 app.use(bodyParser.json());
 app.use(cors());
 app.use('/api', rtsIndex);
-app.use(session({ secret: 'afunhobby', cookie: { maxAge: 60000 }, resave: false, saveUninitialized: false  }));
+app.use(session({ secret: process.env.JWT_AUTH_KEY, cookie: { maxAge: 60000 }, resave: false, saveUninitialized: false  }));
 
 // error handler
 app.use((err, req, res, next) => {
