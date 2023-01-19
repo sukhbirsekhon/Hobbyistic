@@ -1,12 +1,10 @@
 <div class="container">
-    <div class="row">
+    <div class="row topLayout">
         <div class="col-lg-3 titleLayout">
-            <p><a class="hobbies">Hobbies</a></p>
+            <h2>My Widgets</h2>
         </div>
         <div class="col-sm-12 col-md-6 col-lg-6 boxLayout">
-            <div>
-                <h2>Dashboard</h2>
-            </div>
+            <p><a class="title" routerLink="/main">Hobbyistic</a></p>  
         </div>
         <div class="col-md-6 col-lg-3 iconLayout">
             <div class="row">
@@ -22,9 +20,57 @@
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="">
-            
+    <!--<div class="row" *ngFor="let hobby of hobbies">
+        <h2>{{ hobby.name }}</h2>
+    </div>-->
+    <div class="row allWidgets">
+        <div class="row">
+            <div class="col-lg-6 widgetBox">
+                <div class="col-lg-4">
+                    
+                </div>
+                <div class="col-lg-4">
+                    <p><a routerLink="/external-links">Useful Links</a></p>
+                </div>
+                <div class="col-lg-4">
+                    
+                </div>
+            </div>
+            <div class="col-lg-6 widgetBox">
+                <div class="col-lg-4">
+                    
+                </div>
+                <div class="col-lg-4">
+                    <p><a routerLink="/calendar">Calendar</a></p>
+                </div>
+                <div class="col-lg-4">
+                    
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 widgetBox">
+                <div class="col-lg-4">
+                    
+                </div>
+                <div class="col-lg-4">
+                    <p><a routerLink="/checklist">Checklist</a></p>
+                </div>
+                <div class="col-lg-4">
+                    
+                </div>
+            </div>
+            <div class="col-lg-6 widgetBox">
+                <div class="col-lg-4">
+                    
+                </div>
+                <div class="col-lg-4">
+                    <p><a routerLink="/motivation">Motivation</a></p>
+                </div>
+                <div class="col-lg-4">
+                    
+                </div>
+            </div>
         </div>
     </div>
 </div>
