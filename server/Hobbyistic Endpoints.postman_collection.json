@@ -16,7 +16,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"user\": {\n        \"email\": \"1@2.com\",\n        \"password\": \"123456\"\n    } \n}",
+					"raw": "{\n    \"user\": {\n        \"email\": \"5@5.com\",\n        \"password\": \"123456\"\n    } \n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -46,7 +46,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"name\": \"John Appleseed\",\n    \"email\": \"jappleseed@example.com\",\n    \"password\": \"eU17n50x&*ZyWBnAzolYQ4E\"\n}",
+					"raw": "{\n    \"name\": \"John Appleseed\",\n    \"email\": \"5@5.com\",\n    \"password\": \"123456\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -237,7 +237,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/api/hobby/63c4a1783caf01cc865147b1/widgets",
+					"raw": "http://localhost:3000/api/hobby/63caf8bddf1a4a7fcbf9b60e/widgets",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -246,7 +246,7 @@
 					"path": [
 						"api",
 						"hobby",
-						"63c4a1783caf01cc865147b1",
+						"63caf8bddf1a4a7fcbf9b60e",
 						"widgets"
 					]
 				}
@@ -310,7 +310,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\n    \"tasks\": \"MEEEPMEEEEEEP\",\n    \"completed\": true    \n}",
+					"raw": "{\n\n    \"task\": \"eat a fish\",\n    \"completed\": false   \n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -359,7 +359,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"task\": \"PURPLE CATSdssddsds\",\n    \"completed\": true\n}",
+					"raw": "{\n    \"task\": \"eat a fish\",\n    \"completed\": true\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -367,7 +367,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/hobby/63c16370f4086ef7240fd9ab/widgets/tasks/63c1830a51e0ef209813abf2",
+					"raw": "http://localhost:3000/api/hobby/63c16370f4086ef7240fd9ab/widgets/tasks/63c6ceb9b354191d93c00b02",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -379,7 +379,7 @@
 						"63c16370f4086ef7240fd9ab",
 						"widgets",
 						"tasks",
-						"63c1830a51e0ef209813abf2"
+						"63c6ceb9b354191d93c00b02"
 					],
 					"query": [
 						{
@@ -536,7 +536,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/api/hobby/63c4a1783caf01cc865147b1/widgets/externallinks",
+					"raw": "http://localhost:3000/api/hobby/63c6ccc4b354191d93c00a5a/widgets/externallinks",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -545,7 +545,7 @@
 					"path": [
 						"api",
 						"hobby",
-						"63c4a1783caf01cc865147b1",
+						"63c6ccc4b354191d93c00a5a",
 						"widgets",
 						"externallinks"
 					]
@@ -569,7 +569,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/api/hobby/63c4a1783caf01cc865147b1/widgets/externallinks?query=how to improve squat snatch ",
+					"raw": "http://localhost:3000/api/hobby/63c6ccc4b354191d93c00a5a/widgets/externallinks?query=What ",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -578,14 +578,14 @@
 					"path": [
 						"api",
 						"hobby",
-						"63c4a1783caf01cc865147b1",
+						"63c6ccc4b354191d93c00a5a",
 						"widgets",
 						"externallinks"
 					],
 					"query": [
 						{
 							"key": "query",
-							"value": "how to improve squat snatch "
+							"value": "What "
 						}
 					]
 				}
