@@ -23,14 +23,19 @@ export class WidgetsService {
     return this.http.post<Task>("http://localhost:3000/api/hobby/" + hobby.id + "/widgets/tasks", {task}, {headers: header});
   }
 
-  updateTask(hobby: Hobby, task: Task, ): Observable<Task> {
+  updateTask(hobby: Hobby, task: Task): Observable<Task> {
     let header = new HttpHeaders().set('Authorization',`Bearer ${localStorage.getItem('token')!}`);
     return this.http.put<Task>("http://localhost:3000/api/hobby/" + hobby.id + "/widgets/tasks/" + task._id, {task}, {headers: header});
   }
 
-  deleteTask(hobby: Hobby, task: Task, ): Observable<Task> {
+  deleteTask(hobby: Hobby, task: Task): Observable<Task> {
     let header = new HttpHeaders().set('Authorization',`Bearer ${localStorage.getItem('token')!}`);
     return this.http.delete<Task>("http://localhost:3000/api/hobby/" + hobby.id + "/widgets/tasks/" + task._id, {headers: header});
+  }
+
+  updateNote(hobby: Hobby, note: NotesWidget): Observable<NotesWidget> {
+    let header = new HttpHeaders().set('Authorization',`Bearer ${localStorage.getItem('token')!}`);
+    return this.http.put<NotesWidget>("http://localhost:3000/api/hobby/" + hobby.id + "/widgets/notes/" + note._id, {note}, {headers: header});
   }
 
 }
