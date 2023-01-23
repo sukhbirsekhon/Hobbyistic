@@ -40,7 +40,12 @@ export class WidgetsService {
 
   getExternalLinks(hobby: Hobby): Observable<ExternalLinksWidget[]> {
     let header = new HttpHeaders().set('Authorization',`Bearer ${localStorage.getItem('token')!}`);
-    return this.http.get<ExternalLinksWidget[]>("http://localhost:3000/api/hobby/" + hobby.id + "/externallinks", {headers: header});
+    return this.http.get<ExternalLinksWidget[]>("http://localhost:3000/api/hobby/" + hobby.id + "/widgets/externallinks", {headers: header});
+  }
+
+  getExternalLinksFromQuery(hobby: Hobby, query: String): Observable<ExternalLinksWidget[]> {
+    let header = new HttpHeaders().set('Authorization',`Bearer ${localStorage.getItem('token')!}`);
+    return this.http.get<ExternalLinksWidget[]>("http://localhost:3000/api/hobby/" + hobby.id + "/externallinks?query=" + query, {headers: header});
   }
 
 }
