@@ -13,19 +13,24 @@ export class WidgetsService {
 
   constructor(private http: HttpClient, private router: Router) { }
 
-  GetWidgets(hobby: Hobby): Observable<Widgets[]> {
+  getWidgets(hobby: Hobby): Observable<Widgets[]> {
     let header = new HttpHeaders().set('Authorization',`Bearer ${localStorage.getItem('token')!}`);
     return this.http.get<Widgets[]>("http://localhost:3000/api/hobby/" + hobby.id + "/widgets", {headers: header});
   }
 
-  AddTask(hobby: Hobby, task: Task): Observable<Task> {
+  addTask(hobby: Hobby, task: Task): Observable<Task> {
     let header = new HttpHeaders().set('Authorization',`Bearer ${localStorage.getItem('token')!}`);
     return this.http.post<Task>("http://localhost:3000/api/hobby/" + hobby.id + "/widgets/tasks", {task}, {headers: header});
   }
 
-  UpdateTasks(hobby: Hobby, task: Task, ): Observable<Task> {
+  updateTask(hobby: Hobby, task: Task, ): Observable<Task> {
     let header = new HttpHeaders().set('Authorization',`Bearer ${localStorage.getItem('token')!}`);
     return this.http.put<Task>("http://localhost:3000/api/hobby/" + hobby.id + "/widgets/tasks/" + task._id, {task}, {headers: header});
+  }
+
+  deleteTask(hobby: Hobby, task: Task, ): Observable<Task> {
+    let header = new HttpHeaders().set('Authorization',`Bearer ${localStorage.getItem('token')!}`);
+    return this.http.delete<Task>("http://localhost:3000/api/hobby/" + hobby.id + "/widgets/tasks/" + task._id, {headers: header});
   }
 
 }
