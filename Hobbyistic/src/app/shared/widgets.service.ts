@@ -38,4 +38,10 @@ export class WidgetsService {
     return this.http.put<NotesWidget>("http://localhost:3000/api/hobby/" + hobby.id + "/widgets/notes/" + note._id, {note}, {headers: header});
   }
 
+  getExternalLinks(hobby: Hobby): Observable<ExternalLinksWidget[]> {
+    let header = new HttpHeaders().set('Authorization',`Bearer ${localStorage.getItem('token')!}`);
+    return this.http.get<ExternalLinksWidget[]>("http://localhost:3000/api/hobby/" + hobby.id + "/externallinks", {headers: header});
+  }
+
 }
+
