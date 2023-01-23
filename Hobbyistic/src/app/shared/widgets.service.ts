@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Widgets } from './widgets.model';
+import { Widgets, ExternalLinksWidget, Link, NotesWidget, TaskWidget, Task} from './widgets.model';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { User } from './user.model';
 import { Hobby } from './hobby.model';
@@ -18,10 +18,14 @@ export class WidgetsService {
     return this.http.get<Widgets[]>("http://localhost:3000/api/hobby/" + hobby.id + "/widgets", {headers: header});
   }
 
-  AddTasks(tasks: Task, hobby: Hobby): Observable<Task> {
+  AddTask(hobby: Hobby, task: Task): Observable<Task> {
     let header = new HttpHeaders().set('Authorization',`Bearer ${localStorage.getItem('token')!}`);
-    return this.http.post<Task>("http://localhost:3000/api/hobby/" + hobby.id + "/widgets/tasks", {tasks}, {headers: header});
+    return this.http.post<Task>("http://localhost:3000/api/hobby/" + hobby.id + "/widgets/tasks", {task}, {headers: header});
   }
 
+  UpdateTasks(hobby: Hobby, task: Task, ): Observable<Task> {
+    let header = new HttpHeaders().set('Authorization',`Bearer ${localStorage.getItem('token')!}`);
+    return this.http.put<Task>("http://localhost:3000/api/hobby/" + hobby.id + "/widgets/tasks/" + task._id, {task}, {headers: header});
+  }
 
 }
