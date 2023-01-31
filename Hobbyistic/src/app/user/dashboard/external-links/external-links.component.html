@@ -20,9 +20,32 @@
             </div>
         </div>
     </div>
-    <div>
-        <div *ngFor = "let link of widgets.externalLinksWidget?.links">
-            <p>{{ link.title }}</p>
+    <div class="row">
+        <div class="col-lg-12 hobbyName">
+            <h2>Helpful links for {{ hobby.name }}</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-8 linkBox" *ngFor = "let link of widgets.externalLinksWidget?.links">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h3>{{ link.title }}</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <p>Link:<a>{{ link.link }}</a></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <p>{{ link.snippet }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2"></div>
         </div>
     </div>
 </div>

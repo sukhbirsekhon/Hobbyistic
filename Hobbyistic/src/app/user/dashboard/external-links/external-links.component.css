@@ -77,6 +77,12 @@ h2
     padding-top: 0.5em;
 }
 
+.hobbyName h2
+{
+    padding-top: 1em;
+    color: black;
+}
+
 .iconLayout
 {
     padding-top: 2.5em;
