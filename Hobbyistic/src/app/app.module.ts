@@ -23,6 +23,8 @@ import { MotivationComponent } from './user/dashboard/motivation/motivation.comp
 import { AddHobbyComponent } from './user/add-hobby/add-hobby.component';
 import { EditHobbyComponent } from './user/edit-hobby/edit-hobby.component';
 
+import { FullCalendarModule } from '@fullcalendar/angular';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,9 +47,11 @@ import { EditHobbyComponent } from './user/edit-hobby/edit-hobby.component';
     AppRoutingModule,
     FormsModule,
     RouterModule.forRoot(appRoutes),
-    HttpClientModule
+    HttpClientModule,
+    FullCalendarModule // register FullCalendar with your app
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
