@@ -38,9 +38,14 @@ img:not(#addIcon)
     border-radius: 100%;
 }
 
-p, .title, h2
+.title, h2
 {
     color: #DBE4EE;
+}
+
+.linkBox
+{
+    border: solid 1px black;
 }
 
 h2
