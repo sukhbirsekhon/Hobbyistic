@@ -33,8 +33,18 @@ const widgetsSchema = new mongoose.Schema({
     },
     taskWidget: taskWidgetSchema,
     notesWidget: notesWidgetSchema,
-    externalLinksWidget: externalLinksWidgetSchema
+    externalLinksWidget: externalLinksWidgetSchema,
+    calendarWidgetWidget: calendarWidgetSchema
  });
+
+ const calendarWidgetSchema = new mongoose.Schema({
+    events: [{
+        title: {type: String, required: true},
+        description: {type: String},
+        startDate: {type: Date},
+        endDate: {type: Date}
+    }]
+ })
 
  const Widgets = mongoose.model('Widgets', widgetsSchema);
 
@@ -53,7 +63,8 @@ widgetsSchema.methods.toJSON = function() {
         hobby: this.hobby,
         taskWidget: this.taskWidget,
         notesWidget: this.notesWidget,
-        externalLinksWidget: this.externalLinksWidget
+        externalLinksWidget: this.externalLinksWidget,
+        calendarWidget: this.calendarWidget
     };
 };
 
