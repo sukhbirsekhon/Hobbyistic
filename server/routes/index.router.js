@@ -30,5 +30,7 @@ router.put('/hobby/:hobbyId/widgets/notes', auth.required, widgetsController.upd
 //external links
 router.get('/hobby/:hobbyId/widgets/externallinks', auth.required, widgetsController.getExternalLinksWithQuery);
 
+//calendar
+router.post('/hobby/:hobbyId/widgets/calendar/events', auth.required, widgetsController.addEvent);
 
 module.exports = router;

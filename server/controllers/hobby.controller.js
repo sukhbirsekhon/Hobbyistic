@@ -34,7 +34,7 @@ module.exports.addHobby = (req, res, next) => {
                     externalLinksWidget: {
                         links: []
                     },
-                    calandarWidget: {
+                    calendarWidget: {
                         events: []
                     }
                 });

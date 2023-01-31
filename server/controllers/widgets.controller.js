@@ -176,3 +176,31 @@ module.exports.getExternalLinksWithQuery = (req, res, next) => {
     });
 }
 
+module.exports.addEvent = (req, res, next) => {
+    if (req.auth == null) {
+        return res.status(401).json({errors: {user: "Unauthorized"}}); 
+    }
+    User.findById(req.auth.id).then(function(user){
+        if (!user) { 
+            return res.status(401).json({errors: {user: "Unauthorized"}}); 
+        }
+        console.log('yeah it tried to get here')
+        const newEvent = req.body;
+        console.log(req.body)
+        Widgets.findOneAndUpdate(
+            { user: req.auth.id, hobby: req.params.hobbyId }, 
+            { $push: { 'calendarWidget.events': newEvent } }, 
+            { new: true },
+            (err, widget) => {
+                if (err) {
+                    return next(err);
+                }
+                if (!widget) {
+                    return res.status(404).json({errors: {widget: "Widget not found"}});
+                }
+                res.send(widget.toJSON());
+            }
+        );
+    });
+}
+
