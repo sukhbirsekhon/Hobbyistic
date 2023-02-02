@@ -33,5 +33,6 @@ router.get('/hobby/:hobbyId/widgets/externallinks', auth.required, widgetsContro
 //calendar
 router.post('/hobby/:hobbyId/widgets/calendar/events', auth.required, widgetsController.addEvent);
 router.put('/hobby/:hobbyId/widgets/calendar/events/:eventId', auth.required, widgetsController.updateEvent);
+router.delete('/hobby/:hobbyId/widgets/calendar/events/:eventId', auth.required, widgetsController.deleteEvent);
 
 module.exports = router;

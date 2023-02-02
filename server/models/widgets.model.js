@@ -24,7 +24,8 @@ const calendarWidgetSchema = new mongoose.Schema({
         title: {type: String, required: true},
         description: {type: String},
         startDate: {type: Date},
-        endDate: {type: Date}
+        endDate: {type: Date},
+        frequency: {type: String}
     }]
  })
 
