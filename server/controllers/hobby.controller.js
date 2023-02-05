@@ -32,7 +32,10 @@ module.exports.addHobby = (req, res, next) => {
                         note: 'simple note'
                     },
                     externalLinksWidget: {
-
+                        links: []
+                    },
+                    calendarWidget: {
+                        events: []
                     }
                 });
                 newWidget.save((error, widget) => {

@@ -19,6 +19,16 @@ const notesWidgetSchema = new mongoose.Schema({
     note: {type: String, required: true}
 });
 
+const calendarWidgetSchema = new mongoose.Schema({
+    events: [{
+        title: {type: String, required: true},
+        description: {type: String},
+        startDate: {type: Date},
+        endDate: {type: Date},
+        frequency: {type: String}
+    }]
+ })
+
 const widgetsSchema = new mongoose.Schema({
     user: {
         type: mongoose.Schema.Types.ObjectId,
@@ -33,7 +43,8 @@ const widgetsSchema = new mongoose.Schema({
     },
     taskWidget: taskWidgetSchema,
     notesWidget: notesWidgetSchema,
-    externalLinksWidget: externalLinksWidgetSchema
+    externalLinksWidget: externalLinksWidgetSchema,
+    calendarWidget: calendarWidgetSchema
  });
 
  const Widgets = mongoose.model('Widgets', widgetsSchema);
@@ -53,7 +64,8 @@ widgetsSchema.methods.toJSON = function() {
         hobby: this.hobby,
         taskWidget: this.taskWidget,
         notesWidget: this.notesWidget,
-        externalLinksWidget: this.externalLinksWidget
+        externalLinksWidget: this.externalLinksWidget,
+        calendarWidget: this.calendarWidget
     };
 };
 
@@ -63,8 +75,8 @@ widgetsSchema.methods.toJSONForTasks = function() {
     };
 };
 
-//mongoose.model('TaskWidget', taskWidgetSchema);
-//mongoose.model('NotesWidget', notesWidgetSchema);
- mongoose.model('Widgets', widgetsSchema);
+mongoose.model('TaskWidget', taskWidgetSchema);
+mongoose.model('NotesWidget', notesWidgetSchema);
+mongoose.model('Widgets', widgetsSchema);
 
   

@@ -20,5 +20,10 @@
             </div>
         </div>
     </div>
+    <div>
+        <div *ngFor = "let link of widgets.externalLinksWidget?.links">
+            <p>{{ link.title }}</p>
+        </div>
+    </div>
 </div>
 

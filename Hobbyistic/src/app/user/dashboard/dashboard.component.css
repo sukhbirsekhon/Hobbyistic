@@ -67,6 +67,12 @@ h2
     border-radius: 2.5px;
 }
 
+.hobbyName h2
+{
+    padding-top: 1em;
+    color: black;
+}
+
 .boxLayout
 {
     text-align: center; 
@@ -96,11 +102,6 @@ a
 p
 {
     text-align: center;
-}
-
-.allWidgets
-{
-    margin-top: 5em;
 }
 
 .widgetBox

@@ -3,6 +3,7 @@ import { Component, OnInit, Output } from '@angular/core';
 import { UntypedFormBuilder } from '@angular/forms';
 import { Hobby } from 'src/app/shared/hobby.model';
 import { UserService } from 'src/app/shared/user.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,13 +13,15 @@ import { UserService } from 'src/app/shared/user.service';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(public userService: UserService) { }
+  constructor(private route: ActivatedRoute, public userService: UserService) { }
 
-  hobbies: Hobby[] = [];
+  hobby: Hobby = {'name' : ''}
 
   ngOnInit(): void {
-    this.userService.GetAllHobbies().subscribe(hobbies => {
-      this.hobbies = hobbies;
+
+    this.hobby.id = this.route.snapshot.params['id'];
+    this.userService.GetSingleHobby(this.hobby).subscribe(resp => {
+      this.hobby = resp;
     });
   }
 
