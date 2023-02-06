@@ -199,7 +199,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/api/hobby/63bf8886116a71a6f981791c",
+					"raw": "http://localhost:3000/api/hobby/63db3e07429276dccc217cf9",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -208,7 +208,7 @@
 					"path": [
 						"api",
 						"hobby",
-						"63bf8886116a71a6f981791c"
+						"63db3e07429276dccc217cf9"
 					],
 					"query": [
 						{
@@ -237,7 +237,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/api/hobby/63caf8bddf1a4a7fcbf9b60e/widgets",
+					"raw": "http://localhost:3000/api/hobby/63db3e07429276dccc217cf9/widgets",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -246,7 +246,7 @@
 					"path": [
 						"api",
 						"hobby",
-						"63caf8bddf1a4a7fcbf9b60e",
+						"63db3e07429276dccc217cf9",
 						"widgets"
 					]
 				}
@@ -569,7 +569,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/api/hobby/63c6ccc4b354191d93c00a5a/widgets/externallinks?query=What ",
+					"raw": "http://localhost:3000/api/hobby/63d85a75a61f9aa707542bc2/widgets/externallinks?query=How to fish",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -578,14 +578,157 @@
 					"path": [
 						"api",
 						"hobby",
-						"63c6ccc4b354191d93c00a5a",
+						"63d85a75a61f9aa707542bc2",
 						"widgets",
 						"externallinks"
 					],
 					"query": [
 						{
 							"key": "query",
-							"value": "What "
+							"value": "How to fish"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Calendar Event",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Bearer Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"ya it workeded\",\n    \"description\":  \"that was silly\",\n    \"startDate\": \"11/12/12\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/hobby/63db3e07429276dccc217cf9/widgets/calendar/events",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"hobby",
+						"63db3e07429276dccc217cf9",
+						"widgets",
+						"calendar",
+						"events"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Calendar Event",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Bearer Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"WORKING\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/hobby/63db3e07429276dccc217cf9/widgets/calendar/events/63db44835ce1d0ebd30d7c78",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"hobby",
+						"63db3e07429276dccc217cf9",
+						"widgets",
+						"calendar",
+						"events",
+						"63db44835ce1d0ebd30d7c78"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Calendar Event",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Bearer Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/hobby/63db3e07429276dccc217cf9/widgets/calendar/events/63db44985ce1d0ebd30d7c7e",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"hobby",
+						"63db3e07429276dccc217cf9",
+						"widgets",
+						"calendar",
+						"events",
+						"63db44985ce1d0ebd30d7c7e"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
 						}
 					]
 				}

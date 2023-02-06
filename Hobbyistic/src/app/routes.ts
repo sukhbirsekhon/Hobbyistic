@@ -33,11 +33,11 @@ export const appRoutes: Routes = [
     children: [{ path: '', component: EditHobbyComponent}]
   },
   {
-    path: 'dashboard', component: UserComponent,
+    path: 'dashboard/:id', component: UserComponent,
     children: [{ path: '', component: DashboardComponent}]
   },
   {
-    path: 'external-links', component: ExternalLinksComponent,
+    path: 'external-links/:id', component: ExternalLinksComponent,
     children: [{ path: '', component: DashboardComponent}]
   },
   {
