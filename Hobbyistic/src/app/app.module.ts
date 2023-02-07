@@ -46,12 +46,11 @@ import { FullCalendarModule } from '@fullcalendar/angular';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    FullCalendarModule, // register FullCalendar with your app
     RouterModule.forRoot(appRoutes),
-    HttpClientModule,
-    FullCalendarModule // register FullCalendar with your app
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-
