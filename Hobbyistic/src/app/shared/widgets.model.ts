@@ -5,12 +5,27 @@ export interface Widgets {
     taskWidget?:          TaskWidget;
     notesWidget?:         NotesWidget;
     externalLinksWidget?: ExternalLinksWidget;
+    calendarWidget?:      CalendarWidget;
     __v?:                 number;
 }
 
+export interface CalendarWidget {
+    events?: Event[];
+    _id?:    string;
+}
+
+export interface Event {
+    title?:       string;
+    description?: string;
+    startDate?:   Date;
+    endDate?:     Date;
+    frequency?:   string;
+    _id?:         string;
+}
+
 export interface ExternalLinksWidget {
-    _id?:   string;
     links?: Link[];
+    _id?:   string;
 }
 
 export interface Link {
