@@ -15,7 +15,7 @@ label
 
 body
 {
-    background-color: #386150;
+    background-color: #27473A;
 }
 
 h1
@@ -29,7 +29,7 @@ h1
     width: fit-content;
     border-radius: 5px;
     border: solid 2.5px #333;
-    background-color: #386150;
+    background-color: #27473A;
 }
 
 .alignMid
@@ -96,7 +96,7 @@ p:last-of-type
 
 #login
 {
-    background-color: #386150;
+    background-color: #27473A;
     text-decoration: none;
     color: #DBE4EE;
     border-radius: 5px;
