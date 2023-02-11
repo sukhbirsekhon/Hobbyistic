@@ -1,11 +1,21 @@
 <div class="container">
     <div class="row topLayout">
-        <div class="col-lg-3 titleLayout">
-            <h2>Useful Links</h2>
+        <div class="col-lg-4 titleLayout">
+            <div class="dropdown">
+                <button class="dropdown-toggle dropBtn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Useful Links <img src="../assets/images/dropdwn.png" id="dropIcon"/></button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item drop-Item" routerLink="/main">Dashboard</a><br>
+                    <a class="dropdown-item drop-Item" [routerLink]="['/dashboard', hobby.id]">My Widgets</a><br>
+                    <a class="dropdown-item drop-Item" [routerLink]="['/calendar', hobby.id]">Calendar</a><br>
+                    <a class="dropdown-item drop-Item" [routerLink]="['/motivation', hobby.id]">Motivation</a><br>
+                    <a class="dropdown-item drop-Item" [routerLink]="['/checklist', hobby.id]">Task List</a>
+                </div>
+            </div>
         </div>
-        <div class="col-sm-12 col-md-6 col-lg-6 boxLayout">
+        <div class="col-sm-12 col-md-6 col-lg-4 boxLayout">
             <p><a class="title" routerLink="/main">Hobbyistic</a></p>  
         </div>
+        <div class="col-lg-1"></div>
         <div class="col-md-6 col-lg-3 iconLayout">
             <div class="row">
                 <div class="col-md-4 col-lg-4">
@@ -20,9 +30,32 @@
             </div>
         </div>
     </div>
-    <div>
-        <div *ngFor = "let link of widgets.externalLinksWidget?.links">
-            <p>{{ link.title }}</p>
+    <div class="row">
+        <div class="col-lg-12 hobbyName">
+            <h2>Helpful links for {{ hobby.name }}</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12" *ngFor = "let link of widgets.externalLinksWidget?.links">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-8 linkBox">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h3>{{ link.title }}</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <p>Link:<a>{{ link.link }}</a></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <p>{{ link.snippet }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2"></div>
         </div>
     </div>
 </div>

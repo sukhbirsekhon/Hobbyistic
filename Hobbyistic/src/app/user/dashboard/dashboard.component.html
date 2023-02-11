@@ -43,7 +43,7 @@
                     
                 </div>
                 <div class="col-lg-4">
-                    <p><a routerLink="/calendar">Calendar</a></p>
+                    <p><a [routerLink]="['/calendar', hobby.id]">Calendar</a></p>
                 </div>
                 <div class="col-lg-4">
                     
@@ -56,7 +56,7 @@
                     
                 </div>
                 <div class="col-lg-4">
-                    <p><a routerLink="/checklist">Checklist</a></p>
+                    <p><a [routerLink]="['/checklist', hobby.id]">Task List</a></p>
                 </div>
                 <div class="col-lg-4">
                     
@@ -67,7 +67,7 @@
                     
                 </div>
                 <div class="col-lg-4">
-                    <p><a routerLink="/motivation">Motivation</a></p>
+                    <p><a [routerLink]="['/motivation', hobby.id]">Motivation</a></p>
                 </div>
                 <div class="col-lg-4">
                     
