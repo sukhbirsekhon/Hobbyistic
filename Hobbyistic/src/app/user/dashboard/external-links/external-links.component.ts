@@ -6,7 +6,7 @@ import { Hobby } from 'src/app/shared/hobby.model';
 import { ActivatedRoute } from '@angular/router';
 import { ExternalLinksWidget } from 'src/app/shared/widgets.model';
 import { Widgets, TaskWidget, Task, NotesWidget } from 'src/app/shared/widgets.model';
-import { FormsModule } from '@angular/forms';
+import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { catchError } from 'rxjs/operators';
 
@@ -22,7 +22,8 @@ export class ExternalLinksComponent implements OnInit {
 
   widgets: Widgets = { };
   hobby: Hobby = {"name" : ""};
-  search: String = ""; 
+  search: String = "";
+  query: String = "";
   //hobbies: Hobby[] = []; 
 
   ngOnInit(): void {
@@ -31,6 +32,8 @@ export class ExternalLinksComponent implements OnInit {
     this.UserService.GetSingleHobby(this.hobby).subscribe(resp => {
       this.hobby = resp;
     });
+
+    this.searchResults(this.hobby.name);
 
     /*this.WidgetService.getExternalLinks(this.hobby).subscribe(response => {
       console.log(response);  
@@ -47,7 +50,7 @@ export class ExternalLinksComponent implements OnInit {
         this.widgets = response;
     });
 
-    console.log(this.search);
+    console.log(typeof this.search);
   }
 
 }

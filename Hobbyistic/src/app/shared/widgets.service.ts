@@ -47,6 +47,6 @@ export class WidgetsService {
     let header = new HttpHeaders().set('Authorization',`Bearer ${localStorage.getItem('token')!}`);
     return this.http.get<Widgets>("http://localhost:3000/api/hobby/" + hobby.id + "/externallinks?query=" + query, {headers: header});
   }
-
+ 
 }
 

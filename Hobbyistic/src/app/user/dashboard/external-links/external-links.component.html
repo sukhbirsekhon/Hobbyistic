@@ -34,10 +34,18 @@
         <div class="col-lg-12 hobbyName">
             <h2>Helpful links for {{ hobby.name }}</h2>
         </div>
-        <form (ngSubmit)="searchResults(hobby.name)">
-            <input class="addHobbyInput" [ngModelOptions]="{standalone: true}" [(ngModel)]="hobby.name" name="{{ hobby.name }}"/>
-            <input id="add" value="Update" type="submit">
-        </form>
+    </div>
+    <div class="row">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6 searchInput">
+            <form (ngSubmit)="searchResults(hobby.name)">
+                <input class="addHobbyInput" [ngModelOptions]="{standalone: true}" [(ngModel)]="hobby.name"/>
+                <input id="add" value="Search" type="submit">
+            </form>
+        </div>
+        <div class="col-lg-3">
+            <!--Future implementation of bookmark feature-->
+        </div>
     </div>
     <div class="row">
         <div class="col-lg-12" *ngFor = "let link of widgets.externalLinksWidget?.links">
