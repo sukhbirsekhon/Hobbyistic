@@ -133,3 +133,9 @@ p
         margin-top: 1.5em;
     }
 }
+
+@media (min-width: 1200px) {
+    .container {
+        width: 1400px;
+    }
+}
