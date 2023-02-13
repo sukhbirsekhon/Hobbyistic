@@ -22,6 +22,7 @@ export class ExternalLinksComponent implements OnInit {
 
   widgets: Widgets = { };
   hobby: Hobby = {"name" : ""};
+  hobbyNameDisplay: String = "";
   search: String = "";
   //hobbies: Hobby[] = []; 
 
@@ -30,15 +31,9 @@ export class ExternalLinksComponent implements OnInit {
     this.hobby.id = this.route.snapshot.params['id'];
     this.UserService.GetSingleHobby(this.hobby).subscribe(resp => {
       this.hobby = resp;
+      this.hobbyNameDisplay = this.hobby.name;
     });
 
-    this.searchResults(this.hobby.name);
-
-    /*this.WidgetService.getExternalLinks(this.hobby).subscribe(response => {
-      console.log(response);  
-      this.widgets = response;
-      console.log(this.widgets);
-    });*/
   }
 
   searchResults(querySearch: String)
