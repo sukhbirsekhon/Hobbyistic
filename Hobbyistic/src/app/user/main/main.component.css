@@ -88,6 +88,11 @@ h2
     padding-top: 0.5em;
 }
 
+.dropdown
+{
+    text-align: left;
+}
+
 .topLayout
 {
     background-color: #27473A;
