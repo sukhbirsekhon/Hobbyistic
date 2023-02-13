@@ -97,11 +97,17 @@ h2
 a
 {
     font-size: 2em;
+    font-family: 'Caveat', cursive;
 }
 
 p
 {
     text-align: center;
+}
+
+.allWidgets
+{
+    margin-bottom: 3em;
 }
 
 .widgetBox

@@ -23,7 +23,6 @@ export class ExternalLinksComponent implements OnInit {
   widgets: Widgets = { };
   hobby: Hobby = {"name" : ""};
   search: String = "";
-  query: String = "";
   //hobbies: Hobby[] = []; 
 
   ngOnInit(): void {
@@ -44,7 +43,7 @@ export class ExternalLinksComponent implements OnInit {
 
   searchResults(querySearch: String)
   {
-    this.search = querySearch;
+    this.search = "How to " + querySearch;
 
     this.WidgetService.getExternalLinksFromQuery(this.hobby, this.search).subscribe(response => {
         this.widgets = response;
