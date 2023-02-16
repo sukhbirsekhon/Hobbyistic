@@ -87,7 +87,7 @@ const widgetsSchema = new mongoose.Schema({
     });
 });
 
-widgetsSchema.methods.toJSON = async function() {
+widgetsSchema.methods.toJSON = function() {
     return {
         user: this.user,
         hobby: this.hobby,

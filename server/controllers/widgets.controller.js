@@ -123,7 +123,6 @@ module.exports.deleteTask = (req, res, next) => {
 }
 
 module.exports.updateNotes = (req, res, next) => {
-    console.log(gfs)
     if (req.auth == null) {
         return res.status(401).json({errors: {user: "Unauthorized"}}); 
     }
@@ -363,6 +362,7 @@ module.exports.getMotivationPosts = (req, res, next) => {
   };
 
 module.exports.deleteMotivationPost = (req, res, next) => {
+    const bucket = new GridFSBucket(mongoose.connection.db, {bucketName: 'photo'});
     if (req.auth == null) {
         return res.status(401).json({errors: {user: "Unauthorized"}}); 
     }
@@ -377,7 +377,6 @@ module.exports.deleteMotivationPost = (req, res, next) => {
             }
             const imageId = post.image
             post.remove().then(function() {
-                const bucket = new GridFSBucket(mongoose.connection.db, {bucketName: 'photo'});
                 bucket.delete(imageId, function (err) {
                     if (err) {
                         return next(err);
