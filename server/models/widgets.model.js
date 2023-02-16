@@ -29,6 +29,34 @@ const calendarWidgetSchema = new mongoose.Schema({
     }]
  })
 
+const motivationWidgetSchema = new mongoose.Schema({
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: 'Must be associated with a user'
+    },
+    hobby: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Hobby',
+        required: 'Must be associated with a hobby',
+        unique: true
+    },
+    title: {type: String, required: true},
+    description: {type: String},
+    sharable: {type: Boolean, default: false},
+    postDate: {type: Date, required: true},
+    image: {type: mongoose.Schema.Types.ObjectId, ref: 'photo.files'}
+ })
+
+ const photoSchema = new mongoose.Schema({
+    filename: String,
+    contentType: String,
+    length: Number,
+    uploadDate: Date,
+    metadata: Object
+  });
+
+
 const widgetsSchema = new mongoose.Schema({
     user: {
         type: mongoose.Schema.Types.ObjectId,
@@ -44,7 +72,8 @@ const widgetsSchema = new mongoose.Schema({
     taskWidget: taskWidgetSchema,
     notesWidget: notesWidgetSchema,
     externalLinksWidget: externalLinksWidgetSchema,
-    calendarWidget: calendarWidgetSchema
+    calendarWidget: calendarWidgetSchema,
+    //motivationWidget: [{type: mongoose.Schema.Types.ObjectId, ref: 'Posts'}]
  });
 
  const Widgets = mongoose.model('Widgets', widgetsSchema);
@@ -58,14 +87,15 @@ const widgetsSchema = new mongoose.Schema({
     });
 });
 
-widgetsSchema.methods.toJSON = function() {
+widgetsSchema.methods.toJSON = async function() {
     return {
         user: this.user,
         hobby: this.hobby,
         taskWidget: this.taskWidget,
         notesWidget: this.notesWidget,
         externalLinksWidget: this.externalLinksWidget,
-        calendarWidget: this.calendarWidget
+        calendarWidget: this.calendarWidget,
+        motivationWidget: this.postSchema
     };
 };
 
@@ -78,5 +108,6 @@ widgetsSchema.methods.toJSONForTasks = function() {
 mongoose.model('TaskWidget', taskWidgetSchema);
 mongoose.model('NotesWidget', notesWidgetSchema);
 mongoose.model('Widgets', widgetsSchema);
-
+mongoose.model('Posts', motivationWidgetSchema);
+mongoose.model('photo.files', photoSchema);
   
