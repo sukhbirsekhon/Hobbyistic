@@ -318,7 +318,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/hobby/63c16370f4086ef7240fd9ab/widgets/tasks",
+					"raw": "http://localhost:3000/api/hobby/63db3e07429276dccc217cf9/widgets/tasks",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -327,7 +327,7 @@
 					"path": [
 						"api",
 						"hobby",
-						"63c16370f4086ef7240fd9ab",
+						"63db3e07429276dccc217cf9",
 						"widgets",
 						"tasks"
 					],
@@ -569,7 +569,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/api/hobby/63d85a75a61f9aa707542bc2/widgets/externallinks?query=How to fish",
+					"raw": "http://localhost:3000/api/hobby/63db3e07429276dccc217cf9/widgets/externallinks?query=How to fish",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -578,7 +578,7 @@
 					"path": [
 						"api",
 						"hobby",
-						"63d85a75a61f9aa707542bc2",
+						"63db3e07429276dccc217cf9",
 						"widgets",
 						"externallinks"
 					],
@@ -609,7 +609,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"title\": \"ya it workeded\",\n    \"description\":  \"that was silly\",\n    \"startDate\": \"11/12/12\"\n}",
+					"raw": "{\n    \"title\": \"ya it workeded\",\n    \"description\":  \"that was silly\",\n    \"startDate\": \"11/12/12\",\n    \"endDate\": \"11/13/12\",\n    \"frequency\": \"daily\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -709,7 +709,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/api/hobby/63db3e07429276dccc217cf9/widgets/calendar/events/63db44985ce1d0ebd30d7c7e",
+					"raw": "http://localhost:3000/api/hobby/63db3e07429276dccc217cf9/widgets/calendar/events/63dbca0be19d6572dd549785",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -722,7 +722,239 @@
 						"widgets",
 						"calendar",
 						"events",
-						"63db44985ce1d0ebd30d7c7e"
+						"63dbca0be19d6572dd549785"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Motivation Post",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Bearer Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "photo",
+							"type": "file",
+							"src": "/Users/jackmchugh/Desktop/IMG_5667.heic"
+						},
+						{
+							"key": "title",
+							"value": "some motivation",
+							"type": "text"
+						},
+						{
+							"key": "sharable",
+							"value": "false",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "a description",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/hobby/63db3e07429276dccc217cf9/widgets/motivation/post",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"hobby",
+						"63db3e07429276dccc217cf9",
+						"widgets",
+						"motivation",
+						"post"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Motivation Post",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Bearer Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/hobby/63db3e07429276dccc217cf9/widgets/motivation/post/63ed3345223ae618eabfd298",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"hobby",
+						"63db3e07429276dccc217cf9",
+						"widgets",
+						"motivation",
+						"post",
+						"63ed3345223ae618eabfd298"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Motivation Posts",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Bearer Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/hobby/63db3e07429276dccc217cf9/widgets/motivation/post",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"hobby",
+						"63db3e07429276dccc217cf9",
+						"widgets",
+						"motivation",
+						"post"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Motivation Public Posts",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Bearer Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/hobby/63db3e07429276dccc217cf9/widgets/motivation/post?scope=public",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"hobby",
+						"63db3e07429276dccc217cf9",
+						"widgets",
+						"motivation",
+						"post"
+					],
+					"query": [
+						{
+							"key": "scope",
+							"value": "public"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Motivation Posts Image",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Bearer Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/hobby/63db3e07429276dccc217cf9/widgets/motivation/post/63eda3f9e198b779ca4134b3/image",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"hobby",
+						"63db3e07429276dccc217cf9",
+						"widgets",
+						"motivation",
+						"post",
+						"63eda3f9e198b779ca4134b3",
+						"image"
 					],
 					"query": [
 						{
