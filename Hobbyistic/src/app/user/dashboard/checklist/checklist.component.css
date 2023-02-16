@@ -35,7 +35,7 @@ img:not(#addIcon):not(#dropIcon)
 
 .dropdown
 {
-    text-align: center;
+    text-align: left;
 }
 
 .drop-Item
@@ -47,7 +47,6 @@ img:not(#addIcon):not(#dropIcon)
 {
     background-color: #27473A;
     margin-top: 2.1em;
-    margin-left: 17.5%;
     width: 60%;
     text-align: center;
 }
@@ -171,5 +170,11 @@ p
     .iconLayout img
     {
         margin-top: 1.5em;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        width: 1400px;
     }
 }

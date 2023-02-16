@@ -88,6 +88,11 @@ h2
     padding-top: 0.5em;
 }
 
+.dropdown
+{
+    text-align: left;
+}
+
 .topLayout
 {
     background-color: #27473A;
@@ -146,5 +151,11 @@ h2
     .iconLayout img
     {
         margin-top: 1.5em;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        width: 1400px;
     }
 }

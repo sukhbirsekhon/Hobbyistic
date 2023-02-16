@@ -35,7 +35,7 @@ img:not(#addIcon):not(#dropIcon)
 
 .dropdown
 {
-    text-align: center;
+    text-align: left;
 }
 
 .drop-Item
@@ -47,7 +47,6 @@ img:not(#addIcon):not(#dropIcon)
 {
     background-color: #27473A;
     margin-top: 2.1em;
-    margin-left: 17.5%;
     width: 60%;
     text-align: center;
 }
@@ -80,11 +79,38 @@ img:not(#addIcon):not(#dropIcon)
     border: solid 1px black;
 }
 
+.searchInput
+{
+    font-size: 1.5em;
+    text-align: center;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.bookmarkInput
+{
+    width: 0.5em;
+    margin-top: 1.3em;
+    margin-bottom: 1em;
+}
+
+.bookmarkInput img:hover
+{
+    border: solid 1px black;
+    padding: 5px;
+}
+
 h2, .dropBtn
 {
     text-align: center;
     font-size: 3em;
     margin-top: 0;
+}
+
+.howto
+{
+    display: inline;
+    font-weight: bold;
 }
 
 h2
@@ -140,9 +166,30 @@ a
     font-size: 2em;
 }
 
-p
+p:not(.linkText)
 {
     text-align: center;
+}
+
+.linkText a
+{
+    font-size: 1em;
+}
+
+.linkText
+{
+    font-size: 1.25em;
+}
+
+.linkSnip
+{
+    border-top: 1px solid black;
+    padding-top: .5em;
+}
+
+.linkTitle
+{
+    font-weight: bold;
 }
 
 .allWidgets
@@ -154,6 +201,11 @@ p
 {
     padding-top: 7.5em;
     padding-bottom: 7.55em;
+}
+
+.footSpace
+{
+    margin-bottom: 2em;
 }
 
 @media screen and (max-width: 768px) {
@@ -171,5 +223,11 @@ p
     .iconLayout img
     {
         margin-top: 1.5em;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        width: 1400px;
     }
 }
