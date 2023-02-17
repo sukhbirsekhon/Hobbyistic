@@ -2,9 +2,11 @@ const mongoose = require('mongoose');
 const User = mongoose.model('User');
 const Hobby = mongoose.model('Hobby');
 const Widgets = mongoose.model('Widgets');
-const passport = require('passport');
-const auth = require('../routes/auth')
+const Post = mongoose.model('Posts');
 const widgetService = require('../services/widgets.service')
+const { GridFSBucket } = require('mongodb');
+const concat = require('concat-stream');
+
 
 module.exports.getWigets = (req, res, next) => {
     if (req.auth == null) {
@@ -268,3 +270,120 @@ module.exports.deleteEvent = (req, res, next) => {
     });
 }
 
+module.exports.addMotivationPost = (req, res, next) => {
+    if (req.auth == null) {
+        return res.status(401).json({errors: {user: "Unauthorized"}}); 
+    }
+    User.findById(req.auth.id).then(function(user){
+        if (!user) { 
+            return res.status(401).json({errors: {user: "Unauthorized"}}); 
+        }
+    Hobby.findOne({user: req.auth.id, hobby: req.params.hobbyId}, (err, hobby) => {
+        if (err) {
+            return next(err);
+        }
+        if (!hobby) {
+            return res.status(404).json({errors: {hobby: "Hobby not found"}});
+        }
+        const post = new Post({
+            user: req.auth.id,
+            hobby: req.params.hobbyId,
+            title: req.body.title,
+            description: req.body.description,
+            sharable: req.body.sharable,
+            postDate: new Date(),
+            image: req.file.id
+        });
+        post.save()
+            .then(doc => {
+                return Post.populate(doc, { path: 'user hobby', select: '-password -saltSecret -email' });
+            })
+            .then(doc => {
+                res.send(doc);
+            })
+            .catch(err => {
+                next(err);
+        });
+    });
+});
+}
+
+module.exports.getPostImage = (req, res, next) => {
+const bucket = new GridFSBucket(mongoose.connection.db, {bucketName: 'photo'});
+  if (req.auth == null) {
+    return res.status(401).json({ errors: { user: 'Unauthorized' } });
+  }
+  User.findById(req.auth.id)
+    .then(function (user) {
+      if (!user) {
+        return res.status(401).json({ errors: { user: 'Unauthorized' } });
+      }
+      Post.findOne({ user: req.auth.id, hobby: req.params.hobbyId,_id: req.params.postId , $or: [{sharable: true, _id: req.params.postId}]}).then(function(post) {
+        if (!post) {
+            return res.status(404).json({ errors: { post: 'Post not found' } });
+        }
+        bucket.openDownloadStream(post.image).pipe(concat((data) => {
+            return res.send(data);
+        }));
+    });
+    })
+};
+
+module.exports.getMotivationPosts = (req, res, next) => {
+    if (req.auth == null) {
+      return res.status(401).json({errors: {user: "Unauthorized"}});
+    }
+    User.findById(req.auth.id).then(function(user) {
+      if (!user) {
+        return res.status(401).json({ errors: { user: 'Unauthorized' } });
+      }
+      if (req.query.scope == "public") {
+        Post.find({sharable: true})
+          .populate({ path: 'user hobby', select: '-password -saltSecret -email' })
+          .sort({ postDate: -1 })
+          .then(function(posts) {
+            if (!posts || posts.length === 0) {
+              return res.status(404).json({ errors: { post: 'Post not found' } });
+            }
+            return res.send(posts);
+          });
+      } else {
+        Post.find({user: req.auth.id, hobby: req.params.hobbyId})
+          .populate({ path: 'user hobby', select: '-password -saltSecret -email' })
+          .sort({ postDate: -1 })
+          .then(function(posts) {
+            if (!posts || posts.length === 0) {
+              return res.status(404).json({ errors: { post: 'Post not found' } });
+            }
+            return res.send(posts);
+          });
+      }
+    });
+  };
+
+module.exports.deleteMotivationPost = (req, res, next) => {
+    const bucket = new GridFSBucket(mongoose.connection.db, {bucketName: 'photo'});
+    if (req.auth == null) {
+        return res.status(401).json({errors: {user: "Unauthorized"}}); 
+    }
+    User.findById(req.auth.id).then(function(user) {
+        if (!user) {
+            return res.status(401).json({ errors: { user: 'Unauthorized' } });
+        }
+        Post.findOne({user: req.auth.id, hobby: req.params.hobbyId, _id: req.params.postId}).then(function(post) {
+            console.log(post)
+            if (!post) {
+                return res.status(404).json({ errors: { post: 'Post not found' } });
+            }
+            const imageId = post.image
+            post.remove().then(function() {
+                bucket.delete(imageId, function (err) {
+                    if (err) {
+                        return next(err);
+                    }
+                    return res.json({ message: 'Post and image deleted' });
+                });
+            });
+        });
+    });
+};
