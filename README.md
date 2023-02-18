@@ -45,6 +45,6 @@ All of the service endpoints are contained in the Postman collection located in 
 
 In addition, all documentation regarding API endpoints can be found in the link below:
 
-[API Documentation](https://documenter.getpostman.com/view/23759085/2s93CHuF8e){:target="_blank"}
+[API Documentation](https://documenter.getpostman.com/view/23759085/2s93CHuF8e)
 
 
