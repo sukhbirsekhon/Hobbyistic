@@ -13,7 +13,7 @@
     background-color: #DBE4EE;
 }
 
-img:not(#addIcon)
+img:not(#addIcon):not(#dropIcon)
 {
     width: 3em;
 }
@@ -25,6 +25,37 @@ img:not(#addIcon)
     text-align: center;
 }
 
+.dropBtn
+{
+    background-color: transparent;
+    color:#DBE4EE;
+    border: none;
+    padding-top: 0.35em;
+}
+
+.dropdown
+{
+    text-align: left;
+}
+
+.drop-Item
+{
+    color: #DBE4EE;
+}
+
+.dropdown-menu
+{
+    background-color: #27473A;
+    margin-top: 2.1em;
+    width: 60%;
+    text-align: center;
+}
+
+#dropIcon
+{
+    width: 1em;
+}
+
 #addIcon
 {
     margin-top: 1.5em;
@@ -34,26 +65,35 @@ img:not(#addIcon)
 
 #addIcon:hover
 {
-    background-color: #386150;
+    background-color: #27473A;
     border-radius: 100%;
 }
 
-p, .title, h2
+.title, h2
 {
     color: #DBE4EE;
 }
 
-h2
+.linkBox
+{
+    border: solid 1px black;
+}
+
+h2, .dropBtn
 {
     text-align: center;
     font-size: 3em;
     margin-top: 0;
+}
+
+h2
+{
     padding-top: 0.5em;
 }
 
 .topLayout
 {
-    background-color: #386150;
+    background-color: #27473A;
     border-bottom: 0.4em solid #333;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
@@ -75,6 +115,12 @@ h2
 .titleLayout
 {
     padding-top: 0.5em;
+}
+
+.hobbyName h2
+{
+    padding-top: 1em;
+    color: black;
 }
 
 .iconLayout
@@ -124,5 +170,11 @@ p
     .iconLayout img
     {
         margin-top: 1.5em;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        width: 1400px;
     }
 }

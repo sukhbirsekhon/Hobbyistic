@@ -4,6 +4,11 @@ const auth = require('../routes/auth');
 const userController = require('../controllers/user.controller');
 const hobbyController = require('../controllers/hobby.controller');
 const widgetsController = require('../controllers/widgets.controller')
+const { gridStorage } = require('../models/db')
+
+
+
+
 //user
 router.post('/register', userController.register);
 router.post('/login', userController.login);
@@ -34,5 +39,11 @@ router.get('/hobby/:hobbyId/widgets/externallinks', auth.required, widgetsContro
 router.post('/hobby/:hobbyId/widgets/calendar/events', auth.required, widgetsController.addEvent);
 router.put('/hobby/:hobbyId/widgets/calendar/events/:eventId', auth.required, widgetsController.updateEvent);
 router.delete('/hobby/:hobbyId/widgets/calendar/events/:eventId', auth.required, widgetsController.deleteEvent);
+
+//motivation
+router.post('/hobby/:hobbyId/widgets/motivation/post',  auth.required, gridStorage.single('photo'), widgetsController.addMotivationPost);
+router.delete('/hobby/:hobbyId/widgets/motivation/post/:postId',  auth.required, widgetsController.deleteMotivationPost);
+router.get('/hobby/:hobbyId/widgets/motivation/post',  auth.required, widgetsController.getMotivationPosts);
+router.get('/hobby/:hobbyId/widgets/motivation/post/:postId/image',  auth.required, widgetsController.getPostImage);
 
 module.exports = router;

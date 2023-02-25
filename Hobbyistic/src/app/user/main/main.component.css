@@ -34,7 +34,7 @@ img:not(#addIcon)
 
 #addIcon:hover
 {
-    background-color: #386150;
+    background-color: #27473A;
     border-radius: 100%;
 }
 
@@ -61,7 +61,7 @@ p, .title, h2
 .template a
 {
     font-size: 2.5em;
-    color: #386150;
+    color: #27473A;
     text-decoration: none;
 }
 
@@ -88,9 +88,14 @@ h2
     padding-top: 0.5em;
 }
 
+.dropdown
+{
+    text-align: left;
+}
+
 .topLayout
 {
-    background-color: #386150;
+    background-color: #27473A;
     border-bottom: 0.4em solid #333;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
@@ -146,5 +151,11 @@ h2
     .iconLayout img
     {
         margin-top: 1.5em;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        width: 1400px;
     }
 }

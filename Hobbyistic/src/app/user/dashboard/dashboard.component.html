@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row topLayout">
         <div class="col-lg-3 titleLayout">
-            <h2>My Widgets</h2>
+            <h2 class="dropdown">My Widgets</h2>
         </div>
         <div class="col-sm-12 col-md-6 col-lg-6 boxLayout">
             <p><a class="title" routerLink="/main">Hobbyistic</a></p>  
@@ -27,7 +27,7 @@
     </div>
     <div class="row allWidgets">
         <div class="row">
-            <div class="col-lg-6 widgetBox">
+            <div class="col-lg-12 widgetBox">
                 <div class="col-lg-4">
                     
                 </div>
@@ -38,12 +38,12 @@
                     
                 </div>
             </div>
-            <div class="col-lg-6 widgetBox">
+            <div class="col-lg-12 widgetBox">
                 <div class="col-lg-4">
                     
                 </div>
                 <div class="col-lg-4">
-                    <p><a routerLink="/calendar">Calendar</a></p>
+                    <p><a [routerLink]="['/calendar', hobby.id]">Calendar</a></p>
                 </div>
                 <div class="col-lg-4">
                     
@@ -56,7 +56,7 @@
                     
                 </div>
                 <div class="col-lg-4">
-                    <p><a routerLink="/checklist">Checklist</a></p>
+                    <p><a [routerLink]="['/checklist', hobby.id]">Task List</a></p>
                 </div>
                 <div class="col-lg-4">
                     
@@ -67,7 +67,7 @@
                     
                 </div>
                 <div class="col-lg-4">
-                    <p><a routerLink="/motivation">Motivation</a></p>
+                    <p><a [routerLink]="['/motivation', hobby.id]">Motivation</a></p>
                 </div>
                 <div class="col-lg-4">
                     

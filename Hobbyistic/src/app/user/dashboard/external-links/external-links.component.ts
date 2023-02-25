@@ -6,6 +6,9 @@ import { Hobby } from 'src/app/shared/hobby.model';
 import { ActivatedRoute } from '@angular/router';
 import { ExternalLinksWidget } from 'src/app/shared/widgets.model';
 import { Widgets, TaskWidget, Task, NotesWidget } from 'src/app/shared/widgets.model';
+import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+import { catchError } from 'rxjs/operators';
 
 @Component({
   selector: 'app-external-links',
@@ -15,10 +18,12 @@ import { Widgets, TaskWidget, Task, NotesWidget } from 'src/app/shared/widgets.m
 })
 export class ExternalLinksComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, public WidgetService: WidgetsService, public UserService: UserService) { }
+  constructor(private route: ActivatedRoute, public WidgetService: WidgetsService, public UserService: UserService, private router: Router) { }
 
   widgets: Widgets = { };
   hobby: Hobby = {"name" : ""};
+  hobbyNameDisplay: String = "";
+  search: String = "";
   //hobbies: Hobby[] = []; 
 
   ngOnInit(): void {
@@ -26,14 +31,20 @@ export class ExternalLinksComponent implements OnInit {
     this.hobby.id = this.route.snapshot.params['id'];
     this.UserService.GetSingleHobby(this.hobby).subscribe(resp => {
       this.hobby = resp;
+      this.hobbyNameDisplay = this.hobby.name;
     });
 
-    this.WidgetService.getExternalLinks(this.hobby).subscribe(response => {
-      console.log(response);  
-      this.widgets = response;
-      console.log(this.widgets);
-        //this.links = this.externalLinksList.links[1];
+  }
+
+  searchResults(querySearch: String)
+  {
+    this.search = "How to " + querySearch;
+
+    this.WidgetService.getExternalLinksFromQuery(this.hobby, this.search).subscribe(response => {
+        this.widgets = response;
     });
+
+    console.log(typeof this.search);
   }
 
 }

@@ -41,15 +41,15 @@ export const appRoutes: Routes = [
     children: [{ path: '', component: DashboardComponent}]
   },
   {
-    path: 'motivation', component: MotivationComponent,
+    path: 'motivation/:id', component: MotivationComponent,
     children: [{ path: '', component: DashboardComponent}]
   },
   {
-    path: 'calendar', component: CalendarComponent,
+    path: 'calendar/:id', component: CalendarComponent,
     children: [{ path: '', component: DashboardComponent}]
   },
   {
-    path: 'checklist', component: ChecklistComponent,
+    path: 'checklist/:id', component: ChecklistComponent,
     children: [{ path: '', component: DashboardComponent}]
   },
   {
