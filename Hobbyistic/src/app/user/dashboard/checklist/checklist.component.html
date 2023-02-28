@@ -13,7 +13,7 @@
             </div>
         </div>
         <div class="col-sm-12 col-md-6 col-lg-4 boxLayout">
-            <p><a class="title" routerLink="/main">Hobbyistic</a></p>  
+            <p><a class="title" routerLink="/main">Hobbyistic</a></p>
         </div>
         <div class="col-lg-1"></div>
         <div class="col-md-6 col-lg-3 iconLayout">
@@ -29,6 +29,14 @@
                 </div>
             </div>
         </div>
+        <div class="row myHobbiesTxt">
+          <div class="col-lg-10">
+              <h2>My Tasks</h2>
+          </div>
+          <div class="col-lg-2">
+              <img src="../assets/images/add.svg" alt="Add" [routerLink]="['/add-task', hobby.id]" id="addIcon"/>
+          </div>
+      </div>
     </div>
 </div>
 

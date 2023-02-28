@@ -25,7 +25,7 @@
         <h2>Add task</h2>
     </div>
     <div class="col-lg-2">
-        <img src="../assets/images/add.svg" alt="Cancel" routerLink="/checklist" id="addIcon"/>
+        <img src="../assets/images/add.svg" alt="Cancel" [routerLink]="['/checklist', hobby.id]" id="addIcon"/>
     </div>
   </div>
   <div class="row hobbyBox">
@@ -36,16 +36,18 @@
           <p class="addHobbytxt">Task Name:</p>
         </div>
         <div class="col-lg-2">
-          <!-- <input class="addHobbyInput" type="text" [(ngModel)]="taskService.task" name="name"/> -->
+          <input class="addHobbyInput" type="text" [(ngModel)]="task.task" name="name"/>
         </div>
         <div class="col-lg-6"></div>
       </div>
-
+      <div class="row topSpace leftSpace">
+        <div class="col-lg-2"><p class="addHobbytxt"><input type = "submit" value = "Add Task" id="add"></p></div>
+      </div>
       <div class="row topSpace leftSpace">
         <div class="col-lg-2"></div>
         <div class="col-lg-1"></div>
-        <div class="col-lg-2"><p class="addHobbytxt"><input type = "submit" value = "Add Hobby" id="add"></p></div>
-        <div class="col-lg-2"><p class="addHobbytxt"><input routerLink="/main" id="cancel" value="Cancel" type="submit"></p></div>
+        <div class="col-lg-2"><p class="addHobbytxt"><input type = "submit" value = "Add Task" id="add"></p></div>
+        <div class="col-lg-2"><p class="addHobbytxt"><input [routerLink]="['/checklist', hobby.id]" id="cancel" value="Cancel" type="submit"></p></div>
         <div class="col-lg-2"></div>
         <div class="col-lg-2"></div>
         <div class="col-lg-1"></div>

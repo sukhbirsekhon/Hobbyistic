@@ -20,7 +20,7 @@ export class WidgetsService {
 
   addTask(hobby: Hobby, task: Task): Observable<Task> {
     let header = new HttpHeaders().set('Authorization',`Bearer ${localStorage.getItem('token')!}`);
-    return this.http.post<Task>("http://localhost:3000/api/hobby/" + hobby.id + "/widgets/tasks", {task}, {headers: header});
+    return this.http.post<Task>("http://localhost:3000/api/hobby/" + hobby.id + "/widgets/tasks/", task, {headers: header});
   }
 
   updateTask(hobby: Hobby, task: Task): Observable<Task> {
@@ -47,6 +47,6 @@ export class WidgetsService {
     let header = new HttpHeaders().set('Authorization',`Bearer ${localStorage.getItem('token')!}`);
     return this.http.get<Widgets>("http://localhost:3000/api/hobby/" + hobby.id + "/widgets/externallinks?query=" + query, {headers: header});
   }
- 
+
 }
 

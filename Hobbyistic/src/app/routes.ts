@@ -30,7 +30,7 @@ export const appRoutes: Routes = [
     children: [{ path: '', component: AddHobbyComponent}]
   },
   {
-    path: 'add-task', component: UserComponent,
+    path: 'add-task/:id', component: UserComponent,
     children: [{ path: '', component: AddTaskComponent}]
   },
   {
