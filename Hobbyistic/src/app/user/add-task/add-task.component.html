@@ -1,0 +1,61 @@
+<div class="container">
+  <div class="row topLayout">
+      <div class="col-lg-3 titleLayout">
+          <h2>Dashboard</h2>
+      </div>
+      <div class="col-sm-12 col-md-6 col-lg-6 boxLayout">
+          <p><a class="title">Hobbyistic</a></p>
+      </div>
+      <div class="col-md-6 col-lg-3 iconLayout">
+          <div class="row">
+              <div class="col-md-4 col-lg-4">
+                  <img src="../assets/images/Logout.png" alt="Logout" routerLink="/login"/>
+              </div>
+              <div class="col-md-4 col-lg-4">
+                  <img src="../assets/images/Home.png" alt="Home"/>
+              </div>
+              <div class="col-md-4 col-lg-4">
+                  <img src="../assets/images/Settings.png" alt="Settings"/>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="row myHobbiesTxt">
+    <div class="col-lg-10">
+        <h2>Add task</h2>
+    </div>
+    <div class="col-lg-2">
+        <img src="../assets/images/add.svg" alt="Cancel" routerLink="/checklist" id="addIcon"/>
+    </div>
+  </div>
+  <div class="row hobbyBox">
+    <form #addTaskForm="ngForm" (ngSubmit)="onAddTask(addTaskForm)">
+      <div class="row topSpace">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-2">
+          <p class="addHobbytxt">Task Name:</p>
+        </div>
+        <div class="col-lg-2">
+          <!-- <input class="addHobbyInput" type="text" [(ngModel)]="taskService.task" name="name"/> -->
+        </div>
+        <div class="col-lg-6"></div>
+      </div>
+
+      <div class="row topSpace leftSpace">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-1"></div>
+        <div class="col-lg-2"><p class="addHobbytxt"><input type = "submit" value = "Add Hobby" id="add"></p></div>
+        <div class="col-lg-2"><p class="addHobbytxt"><input routerLink="/main" id="cancel" value="Cancel" type="submit"></p></div>
+        <div class="col-lg-2"></div>
+        <div class="col-lg-2"></div>
+        <div class="col-lg-1"></div>
+      </div>
+
+      <!--<p class="alignleft">Choose Widgets</p>
+      <input class="alignleft" placeholder="COMING SOON"/>-->
+
+    </form>
+
+  </div>
+
+  </div>
