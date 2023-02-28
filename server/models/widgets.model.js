@@ -105,6 +105,7 @@ widgetsSchema.methods.toJSONForTasks = function() {
     };
 };
 
+//I don't need taskwidget or noteswidget.
 mongoose.model('TaskWidget', taskWidgetSchema);
 mongoose.model('NotesWidget', notesWidgetSchema);
 mongoose.model('Widgets', widgetsSchema);

@@ -229,7 +229,7 @@ module.exports.updateEvent = (req, res, next) => {
         */
         Widgets.findOneAndUpdate(
             { user: req.auth.id, hobby: req.params.hobbyId, "calendarWidget.events._id": req.params.eventId }, 
-            { $set: { 'calendarWidget.events.$': updatedEvent } }, 
+            { $set: { 'calendarWidget.events.$': req.body } }, 
             { new: true },
             (err, widget) => {
                 if (err) {
