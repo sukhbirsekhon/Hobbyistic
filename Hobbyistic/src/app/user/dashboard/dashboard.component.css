@@ -94,15 +94,19 @@ h2
     text-align: center;
 }
 
-.widgetBox
+.widgetBox, .widgetSubBox
 {
     border: solid 1px black;
+    border-radius: 20px;
+    padding-top: 1em;
+    background-color: #27473A;
 }
 
 a
 {
     font-size: 2em;
     font-family: 'Caveat', cursive;
+    color: #DBE4EE;
 }
 
 p
@@ -112,13 +116,17 @@ p
 
 .allWidgets
 {
-    margin-bottom: 3em;
+    margin-bottom: 1em;
 }
 
 .widgetBox
 {
-    padding-top: 7.5em;
-    padding-bottom: 7.55em;
+    padding-bottom: 33em;
+}
+
+.widgetSubBox
+{
+    padding-bottom: 14.15em;
 }
 
 @media screen and (max-width: 768px) {
