@@ -4,7 +4,7 @@ import { Hobby } from '../../shared/hobby.model';
 import { NgForm } from '@angular/forms';
 import { UserService } from 'src/app/shared/user.service';
 import { WidgetsService } from 'src/app/shared/widgets.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-task',
@@ -15,7 +15,7 @@ import { ActivatedRoute } from '@angular/router';
 export class AddTaskComponent implements OnInit {
 
   constructor(public widgetService: WidgetsService, public UserService: UserService,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute, private router: Router) { }
   hobby: Hobby = {"name" : ""};
   task: Task = {  };
 
@@ -24,6 +24,7 @@ export class AddTaskComponent implements OnInit {
     this.widgetService.addTask(this.hobby, this.task).subscribe(resp => {
       this.task = resp;
     });
+    this.router.navigate(['/checklist/' + this.hobby.id]);
   }
 
   ngOnInit(): void {
