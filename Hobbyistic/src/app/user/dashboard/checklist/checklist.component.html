@@ -38,5 +38,14 @@
           </div>
       </div>
     </div>
+    <div class="row hobbyBox">
+      <div *ngFor="let task of widgets.taskWidget?.tasks">
+          <div class="row">
+              <div class="col-lg-8 centerAlign">
+                  <p style="color: rgb(70, 37, 37)">{{task.task}}</p>
+              </div>
+           </div>
+      </div>
+  </div>
 </div>
 

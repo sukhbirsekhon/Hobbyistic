@@ -13,9 +13,9 @@ export class WidgetsService {
 
   constructor(private http: HttpClient, private router: Router) { }
 
-  getWidgets(hobby: Hobby): Observable<Widgets[]> {
+  getWidgets(hobby: Hobby): Observable<Widgets> {
     let header = new HttpHeaders().set('Authorization',`Bearer ${localStorage.getItem('token')!}`);
-    return this.http.get<Widgets[]>("http://localhost:3000/api/hobby/" + hobby.id + "/widgets", {headers: header});
+    return this.http.get<Widgets>("http://localhost:3000/api/hobby/" + hobby.id + "/widgets", {headers: header});
   }
 
   addTask(hobby: Hobby, task: Task): Observable<Task> {

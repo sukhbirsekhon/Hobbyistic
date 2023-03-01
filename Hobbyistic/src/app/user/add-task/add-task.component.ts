@@ -18,6 +18,7 @@ export class AddTaskComponent implements OnInit {
     private route: ActivatedRoute, private router: Router) { }
   hobby: Hobby = {"name" : ""};
   task: Task = {  };
+  tasks: Widgets[] = [];
 
   onAddTask(form: NgForm){
     if(form.invalid){return;}
