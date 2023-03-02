@@ -6,7 +6,8 @@ import { WidgetsService } from 'src/app/shared/widgets.service';
 import { Widgets, ExternalLinksWidget, Link, NotesWidget, TaskWidget, Task} from '../../shared/widgets.model';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-
+import { catchError } from 'rxjs/operators';
+import { of } from 'rxjs';
 @Component({
   selector: 'app-edit-task',
   templateUrl: './edit-task.component.html',
@@ -31,7 +32,6 @@ export class EditTaskComponent implements OnInit {
     this.widgetService.getWidgets(this.hobby).subscribe(resp => {
       // console.log(JSON.parse(resp))
       this.task = resp;
-      console.log('spmeti')
       console.log(resp)
     })
   }
@@ -43,6 +43,13 @@ export class EditTaskComponent implements OnInit {
       this.task = task;
     });
     this.router.navigate(['/checklist/' + this.hobby.id]);
+  }
+
+  deleteTask(): void {
+    this.task._id = this.route.snapshot.params['taskid'];
+    this.widgetService.deleteTask(this.hobby, this.task).subscribe(resp => {
+      console.log(resp)
+    });
   }
 
 }

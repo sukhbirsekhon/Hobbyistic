@@ -31,6 +31,8 @@ export class WidgetsService {
 
   deleteTask(hobby: Hobby, task: Task): Observable<Task> {
     let header = new HttpHeaders().set('Authorization',`Bearer ${localStorage.getItem('token')!}`);
+    console.log(task._id)
+    console.log('delete is happening?')
     return this.http.delete<Task>("http://localhost:3000/api/hobby/" + hobby.id + "/widgets/tasks/" + task._id, {headers: header});
   }
 
