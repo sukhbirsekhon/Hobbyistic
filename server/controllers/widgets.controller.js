@@ -440,7 +440,7 @@ module.exports.getChatMessage = (req, res, next) => {
                       axios
                         .post("https://api.openai.com/v1/chat/completions", data, {
                           headers: {
-                            Authorization: `Bearer ${'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'}`,
+                            Authorization: `Bearer ${process.env.OPENAI_KEY}`,
                             "Content-Type": "application/json",
                           },
                         })
