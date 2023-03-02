@@ -17,6 +17,7 @@ export class ChecklistComponent implements OnInit {
     public widgetService: WidgetsService) { }
 
   hobby: Hobby = {"name" : ""};
+  task: Task = {};
   taskWidget: TaskWidget = {};
   widgets: Widgets = {};
 
@@ -27,6 +28,8 @@ export class ChecklistComponent implements OnInit {
     this.UserService.GetSingleHobby(this.hobby).subscribe(resp => {
       this.hobby = resp;
     });
+
+    this.task._id = this.route.snapshot.params['taskid'];
 
     this.widgetService.getWidgets(this.hobby).subscribe(resp => {
       // console.log(JSON.parse(resp))

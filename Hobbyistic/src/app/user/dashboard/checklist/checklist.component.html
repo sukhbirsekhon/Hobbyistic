@@ -44,6 +44,9 @@
               <div class="col-lg-8 centerAlign">
                   <p style="color: rgb(70, 37, 37)">{{task.task}}</p>
               </div>
+              <div class="col-lg-4 centerAlign">
+                <img src="../assets/images/edit.png" alt="Edit" [routerLink]="['/edit-task', hobby.id, task._id]"/>
+            </div>
            </div>
       </div>
   </div>

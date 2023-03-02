@@ -25,7 +25,8 @@ export class WidgetsService {
 
   updateTask(hobby: Hobby, task: Task): Observable<Task> {
     let header = new HttpHeaders().set('Authorization',`Bearer ${localStorage.getItem('token')!}`);
-    return this.http.put<Task>("http://localhost:3000/api/hobby/" + hobby.id + "/widgets/tasks/" + task._id, {task}, {headers: header});
+    console.log(task._id)
+    return this.http.put<Task>("http://localhost:3000/api/hobby/" + hobby.id + "/widgets/tasks/" + task._id, task, {headers: header});
   }
 
   deleteTask(hobby: Hobby, task: Task): Observable<Task> {

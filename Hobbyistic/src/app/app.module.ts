@@ -23,6 +23,7 @@ import { MotivationComponent } from './user/dashboard/motivation/motivation.comp
 import { AddHobbyComponent } from './user/add-hobby/add-hobby.component';
 import { EditHobbyComponent } from './user/edit-hobby/edit-hobby.component';
 import { AddTaskComponent } from './user/add-task/add-task.component';
+import { EditTaskComponent } from './user/edit-task/edit-task.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { AddTaskComponent } from './user/add-task/add-task.component';
     MotivationComponent,
     AddHobbyComponent,
     EditHobbyComponent,
-    AddTaskComponent
+    AddTaskComponent,
+    EditTaskComponent
   ],
   imports: [
     BrowserModule,
