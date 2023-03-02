@@ -270,6 +270,25 @@ module.exports.deleteEvent = (req, res, next) => {
     });
 }
 
+module.exports.getSingleMotivationPost = (req, res, next) => {
+    if (req.auth == null) {
+      return res.status(401).json({errors: {user: "Unauthorized"}});
+    }
+    User.findById(req.auth.id).then(function(user) {
+      if (!user) {
+        return res.status(401).json({ errors: { user: 'Unauthorized' } });
+      }
+        Post.findOne({user: req.auth.id, hobby: req.params.hobbyId, _id: req.params.postId})
+          .populate({ path: 'user hobby', select: '-password -saltSecret -email' })
+          .then(function(post) {
+            if (!post || post.length === 0) {
+              return res.status(404).json({ errors: { post: 'Post not found' } });
+            }
+            return res.send(post);
+        });
+    });
+};
+
 module.exports.addMotivationPost = (req, res, next) => {
     if (req.auth == null) {
         return res.status(401).json({errors: {user: "Unauthorized"}}); 
