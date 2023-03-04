@@ -46,4 +46,7 @@ router.delete('/hobby/:hobbyId/widgets/motivation/post/:postId',  auth.required,
 router.get('/hobby/:hobbyId/widgets/motivation/post',  auth.required, widgetsController.getMotivationPosts);
 router.get('/hobby/:hobbyId/widgets/motivation/post/:postId/image',  auth.required, widgetsController.getPostImage);
 
+//assistant
+router.get('/hobby/:hobbyId/widgets/assistant',  auth.required, widgetsController.getChatMessage);
+
 module.exports = router;
