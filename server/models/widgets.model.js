@@ -19,6 +19,7 @@ const notesWidgetSchema = new mongoose.Schema({
     note: {type: String, required: true}
 });
 
+
 const calendarWidgetSchema = new mongoose.Schema({
     events: [{
         title: {type: String, required: true},
@@ -56,6 +57,13 @@ const motivationWidgetSchema = new mongoose.Schema({
     metadata: Object
   });
 
+const assistantWidgetSchema = new mongoose.Schema({
+    messages: [{
+        role: {type: String, required: true},
+        content: {type: String, required: true},
+        date: {type: Date, required: true}
+    }]
+})
 
 const widgetsSchema = new mongoose.Schema({
     user: {
@@ -73,6 +81,7 @@ const widgetsSchema = new mongoose.Schema({
     notesWidget: notesWidgetSchema,
     externalLinksWidget: externalLinksWidgetSchema,
     calendarWidget: calendarWidgetSchema,
+    assistantWidget: assistantWidgetSchema
     //motivationWidget: [{type: mongoose.Schema.Types.ObjectId, ref: 'Posts'}]
  });
 
@@ -105,6 +114,13 @@ widgetsSchema.methods.toJSONForTasks = function() {
     };
 };
 
+assistantWidgetSchema.methods.toJSONForAPI = function() {
+    return {
+        messages: this.messages.map(message => ({ role: message.role, content: message.content }))
+    };
+};
+
+//I don't need taskwidget or noteswidget.
 mongoose.model('TaskWidget', taskWidgetSchema);
 mongoose.model('NotesWidget', notesWidgetSchema);
 mongoose.model('Widgets', widgetsSchema);

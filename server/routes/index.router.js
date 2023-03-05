@@ -47,4 +47,7 @@ router.get('/hobby/:hobbyId/widgets/motivation/post',  auth.required, widgetsCon
 router.get('/hobby/:hobbyId/widgets/motivation/post/:postId/image',  auth.required, widgetsController.getPostImage);
 router.get('/hobby/:hobbyId/widgets/motivation/post/:postId',  auth.required, widgetsController.getSingleMotivationPost);
 
+//assistant
+router.get('/hobby/:hobbyId/widgets/assistant',  auth.required, widgetsController.getChatMessage);
+
 module.exports = router;

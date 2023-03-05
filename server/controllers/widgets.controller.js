@@ -6,6 +6,7 @@ const Post = mongoose.model('Posts');
 const widgetService = require('../services/widgets.service')
 const { GridFSBucket } = require('mongodb');
 const concat = require('concat-stream');
+const axios = require('axios');
 
 
 module.exports.getWigets = (req, res, next) => {
@@ -229,7 +230,7 @@ module.exports.updateEvent = (req, res, next) => {
         */
         Widgets.findOneAndUpdate(
             { user: req.auth.id, hobby: req.params.hobbyId, "calendarWidget.events._id": req.params.eventId }, 
-            { $set: { 'calendarWidget.events.$': updatedEvent } }, 
+            { $set: { 'calendarWidget.events.$': req.body } }, 
             { new: true },
             (err, widget) => {
                 if (err) {
@@ -378,7 +379,7 @@ module.exports.getMotivationPosts = (req, res, next) => {
           });
       }
     });
-  };
+};
 
 module.exports.deleteMotivationPost = (req, res, next) => {
     const bucket = new GridFSBucket(mongoose.connection.db, {bucketName: 'photo'});
@@ -406,3 +407,103 @@ module.exports.deleteMotivationPost = (req, res, next) => {
         });
     });
 };
+
+
+module.exports.getChatMessage = (req, res, next) => {
+    const history = req.query.history;
+    const userMessage = req.query.message;
+    if (req.auth == null) {
+        return res.status(401).json({errors: {user: "Unauthorized"}}); 
+    }
+    User.findById(req.auth.id).then(function(user){
+        if (!user) { 
+            return res.status(401).json({errors: {user: "Unauthorized"}}); 
+        }
+        const newUserConvo = {
+            role: 'user',
+            content: userMessage,
+            date: new Date()
+        }
+        if (userMessage == null || userMessage == "") {
+            console.log('made here')
+            return Widgets.findOne({ user: req.auth.id, hobby: req.params.hobbyId }).select('assistantWidget').populate('assistantWidget.messages').then(function(assistantWidget) {
+                if (!assistantWidget) {
+                    return res.status(404).json({errors: {assistantWidget: "Not Found"}});
+                }
+                const messagesReturn = assistantWidget.assistantWidget.messages.map(message => ({ role: message.role, content: message.content, date: message.date}));
+                messagesReturn.splice(0, 1);
+                return res.json(messagesReturn);
+            })
+        }
+        Widgets.findOneAndUpdate(
+            { user: req.auth.id, hobby: req.params.hobbyId }, 
+            { $push: { 'assistantWidget.messages': newUserConvo } }, 
+            { new: true },
+            (err, widget) => {
+                if (err) {
+                    return next(err);
+                }
+                if (!widget) {
+                    return res.status(404).json({errors: {widget: "Widget not found"}});
+                }
+                Widgets.findOne({ user: req.auth.id, hobby: req.params.hobbyId }).select('assistantWidget').populate('assistantWidget.messages').then(function(assistantWidget) {
+                    if (!assistantWidget) {
+                        return res.status(404).json({errors: {assistantWidget: "Not Found"}});
+                    }
+                    const messagesReturn = assistantWidget.assistantWidget.messages.map(message => ({ role: message.role, content: message.content, date: message.date}));
+                    const messages = assistantWidget.assistantWidget.messages.map(message => ({ role: message.role, content: message.content }));
+                    const data = {
+                        model: "gpt-3.5-turbo",
+                        messages: messages
+                      };
+                      axios
+                        .post("https://api.openai.com/v1/chat/completions", data, {
+                          headers: {
+                            Authorization: `Bearer ${process.env.OPENAI_KEY}`,
+                            "Content-Type": "application/json",
+                          },
+                        })
+                        .then((response) => {
+                          const content = response.data.choices[0].message.content;
+                          aiUserConvo = {
+                            role: 'assistant',
+                            content: content,
+                            date: new Date()
+                          }
+                          Widgets.findOneAndUpdate(
+                            { user: req.auth.id, hobby: req.params.hobbyId }, 
+                            { $push: { 'assistantWidget.messages': aiUserConvo } }, 
+                            { new: true },
+                            (err, widget) => {
+                                if (err) {
+                                    return next(err);
+                                }
+                                if (!widget) {
+                                    return res.status(404).json({errors: {widget: "Widget not found"}});
+                                }
+                            }
+                        );
+                        if (history != null && history == 'true') {
+                        messagesReturn.push({
+                            role: 'assistant',
+                            content: content,
+                            date: new Date()
+                        })
+                        messagesReturn.splice(0, 1);
+                        return res.json(messagesReturn);
+                        }
+                        return res.json({ message: content });
+                        })
+                        .catch((error) => {
+                          console.error(error);
+                          next(error);
+                        });
+                }).catch(next);
+            }
+        );
+    });
+}
+
+
+
+
