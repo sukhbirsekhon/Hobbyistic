@@ -32,12 +32,10 @@
     </div>
 
     <div>
-        <div *ngFor = "let post of publicPosts" (loaded)="displayImage(post)">
+        <div *ngFor = "let post of publicPosts">
             
             <h2>{{ post.title }}</h2>
-            <div *ngIf=dbImage>
-                <img [src]="dbImage" />
-            </div>
+        
             <p>{{ post.description }}</p>
             <div>
                 <p>Posted on {{ post.postDate }}</p>
@@ -49,12 +47,9 @@
             <h1>Your posts</h1>
         </div>
 
-        <div *ngFor = "let upost of userPosts" (loaded)="displayImage(upost)">
+        <div *ngFor = "let upost of userPosts">
 
             <h2>{{ upost.title }}</h2>
-            <div *ngIf=dbImage>
-                <img [src]="dbImage" />
-            </div>
 
             <p>{{ upost.description }}</p>
             <div>

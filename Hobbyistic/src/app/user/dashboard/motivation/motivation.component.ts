@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Hobby } from 'src/app/shared/hobby.model';
 import { ActivatedRoute } from '@angular/router';
-import { Router } from '@angular/router';
 import { UserService } from 'src/app/shared/user.service';
 import { motivationWidgetService } from 'src/app/shared/motivationWidget.service';
 import { NgForm } from '@angular/forms';
@@ -17,10 +16,10 @@ import { catchError } from 'rxjs';
 })
 export class MotivationComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, private router: Router, public UserService: UserService, public motivationWidgetService: motivationWidgetService){ }
+  constructor(private route: ActivatedRoute, public UserService: UserService, public motivationWidgetService: motivationWidgetService){ }
 
   hobby: Hobby = {"name" : ""};
-  publicPosts: MotivationWidget[] = []
+  publicPosts: MotivationWidget[] = [] 
   userPosts: MotivationWidget[] = []
   motivation: MotivationWidget = { }
   postResponse: any;
@@ -32,7 +31,7 @@ export class MotivationComponent implements OnInit {
     this.UserService.GetSingleHobby(this.hobby).subscribe(response => {
       this.hobby = response;
     });
-    
+
     this.motivationWidgetService.getAllPublicPosts(this.hobby).subscribe(response =>{ 
       this.publicPosts = response;
     });

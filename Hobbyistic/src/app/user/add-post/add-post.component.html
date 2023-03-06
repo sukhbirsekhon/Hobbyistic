@@ -50,7 +50,13 @@
 
     <div>
         <form #addPostForm="ngForm" (ngSubmit)="submitPost(addPostForm)">
+            
             <input [ngModelOptions]="{standalone: true}" [(ngModel)]="motivationWidget.title" name=""/>
+            <input [ngModelOptions]="{standalone: true}" [(ngModel)]="motivationWidget.description" name=""/>
+            <input type="checkbox" [ngModelOptions]="{standalone: true}" [(ngModel)]="motivationWidget.sharable" name=""/>
+            <input [ngModelOptions]="{standalone: true}" [(ngModel)]="motivationWidget.image" name=""/>
+
+            <input type="submit" value="Submit" [routerLink]="['/motivation', hobby.id]"/>
         </form>
     </div>
 

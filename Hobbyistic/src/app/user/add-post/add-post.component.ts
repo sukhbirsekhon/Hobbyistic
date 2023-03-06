@@ -5,7 +5,6 @@ import { ActivatedRoute, Route } from '@angular/router';
 import { motivationWidgetService } from 'src/app/shared/motivationWidget.service';
 import { MotivationWidget } from 'src/app/shared/motivationWidget.model';
 import { NgForm } from '@angular/forms';
-import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-add-post',
@@ -15,10 +14,10 @@ import { FormBuilder } from '@angular/forms';
 })
 export class AddPostComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, private formBuilder: FormBuilder, public UserService: UserService, public motivationWidgetService: motivationWidgetService) { }
+  constructor(private route: ActivatedRoute, public UserService: UserService, public motivationWidgetService: motivationWidgetService) { }
 
   hobby: Hobby = {"name" : ""};
-  motivationWidget: MotivationWidget = {"title": ""}
+  motivationWidget: MotivationWidget = {"title": "", "description": "", "sharable": false, "image": ""}
 
   ngOnInit(): void {
     this.hobby.id = this.route.snapshot.params['id'];
@@ -33,8 +32,8 @@ export class AddPostComponent implements OnInit {
 
     var todaysDate = new Date();
     this.motivationWidget.postDate = todaysDate;
-
-    this.motivationWidgetService.addPost(this.hobby, this.motivationWidget).subscribe(resp => { });
+    console.log(this.motivationWidget);
+    this.motivationWidgetService.addPost(this.hobby, this.motivationWidget).subscribe(resp => { this.motivationWidget = resp });
   }
 
 }
