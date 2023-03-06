@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { MotivationWidget } from './motivationWidget.model';
 import { Hobby } from './hobby.model';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, switchMap } from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
@@ -19,8 +19,9 @@ export class motivationWidgetService
         formData.append('sharable', post.sharable?.toString() ?? '');
         formData.append('description', post.description ?? '');
         let headers = new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`);
-        return this.http.post(`http://localhost:3000/api/hobby/${post._id}/widgets/motivation/post`, formData, {headers: headers});
+        return this.http.post(`http://localhost:3000/api/hobby/${hobby.id}/widgets/motivation/post`, formData, {headers: headers});
     }
+
       
 
     getAllPosts(hobby: Hobby): Observable<MotivationWidget[]>{
