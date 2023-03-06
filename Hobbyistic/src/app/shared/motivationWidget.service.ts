@@ -12,6 +12,17 @@ export class motivationWidgetService
 {
     constructor(private http: HttpClient, private router: Router) { }
 
+    uploadPost(hobby: Hobby, post: MotivationWidget, photo: File): Observable<MotivationWidget> {
+        let formData: FormData = new FormData();
+        formData.append('photo', photo);
+        formData.append('title', post.title ?? '');
+        formData.append('sharable', post.sharable?.toString() ?? '');
+        formData.append('description', post.description ?? '');
+        let headers = new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`);
+        return this.http.post(`http://localhost:3000/api/hobby/${post._id}/widgets/motivation/post`, formData, {headers: headers});
+    }
+      
+
     getAllPosts(hobby: Hobby): Observable<MotivationWidget[]>{
         let header = new HttpHeaders().set('Authorization',`Bearer ${localStorage.getItem('token')!}`);
         return this.http.get<MotivationWidget[]>("http://localhost:3000/api/hobby/" + hobby.id + "/widgets/motivation/post", {headers: header});

@@ -362,9 +362,6 @@ module.exports.getMotivationPosts = (req, res, next) => {
           .populate({ path: 'user hobby', select: '-password -saltSecret -email' })
           .sort({ postDate: -1 })
           .then(function(posts) {
-            if (!posts || posts.length === 0) {
-              return res.status(404).json({ errors: { post: 'Post not found' } });
-            }
             return res.send(posts);
           });
       } else {
@@ -372,9 +369,6 @@ module.exports.getMotivationPosts = (req, res, next) => {
           .populate({ path: 'user hobby', select: '-password -saltSecret -email' })
           .sort({ postDate: -1 })
           .then(function(posts) {
-            if (!posts || posts.length === 0) {
-              return res.status(404).json({ errors: { post: 'Post not found' } });
-            }
             return res.send(posts);
           });
       }
