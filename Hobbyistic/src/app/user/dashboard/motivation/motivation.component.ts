@@ -32,7 +32,7 @@ export class MotivationComponent implements OnInit {
     this.UserService.GetSingleHobby(this.hobby).subscribe(response => {
       this.hobby = response;
     });
-
+    
     this.motivationWidgetService.getAllPublicPosts(this.hobby).subscribe(response =>{ 
       this.publicPosts = response;
     });
