@@ -21,7 +21,12 @@ export class MotivationComponent implements OnInit {
   hobby: Hobby = {"name" : ""};
   publicPosts: MotivationWidget[] = [] 
   userPosts: MotivationWidget[] = []
+  isPublicVisible: boolean = true;
+  isUserVisible: boolean = false;
+  isPostsVisible: boolean = true;
+  isDeleteFormVisible: boolean = false;
   motivation: MotivationWidget = { }
+  selectedPost: MotivationWidget = { }
   postResponse: any;
   dbImage: any;
 
@@ -52,14 +57,49 @@ export class MotivationComponent implements OnInit {
     });
   }
 
-  deletePost(motivationInstance: MotivationWidget)
+  deletePost()
   {
-    this.motivation = motivationInstance;
-    this.motivationWidgetService.deletePost(this.hobby, this.motivation).pipe(
+    this.motivationWidgetService.deletePost(this.hobby, this.selectedPost).pipe(
       catchError(error => {
         return of();
     })
     ).subscribe();
+  }
+
+  getSinglePostInstance(motivationInstance: MotivationWidget)
+  {
+    this.motivationWidgetService.getSinglePost(this.hobby, motivationInstance).subscribe(resp => {
+      this.selectedPost = resp;
+    });
+  }
+
+  viewPublicPosts(): void
+  {
+    this.isPublicVisible = true;
+    this.isUserVisible = false;
+  }
+
+  viewUserPosts(): void
+  {
+    this.isPublicVisible = false;
+    this.isUserVisible = true;
+  }
+
+  viewDeleteForm(): void
+  {
+    this.isPostsVisible = false;
+    this.isDeleteFormVisible = true;
+  }
+
+  viewPosts(): void
+  {
+    this.isPostsVisible = true;
+    this.isDeleteFormVisible = false;
+  }
+
+  reload(): void
+  {
+    window.location.reload();
   }
 
 }

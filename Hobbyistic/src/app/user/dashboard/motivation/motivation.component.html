@@ -31,8 +31,12 @@
         </div>
     </div>
 
-    <div>
-        <div *ngFor = "let post of publicPosts">
+    <div [style.display]="isPostsVisible ? 'block' : 'none'">
+
+        <div [style.display]="isPublicVisible ? 'block' : 'none'"> 
+            <h1>Public Posts</h1>
+        </div>
+        <div [style.display]="isPublicVisible ? 'block' : 'none'" *ngFor = "let post of publicPosts">
             
             <h2>{{ post.title }}</h2>
         
@@ -43,11 +47,11 @@
 
         </div>
 
-        <div>
-            <h1>Your posts</h1>
+        <div [style.display]="isUserVisible ? 'block' : 'none'">
+            <h1>Your Posts</h1>
         </div>
 
-        <div *ngFor = "let upost of userPosts">
+        <div [style.display]="isUserVisible ? 'block' : 'none'" *ngFor = "let upost of userPosts">
 
             <h2>{{ upost.title }}</h2>
 
@@ -55,9 +59,19 @@
             <div>
                 <p>Posted on {{ upost.postDate }}</p>
             </div>
+            <img src="../assets/images/delete.svg" (click)="viewDeleteForm(); getSinglePostInstance(upost)" class="deleteBtn" style="width: 2.25em">
         </div>
 
-        <a [routerLink]="['/add-post', hobby.id]">Add Post</a>
+        <img src="../assets/images/add.svg" [routerLink]="['/add-post', hobby.id]" />
+        <button (click)="viewUserPosts()">My Posts</button>
+        <button (click)="viewPublicPosts()">Public Posts</button>
+        
+    </div>
+
+    <div [style.display]="isDeleteFormVisible ? 'block' : 'none'">
+        <p>Are you sure you'd like to delete this post?</p>
+        <button (click)="deletePost(); reload();">Yes</button>
+        <button (click)="viewPosts()">No</button>
     </div>
 </div>
 

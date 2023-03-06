@@ -155,6 +155,16 @@ p
     padding-bottom: 7.55em;
 }
 
+.file-input
+{
+    display: none;
+}
+
+.warningMsg
+{
+    color:darkred;
+}
+
 @media screen and (max-width: 768px) {
     .titleLayout
     {
