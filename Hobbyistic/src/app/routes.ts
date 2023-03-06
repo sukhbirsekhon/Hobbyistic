@@ -10,6 +10,7 @@ import { ExternalLinksComponent } from "./user/dashboard/external-links/external
 import { MotivationComponent } from "./user/dashboard/motivation/motivation.component";
 import { CalendarComponent } from "./user/dashboard/calendar/calendar.component";
 import { ChecklistComponent } from "./user/dashboard/checklist/checklist.component";
+import { AddPostComponent } from "./user/dashboard/add-post/add-post.component";
 
 export const appRoutes: Routes = [
   {
@@ -31,6 +32,10 @@ export const appRoutes: Routes = [
   {
     path: 'edit-hobby/:id', component: UserComponent,
     children: [{ path: '', component: EditHobbyComponent}]
+  },
+  {
+    path: 'add-post/:id', component: AddPostComponent,
+    children: [{ path: '', component: DashboardComponent}]
   },
   {
     path: 'dashboard/:id', component: UserComponent,
@@ -78,6 +83,9 @@ export const appRoutes: Routes = [
   },
   {
     path: '', redirectTo: '/motivation', pathMatch: 'full'
+  },
+  {
+    path: '', redirectTo: '/add-post', pathMatch: 'full'
   },
   {
     path: '', redirectTo: '/checklist', pathMatch: 'full'

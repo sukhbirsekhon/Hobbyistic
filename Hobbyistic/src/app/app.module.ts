@@ -22,6 +22,7 @@ import { ExternalLinksComponent } from './user/dashboard/external-links/external
 import { MotivationComponent } from './user/dashboard/motivation/motivation.component';
 import { AddHobbyComponent } from './user/add-hobby/add-hobby.component';
 import { EditHobbyComponent } from './user/edit-hobby/edit-hobby.component';
+import { AddPostComponent } from './user/dashboard/add-post/add-post.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { EditHobbyComponent } from './user/edit-hobby/edit-hobby.component';
     ExternalLinksComponent,
     MotivationComponent,
     AddHobbyComponent,
-    EditHobbyComponent
+    EditHobbyComponent,
+    AddPostComponent
   ],
   imports: [
     BrowserModule,

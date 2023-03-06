@@ -1,22 +1,37 @@
 <div class="container">
+    
     <div class="row topLayout">
+        
         <div class="col-lg-4 titleLayout">
+            
             <div class="dropdown">
+
                 <button class="dropdown-toggle dropBtn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Motivation <img src="../assets/images/dropdwn.png" id="dropIcon"/></button>
+                
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+
                     <a class="dropdown-item drop-Item" routerLink="/main">Dashboard</a><br>
                     <a class="dropdown-item drop-Item" [routerLink]="['/dashboard', hobby.id]">My Widgets</a><br>
                     <a class="dropdown-item drop-Item" [routerLink]="['/calendar', hobby.id]">Calendar</a><br>
                     <a class="dropdown-item drop-Item" [routerLink]="['/checklist', hobby.id]">Task List</a><br>
                     <a class="dropdown-item drop-Item" [routerLink]="['/external-links', hobby.id]">Useful Links</a>
+
                 </div>
+
             </div>
+
         </div>
+
         <div class="col-sm-12 col-md-6 col-lg-4 boxLayout">
+            
             <p><a class="title" routerLink="/main">Hobbyistic</a></p>  
+        
         </div>
+        
         <div class="col-lg-1"></div>
+
         <div class="col-md-6 col-lg-3 iconLayout">
+
             <div class="row">
                 <div class="col-md-4 col-lg-4">
                     <img src="../assets/images/Logout.png" alt="Logout" routerLink="/login"/>
@@ -28,42 +43,15 @@
                     <img src="../assets/images/Settings.png" alt="Settings"/>
                 </div>
             </div>
+
         </div>
+    
     </div>
 
     <div>
-        <div *ngFor = "let post of publicPosts" (loaded)="displayImage(post)">
-            
-            <h2>{{ post.title }}</h2>
-            <div *ngIf=dbImage>
-                <img [src]="dbImage" />
-            </div>
-            <p>{{ post.description }}</p>
-            <div>
-                <p>Posted on {{ post.postDate }}</p>
-            </div>
-
-        </div>
-
-        <div>
-            <h1>Your posts</h1>
-        </div>
-
-        <div *ngFor = "let upost of userPosts" (loaded)="displayImage(upost)">
-
-            <h2>{{ upost.title }}</h2>
-            <div *ngIf=dbImage>
-                <img [src]="dbImage" />
-            </div>
-
-            <p>{{ upost.description }}</p>
-            <div>
-                <p>Posted on {{ upost.postDate }}</p>
-            </div>
-        </div>
-
-        <a [routerLink]="['/add-post', hobby.id]">Add Post</a>
+        <form #addPostForm="ngForm" (ngSubmit)="submitPost(addPostForm)">
+            <input [ngModelOptions]="{standalone: true}" [(ngModel)]="motivationWidget.title" name=""/>
+        </form>
     </div>
+
 </div>
-
-
