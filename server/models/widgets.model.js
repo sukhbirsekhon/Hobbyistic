@@ -40,7 +40,6 @@ const motivationWidgetSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Hobby',
         required: 'Must be associated with a hobby',
-        unique: true
     },
     title: {type: String, required: true},
     description: {type: String},
