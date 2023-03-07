@@ -29,12 +29,28 @@ export class ChecklistComponent implements OnInit {
       this.hobby = resp;
     });
 
-    this.task._id = this.route.snapshot.params['taskid'];
-
-    this.widgetService.getWidgets(this.hobby).subscribe(resp => {
-      // console.log(JSON.parse(resp))
-      this.widgets = resp;
+    this.widgetService.getWidgets(this.hobby).subscribe(res => {
+      this.task = res;
+      this.widgets = res;
+      console.log(res)
     })
+
   }
 
+  handleSelected(task: any){
+    if(task.completed == true) {
+      task.completed = false
+    } else if(task.completed == false) {
+      task.completed = true
+    }
+
+    this.task.task = task.task;
+    this.task._id = task._id;
+    this.task.completed = task.completed;
+    console.log(this.task.task)
+    this.widgetService.updateTask(this.hobby, this.task).subscribe(task => {
+      this.task = task;
+    });
+
+  }
 }

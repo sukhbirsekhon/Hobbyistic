@@ -39,10 +39,20 @@
       </div>
     </div>
     <div class="row hobbyBox">
-      <div *ngFor="let task of widgets.taskWidget?.tasks">
+      <div *ngFor="let task of widgets.taskWidget?.tasks; let i = index">
           <div class="row">
               <div class="col-lg-8 centerAlign">
-                  <p style="color: rgb(70, 37, 37)">{{task.task}}</p>
+
+                <div *ngIf="task.completed == true; else unchecked">
+                  <input type="checkbox" value= "{{task.task}}" checked id="id" ng-model="check" (click)="handleSelected(task)">
+                <label> {{task.task}}</label><br>
+                </div>
+
+                <ng-template #unchecked>
+                  <input type="checkbox" value= "{{task.task}}" id="id" ng-model="check" (click)="handleSelected(task)">
+                <label> {{task.task}}</label><br>
+                </ng-template>
+
               </div>
               <div class="col-lg-4 centerAlign">
                 <img src="../assets/images/edit.png" alt="Edit" [routerLink]="['/edit-task', hobby.id, task._id]"/>

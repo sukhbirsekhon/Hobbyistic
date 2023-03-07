@@ -29,10 +29,10 @@ export class EditTaskComponent implements OnInit {
     });
 
 
-    this.widgetService.getWidgets(this.hobby).subscribe(resp => {
+    this.widgetService.getWidgets(this.hobby).subscribe(res => {
       // console.log(JSON.parse(resp))
-      this.task = resp;
-      console.log(resp)
+      this.task = res;
+      console.log(res)
     })
   }
 
@@ -47,8 +47,8 @@ export class EditTaskComponent implements OnInit {
 
   deleteTask(): void {
     this.task._id = this.route.snapshot.params['taskid'];
-    this.widgetService.deleteTask(this.hobby, this.task).subscribe(resp => {
-      console.log(resp)
+    this.widgetService.deleteTask(this.hobby, this.task).subscribe(res => {
+      console.log(res)
     });
   }
 
