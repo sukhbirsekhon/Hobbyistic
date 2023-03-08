@@ -10,6 +10,8 @@ import { ExternalLinksComponent } from "./user/dashboard/external-links/external
 import { MotivationComponent } from "./user/dashboard/motivation/motivation.component";
 import { CalendarComponent } from "./user/dashboard/calendar/calendar.component";
 import { ChecklistComponent } from "./user/dashboard/checklist/checklist.component";
+import { AddTaskComponent } from "./user/add-task/add-task.component";
+import { EditTaskComponent } from "./user/edit-task/edit-task.component";
 
 export const appRoutes: Routes = [
   {
@@ -29,8 +31,16 @@ export const appRoutes: Routes = [
     children: [{ path: '', component: AddHobbyComponent}]
   },
   {
+    path: 'add-task/:id', component: UserComponent,
+    children: [{ path: '', component: AddTaskComponent}]
+  },
+  {
     path: 'edit-hobby/:id', component: UserComponent,
     children: [{ path: '', component: EditHobbyComponent}]
+  },
+  {
+    path: 'edit-task/:id/:taskid', component: UserComponent,
+    children: [{ path: '', component: EditTaskComponent}]
   },
   {
     path: 'dashboard/:id', component: UserComponent,
@@ -62,7 +72,13 @@ export const appRoutes: Routes = [
     path: '', redirectTo: '/add-hobby', pathMatch: 'full'
   },
   {
+    path: '', redirectTo: '/add-task', pathMatch: 'full'
+  },
+  {
     path: '', redirectTo: '/edit-hobby', pathMatch: 'full'
+  },
+  {
+    path: '', redirectTo: '/edit-task', pathMatch: 'full'
   },
   {
     path: '', redirectTo: '/dashboard', pathMatch: 'full'

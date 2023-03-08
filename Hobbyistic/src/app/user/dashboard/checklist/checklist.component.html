@@ -13,7 +13,7 @@
             </div>
         </div>
         <div class="col-sm-12 col-md-6 col-lg-4 boxLayout">
-            <p><a class="title" routerLink="/main">Hobbyistic</a></p>  
+            <p><a class="title" routerLink="/main">Hobbyistic</a></p>
         </div>
         <div class="col-lg-1"></div>
         <div class="col-md-6 col-lg-3 iconLayout">
@@ -29,6 +29,36 @@
                 </div>
             </div>
         </div>
+        <div class="row myHobbiesTxt">
+          <div class="col-lg-10">
+              <h2>My Tasks</h2>
+          </div>
+          <div class="col-lg-2">
+              <img src="../assets/images/add.svg" alt="Add" [routerLink]="['/add-task', hobby.id]" id="addIcon"/>
+          </div>
+      </div>
     </div>
+    <div class="row hobbyBox">
+      <div *ngFor="let task of widgets.taskWidget?.tasks; let i = index">
+          <div class="row">
+              <div class="col-lg-8 centerAlign">
+
+                <div *ngIf="task.completed == true; else unchecked">
+                  <input type="checkbox" value= "{{task.task}}" checked id="id" ng-model="check" (click)="handleSelected(task)">
+                <label> {{task.task}}</label><br>
+                </div>
+
+                <ng-template #unchecked>
+                  <input type="checkbox" value= "{{task.task}}" id="id" ng-model="check" (click)="handleSelected(task)">
+                <label> {{task.task}}</label><br>
+                </ng-template>
+
+              </div>
+              <div class="col-lg-4 centerAlign">
+                <img src="../assets/images/edit.png" alt="Edit" [routerLink]="['/edit-task', hobby.id, task._id]"/>
+            </div>
+           </div>
+      </div>
+  </div>
 </div>
 

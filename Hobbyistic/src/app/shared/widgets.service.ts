@@ -13,23 +13,26 @@ export class WidgetsService {
 
   constructor(private http: HttpClient, private router: Router) { }
 
-  getWidgets(hobby: Hobby): Observable<Widgets[]> {
+  getWidgets(hobby: Hobby): Observable<Widgets> {
     let header = new HttpHeaders().set('Authorization',`Bearer ${localStorage.getItem('token')!}`);
-    return this.http.get<Widgets[]>("http://localhost:3000/api/hobby/" + hobby.id + "/widgets", {headers: header});
+    return this.http.get<Widgets>("http://localhost:3000/api/hobby/" + hobby.id + "/widgets", {headers: header});
   }
 
   addTask(hobby: Hobby, task: Task): Observable<Task> {
     let header = new HttpHeaders().set('Authorization',`Bearer ${localStorage.getItem('token')!}`);
-    return this.http.post<Task>("http://localhost:3000/api/hobby/" + hobby.id + "/widgets/tasks", {task}, {headers: header});
+    return this.http.post<Task>("http://localhost:3000/api/hobby/" + hobby.id + "/widgets/tasks/", task, {headers: header});
   }
 
   updateTask(hobby: Hobby, task: Task): Observable<Task> {
     let header = new HttpHeaders().set('Authorization',`Bearer ${localStorage.getItem('token')!}`);
-    return this.http.put<Task>("http://localhost:3000/api/hobby/" + hobby.id + "/widgets/tasks/" + task._id, {task}, {headers: header});
+    console.log(task._id)
+    return this.http.put<Task>("http://localhost:3000/api/hobby/" + hobby.id + "/widgets/tasks/" + task._id, task, {headers: header});
   }
 
   deleteTask(hobby: Hobby, task: Task): Observable<Task> {
     let header = new HttpHeaders().set('Authorization',`Bearer ${localStorage.getItem('token')!}`);
+    console.log(task._id)
+    console.log('delete is happening?')
     return this.http.delete<Task>("http://localhost:3000/api/hobby/" + hobby.id + "/widgets/tasks/" + task._id, {headers: header});
   }
 
@@ -47,6 +50,6 @@ export class WidgetsService {
     let header = new HttpHeaders().set('Authorization',`Bearer ${localStorage.getItem('token')!}`);
     return this.http.get<Widgets>("http://localhost:3000/api/hobby/" + hobby.id + "/widgets/externallinks?query=" + query, {headers: header});
   }
- 
+
 }
 

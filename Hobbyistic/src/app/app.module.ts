@@ -22,6 +22,8 @@ import { ExternalLinksComponent } from './user/dashboard/external-links/external
 import { MotivationComponent } from './user/dashboard/motivation/motivation.component';
 import { AddHobbyComponent } from './user/add-hobby/add-hobby.component';
 import { EditHobbyComponent } from './user/edit-hobby/edit-hobby.component';
+import { AddTaskComponent } from './user/add-task/add-task.component';
+import { EditTaskComponent } from './user/edit-task/edit-task.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { EditHobbyComponent } from './user/edit-hobby/edit-hobby.component';
     ExternalLinksComponent,
     MotivationComponent,
     AddHobbyComponent,
-    EditHobbyComponent
+    EditHobbyComponent,
+    AddTaskComponent,
+    EditTaskComponent
   ],
   imports: [
     BrowserModule,
