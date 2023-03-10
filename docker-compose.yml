@@ -5,7 +5,7 @@ services:
     container_name: hobbyistic-angular
     image: angular
     restart: always
-    build: ./hobbyistic/
+    build: ./Hobbyistic/
     ports: 
       - "443:443"
     links:

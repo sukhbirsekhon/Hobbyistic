@@ -1,6 +1,7 @@
 FROM node as build-stage
 WORKDIR /src/app
 COPY . ./
+RUN npm install -g @angular/cli@latest
 RUN npm install
 RUN npm run build --prod
 FROM nginx as production-stage
