@@ -3,7 +3,7 @@ WORKDIR /src/app
 COPY . ./
 RUN npm install -g @angular/cli@latest
 RUN npm install
-RUN npm run build --prod
+RUN npm run build --prod --omit=dev
 FROM nginx as production-stage
 COPY --from=build-stage /src/app/dist /usr/share/nginx/html
 COPY ./certs/hobbyistics.com.pem /etc/nginx/certs/cert.crt
