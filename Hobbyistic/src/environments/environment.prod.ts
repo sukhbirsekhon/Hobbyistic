@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://hobbyistics.com/api/'
+  apiUrl: 'https://hobbyistics.com/service/api/'
 };
