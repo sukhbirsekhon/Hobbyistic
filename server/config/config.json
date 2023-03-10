@@ -1,7 +1,7 @@
 {
     "development": {
         "PORT": 3000,
-        "MONGODB_URI": "mongodb://127.0.0.1:27017/Hobbyistic"
+        "MONGODB_URI": "mongodb://hobbyistic-mongo:27017/Hobbyistic"
     },
     "production": {
         "PORT": 80,

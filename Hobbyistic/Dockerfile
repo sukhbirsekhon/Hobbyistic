@@ -1,8 +1,10 @@
-FROM node:18
-RUN npm install -g @angular/cli
-RUN mkdir -p /usr/src/app
-WORKDIR /usr/src/app
-COPY package.json /usr/src/app
-COPY . /usr/src/app
-EXPOSE 4200
-CMD ["ng", "serve", "--host", "0.0.0.0"]
+FROM node as build-stage
+WORKDIR /src/app
+COPY . ./
+RUN npm install
+RUN npm run build --prod
+FROM nginx as production-stage
+COPY --from=build-stage /src/app/dist /usr/share/nginx/html
+COPY ./certs/hobbyistics.com.pem /etc/nginx/certs/cert.crt
+COPY ./certs/hobbyistics.com.key /etc/nginx/certs/cert.key
+COPY nginx.conf /etc/nginx/nginx.conf
