@@ -1,7 +1,8 @@
 FROM node as build-stage
 WORKDIR /src/app
 COPY . ./
-RUN npm -g install 
+RUN npm install
+RUN npm install -g @angular/cli@^14.2.0
 RUN npm run build --omit=dev
 FROM nginx as production-stage
 COPY --from=build-stage /src/app/dist /usr/share/nginx/html
