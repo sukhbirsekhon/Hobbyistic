@@ -1,9 +1,7 @@
 FROM node as build-stage
 WORKDIR /src/app
 COPY . ./
-RUN npm install --force
-RUN npm install -g @angular/cli@latest --force 
-RUN npm install @angular-devkit/build-angular@latest --force
+RUN npm install 
 RUN npm run build --omit=dev
 FROM nginx as production-stage
 COPY --from=build-stage /src/app/dist /usr/share/nginx/html
