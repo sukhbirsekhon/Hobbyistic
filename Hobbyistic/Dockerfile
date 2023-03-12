@@ -1,6 +1,7 @@
 FROM node as build-stage
 WORKDIR /src/app
 COPY . ./
+RUN npm install
 RUN npm install -g @angular/cli@latest  
 RUN npm install -g @angular-devkit/build-angular@latest
 RUN npm run build --omit=dev
