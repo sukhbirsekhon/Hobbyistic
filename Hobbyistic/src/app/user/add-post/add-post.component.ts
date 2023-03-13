@@ -39,8 +39,9 @@ export class AddPostComponent implements OnInit {
     this.motivationWidget.postDate = todaysDate;
     console.log(this.motivationWidget);
     console.log(this.file);
-    this.motivationWidgetService.uploadPost(this.hobby, this.motivationWidget, this.file).subscribe();
-    //this.router.navigate(['/motivation/', this.hobby.id]);
+    this.motivationWidgetService.uploadPost(this.hobby, this.motivationWidget, this.file).subscribe(response => {
+      this.router.navigate(['/motivation/', this.hobby.id]);
+    });
   }
 
   onFileSelected(event: any)

@@ -31,7 +31,6 @@ export class MotivationComponent implements OnInit {
   dbImage: any;
 
   ngOnInit(): void {
-    
     this.hobby.id = this.route.snapshot.params['id'];
     this.UserService.GetSingleHobby(this.hobby).subscribe(response => {
       this.hobby = response;
@@ -44,7 +43,6 @@ export class MotivationComponent implements OnInit {
     this.motivationWidgetService.getAllPosts(this.hobby).subscribe(response => {
       this.userPosts = response;
     });
-
   }
 
   displayImage(motivationInstance: MotivationWidget)
@@ -77,12 +75,14 @@ export class MotivationComponent implements OnInit {
   {
     this.isPublicVisible = true;
     this.isUserVisible = false;
+    console.log(this.publicPosts);
   }
 
   viewUserPosts(): void
   {
     this.isPublicVisible = false;
     this.isUserVisible = true;
+    console.log(this.userPosts);
   }
 
   viewDeleteForm(): void

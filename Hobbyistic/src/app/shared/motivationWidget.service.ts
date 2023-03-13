@@ -22,8 +22,6 @@ export class motivationWidgetService
         return this.http.post(`http://localhost:3000/api/hobby/${hobby.id}/widgets/motivation/post`, formData, {headers: headers});
     }
 
-      
-
     getAllPosts(hobby: Hobby): Observable<MotivationWidget[]>{
         let header = new HttpHeaders().set('Authorization',`Bearer ${localStorage.getItem('token')!}`);
         return this.http.get<MotivationWidget[]>("http://localhost:3000/api/hobby/" + hobby.id + "/widgets/motivation/post", {headers: header});
