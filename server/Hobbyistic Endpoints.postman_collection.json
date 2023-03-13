@@ -2,10 +2,107 @@
 	"info": {
 		"_postman_id": "2451c031-7237-4839-aa61-cc8dceacb031",
 		"name": "Hobbyistic Endpoints",
+		"description": "All endpoints contained in the Hobbyistic API Service are documented here. Please use this as a development reference to integrate applications with the API.\n\nAll fields shown in the response body/request body are available for use in the API. Required fields are noted in each endpoint description",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "23759085"
 	},
 	"item": [
+		{
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"John Appleseed\",\n    \"email\": \"7@7.com\",\n    \"password\": \"123456\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/register",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"register"
+					]
+				},
+				"description": "The Register Endpoint is used to register a user for Hobbyistic. This is required to obtain a JWT token from the Login endpoint.\n\n**Required Fields:**\n\n- name\n- email\n- password"
+			},
+			"response": [
+				{
+					"name": "Register OK Response",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"John Appleseed\",\n    \"email\": \"7@7.com\",\n    \"password\": \"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/register",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"register"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "203"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"cb-9zUNK2C7UEmdzYjZKZkmWQsoy2M\""
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 19 Feb 2023 23:59:09 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"_id\": \"63f2b7cd0864c55410ffd9f0\",\n    \"name\": \"John Appleseed\",\n    \"email\": \"7@7.com\",\n    \"password\": \"$2a$10$78hHHNLnsXnG3HRo3vosve70Cir.F.IQdRBJws4td3BhGbKcU5EI.\",\n    \"saltSecret\": \"$2a$10$78hHHNLnsXnG3HRo3vosve\",\n    \"__v\": 0\n}"
+				}
+			]
+		},
 		{
 			"name": "Login",
 			"request": {
@@ -35,37 +132,79 @@
 						"login",
 						""
 					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Register",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"name\": \"John Appleseed\",\n    \"email\": \"5@5.com\",\n    \"password\": \"123456\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
 				},
-				"url": {
-					"raw": "localhost:3000/api/register",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"api",
-						"register"
-					]
-				}
+				"description": "The login endpoint is used to generate a JWT token for all future API requests.\n\n**The JTW token returned from this endpoint must be passed in all future requests in the Authorization Header as a Bearer token, or else the request will be rejected by the API.**\n\n**Required Fields:**\n\n- email\n- password"
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Login OK Response",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user\": {\n        \"email\": \"5@5.com\",\n        \"password\": \"123456\"\n    } \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/login/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"login",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "192"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"c0-X4wUhAAUdXXEAFp8BQeFwRw++iY\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 20 Feb 2023 00:04:33 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"user\": {\n        \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZGIzZGI5NDI5Mjc2ZGNjYzIxN2NlZSIsImV4cCI6MTY4MjAzMTg3MywiaWF0IjoxNjc2ODUxNDczfQ._qAAfc28Kd8MY-7kk9e-TZlLkJCYnNjVlCZSsD0J_FY\"\n    }\n}"
+				}
+			]
 		},
 		{
 			"name": "Add Hobby",
@@ -84,7 +223,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"hobby\": {\n        \"name\": \"a simple test hobby\"\n    }\n}",
+					"raw": "{\n    \"hobby\": {\n        \"name\": \"Eating\"\n    }\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -102,9 +241,78 @@
 						"api",
 						"hobby"
 					]
-				}
+				},
+				"description": "This endpoint is used to add a users hobby.\n\n**Required Fields:**\n\n- name"
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Add Hobby OK Response",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"hobby\": {\n        \"name\": \"Fishing\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/hobby",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"hobby"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "50"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"32-Gem8cOj54Gx1vHbJI3iH1LK8flQ\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 20 Feb 2023 00:12:46 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"63f2bafe0864c55410ffd9f4\",\n    \"name\": \"Fishing\"\n}"
+				}
+			]
 		},
 		{
 			"name": "Update Hobby",
@@ -123,7 +331,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"hobby\": {\n        \"name\": \"a pet chicken\"\n    }\n}",
+					"raw": "{\n    \"hobby\": {\n        \"name\": \"Lifting\"\n    }\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -131,7 +339,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/hobby/636af8cd16c22d643af",
+					"raw": "http://localhost:3000/api/hobby/63db3e07429276dccc217cf9",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -140,11 +348,80 @@
 					"path": [
 						"api",
 						"hobby",
-						"636af8cd16c22d643af"
+						"63db3e07429276dccc217cf9"
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Update Hobby OK Response",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"hobby\": {\n        \"name\": \"Lifting\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/hobby/63db3e07429276dccc217cf9",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"hobby",
+								"63db3e07429276dccc217cf9"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "93"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"5d-evVtXXjb9ZKBolXasnkxuFtJqi8\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 27 Feb 2023 23:24:44 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Hobby Updated\",\n    \"updatedHobby\": {\n        \"id\": \"63db3e07429276dccc217cf9\",\n        \"name\": \"Lifting\"\n    }\n}"
+				}
+			]
 		},
 		{
 			"name": "Get All Hobbies",
@@ -181,7 +458,73 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Get All Hobbies OK Response",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/hobby",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"hobby"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "103"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"67-j3rCKU1bpE4aN+ORU2cR01pah9k\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 27 Feb 2023 23:28:08 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": \"63db3e07429276dccc217cf9\",\n        \"name\": \"Lifting\"\n    },\n    {\n        \"id\": \"63f2bafe0864c55410ffd9f4\",\n        \"name\": \"Fishing\"\n    }\n]"
+				}
+			]
 		},
 		{
 			"name": "Get Single Hobby",
@@ -219,7 +562,179 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Get Single Hobby OK Response",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/hobby/63db3e07429276dccc217cf9",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"hobby",
+								"63db3e07429276dccc217cf9"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "50"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"32-s5slU30eTUvkdQiHQ3KMOZpsuH4\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 27 Feb 2023 23:29:43 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"63db3e07429276dccc217cf9\",\n    \"name\": \"Lifting\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Delete Hobby",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Bearer Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/hobby/63fd73bd6fdfeb38da80c094",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"hobby",
+						"63fd73bd6fdfeb38da80c094"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Delete Hobby 200 OK Response",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/hobby/63fd73bd6fdfeb38da80c094",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"hobby",
+								"63fd73bd6fdfeb38da80c094"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "38"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"26-679VCgrzfSZfUFkjjYDoNZh2M0M\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 28 Feb 2023 03:25:14 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Hobby and widget deleted\"\n}"
+				}
+			]
 		},
 		{
 			"name": "Get Widgets",
@@ -251,7 +766,68 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Get Widgets OK Response",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/hobby/63db3e07429276dccc217cf9/widgets",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"hobby",
+								"63db3e07429276dccc217cf9",
+								"widgets"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "4483"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"1183-ZC0ULFrp14XbRVVwkEyRf4HDyyM\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 27 Feb 2023 23:36:59 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"_id\": \"63db3e07429276dccc217cfb\",\n    \"user\": \"63db3db9429276dccc217cee\",\n    \"hobby\": \"63db3e07429276dccc217cf9\",\n    \"taskWidget\": {\n        \"tasks\": [\n            {\n                \"task\": \"New Task\",\n                \"completed\": false,\n                \"_id\": \"63db3e07429276dccc217cfd\"\n            },\n            {\n                \"task\": \"eat a fish\",\n                \"completed\": false,\n                \"_id\": \"63dbcdaee19d6572dd54979b\"\n            }\n        ],\n        \"_id\": \"63db3e07429276dccc217cfc\"\n    },\n    \"notesWidget\": {\n        \"note\": \"simple note\",\n        \"_id\": \"63db3e07429276dccc217cfe\"\n    },\n    \"externalLinksWidget\": {\n        \"links\": [\n            {\n                \"title\": \"Weight training: Do's and don'ts of proper technique - Mayo Clinic\",\n                \"link\": \"https://www.mayoclinic.org/healthy-lifestyle/fitness/in-depth/weight-training/art-20045842\",\n                \"snippet\": \"Use proper form. Learn to do each exercise correctly. When lifting weights, move through the full range of motion in your joints. The better your form, the ...\",\n                \"_id\": \"63fd3e8c83c96b99c9da68ee\"\n            },\n            {\n                \"title\": \"9 Weight Lifting Tips for Beginners That Will Make Your Workout ...\",\n                \"link\": \"https://www.self.com/story/10-strength-training-tips-for-beginners-that-will-make-your-workout-more-effective\",\n                \"snippet\": \"Jan 14, 2022 ... 9 Weight Lifting Tips for Beginners That Will Make Your Workout More Effective · 1. Start with your bodyweight. · 2. Nail down your form. · 3.\",\n                \"_id\": \"63fd3e8c83c96b99c9da68ef\"\n            },\n            {\n                \"title\": \"25 Tips to Build Muscle Fast | Muscle & Fitness\",\n                \"link\": \"https://www.muscleandfitness.com/workouts/workout-tips/25-tips-help-you-build-muscle-and-get-stronger/\",\n                \"snippet\": \"Apply these concepts to outgrow your clothes and break your lifting records. · Lift heavy, Then Light. · Do Medicine Ball Exercises · Build Up Your Deltoids.\",\n                \"_id\": \"63fd3e8c83c96b99c9da68f0\"\n            },\n            {\n                \"title\": \"How to Get Better at Olympic Weightlifting | BarBend\",\n                \"link\": \"https://barbend.com/get-better-olympic-weightlifting/\",\n                \"snippet\": \"How to Get Better at Olympic Weightlifting · 1. Squat with Integrity · 2. Don't Go Too Heavy · 3. Follow a Program · 4. Learn to Develop Tension · 5. Mobilize the ...\",\n                \"_id\": \"63fd3e8c83c96b99c9da68f1\"\n            },\n            {\n                \"title\": \"Want to Lift Heavy? Here Are 5 Must-Dos to Build a Strong ...\",\n                \"link\": \"https://www.self.com/story/strong-foundation\",\n                \"snippet\": \"Aug 28, 2017 ... “Simulating [the lifts] is one of the most effective things you can do,” Seedman says, “and it can be done anywhere at anytime.” So next time ...\",\n                \"_id\": \"63fd3e8c83c96b99c9da68f2\"\n            },\n            {\n                \"title\": \"7 tips for a safe and successful strength training program - Harvard ...\",\n                \"link\": \"https://www.health.harvard.edu/exercise-and-fitness/7-tips-for-a-safe-and-successful-strength-training-program\",\n                \"snippet\": \"... you maintain the strength you need for everyday activities — lifting groceries, ... though some evidence suggests that two to three sets may be better.\",\n                \"_id\": \"63fd3e8c83c96b99c9da68f3\"\n            },\n            {\n                \"title\": \"5 Tips to Lift Heavier Weights for Strength Training Exercises\",\n                \"link\": \"https://www.menshealth.com/fitness/a27421631/how-to-lift-heavier/\",\n                \"snippet\": \"May 9, 2019 ... Want to Lift Heavier? Follow These 5 Tips. · Practice Makes Perfect · Make Time To Warm Up · Make Time to Train Often · Turn Up the Tension · Fuel ...\",\n                \"_id\": \"63fd3e8c83c96b99c9da68f4\"\n            },\n            {\n                \"title\": \"How to Start Lifting Weights: 11 Beginner Strength Training Tips\",\n                \"link\": \"https://greatist.com/fitness/how-to-start-lifting-weights\",\n                \"snippet\": \"Feb 27, 2022 ... If you're ready to get those sweet lifting #gains, we've got tips from a ... no science that says a longer workout produces better results.\",\n                \"_id\": \"63fd3e8c83c96b99c9da68f5\"\n            },\n            {\n                \"title\": \"10 reasons why men who lift weights make better humans\",\n                \"link\": \"https://www.menshealth.com/uk/building-muscle/a755369/10-reasons-why-weightlifters-are-better-humans/\",\n                \"snippet\": \"Apr 7, 2016 ... It's all thanks to endorphins, your feel-good chemicals released to ease your body during the physical strain of weightlifting. Advertisement - ...\",\n                \"_id\": \"63fd3e8c83c96b99c9da68f6\"\n            },\n            {\n                \"title\": \"Lifting heavy weights vs. light weights: Why one isn't better than the ...\",\n                \"link\": \"https://www.cnet.com/health/fitness/lifting-heavy-weights-vs-light-weights-is-one-better-than-the-other/\",\n                \"snippet\": \"Nov 8, 2019 ... It all comes down to reps. People lift weights with the goal of making their muscles stronger (and, for some, to get those bulky biceps or lean- ...\",\n                \"_id\": \"63fd3e8c83c96b99c9da68f7\"\n            }\n        ],\n        \"_id\": \"63db3e07429276dccc217cff\"\n    },\n    \"calendarWidget\": {\n        \"events\": [\n            {\n                \"title\": \"ya it workeded\",\n                \"description\": \"that was silly\",\n                \"startDate\": \"2012-11-12T05:00:00.000Z\",\n                \"endDate\": \"2012-11-13T05:00:00.000Z\",\n                \"frequency\": \"daily\",\n                \"_id\": \"63dbcd73e19d6572dd54978b\"\n            }\n        ],\n        \"_id\": \"63db3e07429276dccc217d00\"\n    },\n    \"__v\": 0\n}"
+				}
+			]
 		},
 		{
 			"name": "Get Task Widget (TESTING)",
@@ -269,7 +845,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/api/hobby/63c16370f4086ef7240fd9ab/widgets/tasks",
+					"raw": "http://localhost:3000/api/hobby/63db3e07429276dccc217cf9/widgets/tasks",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -278,7 +854,7 @@
 					"path": [
 						"api",
 						"hobby",
-						"63c16370f4086ef7240fd9ab",
+						"63db3e07429276dccc217cf9",
 						"widgets",
 						"tasks"
 					],
@@ -292,6 +868,117 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Get Single Task",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Bearer Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/hobby/63db3e07429276dccc217cf9/widgets/tasks/6400ed7483970bd8c8f12b7c",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"hobby",
+						"63db3e07429276dccc217cf9",
+						"widgets",
+						"tasks",
+						"6400ed7483970bd8c8f12b7c"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get Single Task OK Response",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/hobby/63db3e07429276dccc217cf9/widgets/tasks/6400ed7483970bd8c8f12b7c",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"hobby",
+								"63db3e07429276dccc217cf9",
+								"widgets",
+								"tasks",
+								"6400ed7483970bd8c8f12b7c"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "77"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"4d-ViTOhHjiyVVLNZ3bRQaFVxz+b/8\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 02 Mar 2023 20:47:41 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"task\": \"Lift 100 Pounds\",\n    \"completed\": false,\n    \"_id\": \"6400ed7483970bd8c8f12b7c\"\n}"
+				}
+			]
 		},
 		{
 			"name": "Add Task",
@@ -310,7 +997,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\n    \"task\": \"eat a fish\",\n    \"completed\": false   \n}",
+					"raw": "{\n    \"task\": \"Lift 100 Pounds\",\n    \"completed\": false   \n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -338,9 +1025,88 @@
 							"disabled": true
 						}
 					]
-				}
+				},
+				"description": "There is no example for this since we do not retrieve subdocuments for the widgets individually."
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Add Task OK Response",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"task\": \"Lift 100 Pounds\",\n    \"completed\": false   \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/hobby/63db3e07429276dccc217cf9/widgets/tasks",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"hobby",
+								"63db3e07429276dccc217cf9",
+								"widgets",
+								"tasks"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "4561"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"11d1-i58jthwv9IziktUZltyDUJhF6f0\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 27 Feb 2023 23:40:57 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"_id\": \"63db3e07429276dccc217cfb\",\n    \"user\": \"63db3db9429276dccc217cee\",\n    \"hobby\": \"63db3e07429276dccc217cf9\",\n    \"taskWidget\": {\n        \"tasks\": [\n            {\n                \"task\": \"New Task\",\n                \"completed\": false,\n                \"_id\": \"63db3e07429276dccc217cfd\"\n            },\n            {\n                \"task\": \"eat a fish\",\n                \"completed\": false,\n                \"_id\": \"63dbcdaee19d6572dd54979b\"\n            },\n            {\n                \"task\": \"Lift 100 Pounds\",\n                \"completed\": false,\n                \"_id\": \"63fd3f8983c96b99c9da6916\"\n            }\n        ],\n        \"_id\": \"63db3e07429276dccc217cfc\"\n    },\n    \"notesWidget\": {\n        \"note\": \"simple note\",\n        \"_id\": \"63db3e07429276dccc217cfe\"\n    },\n    \"externalLinksWidget\": {\n        \"links\": [\n            {\n                \"title\": \"Weight training: Do's and don'ts of proper technique - Mayo Clinic\",\n                \"link\": \"https://www.mayoclinic.org/healthy-lifestyle/fitness/in-depth/weight-training/art-20045842\",\n                \"snippet\": \"Use proper form. Learn to do each exercise correctly. When lifting weights, move through the full range of motion in your joints. The better your form, the ...\",\n                \"_id\": \"63fd3e8c83c96b99c9da68ee\"\n            },\n            {\n                \"title\": \"9 Weight Lifting Tips for Beginners That Will Make Your Workout ...\",\n                \"link\": \"https://www.self.com/story/10-strength-training-tips-for-beginners-that-will-make-your-workout-more-effective\",\n                \"snippet\": \"Jan 14, 2022 ... 9 Weight Lifting Tips for Beginners That Will Make Your Workout More Effective · 1. Start with your bodyweight. · 2. Nail down your form. · 3.\",\n                \"_id\": \"63fd3e8c83c96b99c9da68ef\"\n            },\n            {\n                \"title\": \"25 Tips to Build Muscle Fast | Muscle & Fitness\",\n                \"link\": \"https://www.muscleandfitness.com/workouts/workout-tips/25-tips-help-you-build-muscle-and-get-stronger/\",\n                \"snippet\": \"Apply these concepts to outgrow your clothes and break your lifting records. · Lift heavy, Then Light. · Do Medicine Ball Exercises · Build Up Your Deltoids.\",\n                \"_id\": \"63fd3e8c83c96b99c9da68f0\"\n            },\n            {\n                \"title\": \"How to Get Better at Olympic Weightlifting | BarBend\",\n                \"link\": \"https://barbend.com/get-better-olympic-weightlifting/\",\n                \"snippet\": \"How to Get Better at Olympic Weightlifting · 1. Squat with Integrity · 2. Don't Go Too Heavy · 3. Follow a Program · 4. Learn to Develop Tension · 5. Mobilize the ...\",\n                \"_id\": \"63fd3e8c83c96b99c9da68f1\"\n            },\n            {\n                \"title\": \"Want to Lift Heavy? Here Are 5 Must-Dos to Build a Strong ...\",\n                \"link\": \"https://www.self.com/story/strong-foundation\",\n                \"snippet\": \"Aug 28, 2017 ... “Simulating [the lifts] is one of the most effective things you can do,” Seedman says, “and it can be done anywhere at anytime.” So next time ...\",\n                \"_id\": \"63fd3e8c83c96b99c9da68f2\"\n            },\n            {\n                \"title\": \"7 tips for a safe and successful strength training program - Harvard ...\",\n                \"link\": \"https://www.health.harvard.edu/exercise-and-fitness/7-tips-for-a-safe-and-successful-strength-training-program\",\n                \"snippet\": \"... you maintain the strength you need for everyday activities — lifting groceries, ... though some evidence suggests that two to three sets may be better.\",\n                \"_id\": \"63fd3e8c83c96b99c9da68f3\"\n            },\n            {\n                \"title\": \"5 Tips to Lift Heavier Weights for Strength Training Exercises\",\n                \"link\": \"https://www.menshealth.com/fitness/a27421631/how-to-lift-heavier/\",\n                \"snippet\": \"May 9, 2019 ... Want to Lift Heavier? Follow These 5 Tips. · Practice Makes Perfect · Make Time To Warm Up · Make Time to Train Often · Turn Up the Tension · Fuel ...\",\n                \"_id\": \"63fd3e8c83c96b99c9da68f4\"\n            },\n            {\n                \"title\": \"How to Start Lifting Weights: 11 Beginner Strength Training Tips\",\n                \"link\": \"https://greatist.com/fitness/how-to-start-lifting-weights\",\n                \"snippet\": \"Feb 27, 2022 ... If you're ready to get those sweet lifting #gains, we've got tips from a ... no science that says a longer workout produces better results.\",\n                \"_id\": \"63fd3e8c83c96b99c9da68f5\"\n            },\n            {\n                \"title\": \"10 reasons why men who lift weights make better humans\",\n                \"link\": \"https://www.menshealth.com/uk/building-muscle/a755369/10-reasons-why-weightlifters-are-better-humans/\",\n                \"snippet\": \"Apr 7, 2016 ... It's all thanks to endorphins, your feel-good chemicals released to ease your body during the physical strain of weightlifting. Advertisement - ...\",\n                \"_id\": \"63fd3e8c83c96b99c9da68f6\"\n            },\n            {\n                \"title\": \"Lifting heavy weights vs. light weights: Why one isn't better than the ...\",\n                \"link\": \"https://www.cnet.com/health/fitness/lifting-heavy-weights-vs-light-weights-is-one-better-than-the-other/\",\n                \"snippet\": \"Nov 8, 2019 ... It all comes down to reps. People lift weights with the goal of making their muscles stronger (and, for some, to get those bulky biceps or lean- ...\",\n                \"_id\": \"63fd3e8c83c96b99c9da68f7\"\n            }\n        ],\n        \"_id\": \"63db3e07429276dccc217cff\"\n    },\n    \"calendarWidget\": {\n        \"events\": [\n            {\n                \"title\": \"ya it workeded\",\n                \"description\": \"that was silly\",\n                \"startDate\": \"2012-11-12T05:00:00.000Z\",\n                \"endDate\": \"2012-11-13T05:00:00.000Z\",\n                \"frequency\": \"daily\",\n                \"_id\": \"63dbcd73e19d6572dd54978b\"\n            }\n        ],\n        \"_id\": \"63db3e07429276dccc217d00\"\n    },\n    \"__v\": 0\n}"
+				}
+			]
 		},
 		{
 			"name": "Update Task",
@@ -359,7 +1125,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"task\": \"eat a fish\",\n    \"completed\": true\n}",
+					"raw": "{\n    \"task\": \"Lift 200 Pounds\",\n    \"completed\": true\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -367,7 +1133,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/hobby/63c16370f4086ef7240fd9ab/widgets/tasks/63c6ceb9b354191d93c00b02",
+					"raw": "http://localhost:3000/api/hobby/63db3e07429276dccc217cf9/widgets/tasks/63fd3f8983c96b99c9da6916",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -376,10 +1142,10 @@
 					"path": [
 						"api",
 						"hobby",
-						"63c16370f4086ef7240fd9ab",
+						"63db3e07429276dccc217cf9",
 						"widgets",
 						"tasks",
-						"63c6ceb9b354191d93c00b02"
+						"63fd3f8983c96b99c9da6916"
 					],
 					"query": [
 						{
@@ -390,7 +1156,86 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Update Task OK Response",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"task\": \"Lift 200 Pounds\",\n    \"completed\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/hobby/63db3e07429276dccc217cf9/widgets/tasks/63fd3f8983c96b99c9da6916",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"hobby",
+								"63db3e07429276dccc217cf9",
+								"widgets",
+								"tasks",
+								"63fd3f8983c96b99c9da6916"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "4560"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"11d0-Y4AmpU/HLg3QBzlH4oU+nrRUy6g\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 27 Feb 2023 23:42:17 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"_id\": \"63db3e07429276dccc217cfb\",\n    \"user\": \"63db3db9429276dccc217cee\",\n    \"hobby\": \"63db3e07429276dccc217cf9\",\n    \"taskWidget\": {\n        \"tasks\": [\n            {\n                \"task\": \"New Task\",\n                \"completed\": false,\n                \"_id\": \"63db3e07429276dccc217cfd\"\n            },\n            {\n                \"task\": \"eat a fish\",\n                \"completed\": false,\n                \"_id\": \"63dbcdaee19d6572dd54979b\"\n            },\n            {\n                \"task\": \"Lift 200 Pounds\",\n                \"completed\": true,\n                \"_id\": \"63fd3fd983c96b99c9da6927\"\n            }\n        ],\n        \"_id\": \"63db3e07429276dccc217cfc\"\n    },\n    \"notesWidget\": {\n        \"note\": \"simple note\",\n        \"_id\": \"63db3e07429276dccc217cfe\"\n    },\n    \"externalLinksWidget\": {\n        \"links\": [\n            {\n                \"title\": \"Weight training: Do's and don'ts of proper technique - Mayo Clinic\",\n                \"link\": \"https://www.mayoclinic.org/healthy-lifestyle/fitness/in-depth/weight-training/art-20045842\",\n                \"snippet\": \"Use proper form. Learn to do each exercise correctly. When lifting weights, move through the full range of motion in your joints. The better your form, the ...\",\n                \"_id\": \"63fd3e8c83c96b99c9da68ee\"\n            },\n            {\n                \"title\": \"9 Weight Lifting Tips for Beginners That Will Make Your Workout ...\",\n                \"link\": \"https://www.self.com/story/10-strength-training-tips-for-beginners-that-will-make-your-workout-more-effective\",\n                \"snippet\": \"Jan 14, 2022 ... 9 Weight Lifting Tips for Beginners That Will Make Your Workout More Effective · 1. Start with your bodyweight. · 2. Nail down your form. · 3.\",\n                \"_id\": \"63fd3e8c83c96b99c9da68ef\"\n            },\n            {\n                \"title\": \"25 Tips to Build Muscle Fast | Muscle & Fitness\",\n                \"link\": \"https://www.muscleandfitness.com/workouts/workout-tips/25-tips-help-you-build-muscle-and-get-stronger/\",\n                \"snippet\": \"Apply these concepts to outgrow your clothes and break your lifting records. · Lift heavy, Then Light. · Do Medicine Ball Exercises · Build Up Your Deltoids.\",\n                \"_id\": \"63fd3e8c83c96b99c9da68f0\"\n            },\n            {\n                \"title\": \"How to Get Better at Olympic Weightlifting | BarBend\",\n                \"link\": \"https://barbend.com/get-better-olympic-weightlifting/\",\n                \"snippet\": \"How to Get Better at Olympic Weightlifting · 1. Squat with Integrity · 2. Don't Go Too Heavy · 3. Follow a Program · 4. Learn to Develop Tension · 5. Mobilize the ...\",\n                \"_id\": \"63fd3e8c83c96b99c9da68f1\"\n            },\n            {\n                \"title\": \"Want to Lift Heavy? Here Are 5 Must-Dos to Build a Strong ...\",\n                \"link\": \"https://www.self.com/story/strong-foundation\",\n                \"snippet\": \"Aug 28, 2017 ... “Simulating [the lifts] is one of the most effective things you can do,” Seedman says, “and it can be done anywhere at anytime.” So next time ...\",\n                \"_id\": \"63fd3e8c83c96b99c9da68f2\"\n            },\n            {\n                \"title\": \"7 tips for a safe and successful strength training program - Harvard ...\",\n                \"link\": \"https://www.health.harvard.edu/exercise-and-fitness/7-tips-for-a-safe-and-successful-strength-training-program\",\n                \"snippet\": \"... you maintain the strength you need for everyday activities — lifting groceries, ... though some evidence suggests that two to three sets may be better.\",\n                \"_id\": \"63fd3e8c83c96b99c9da68f3\"\n            },\n            {\n                \"title\": \"5 Tips to Lift Heavier Weights for Strength Training Exercises\",\n                \"link\": \"https://www.menshealth.com/fitness/a27421631/how-to-lift-heavier/\",\n                \"snippet\": \"May 9, 2019 ... Want to Lift Heavier? Follow These 5 Tips. · Practice Makes Perfect · Make Time To Warm Up · Make Time to Train Often · Turn Up the Tension · Fuel ...\",\n                \"_id\": \"63fd3e8c83c96b99c9da68f4\"\n            },\n            {\n                \"title\": \"How to Start Lifting Weights: 11 Beginner Strength Training Tips\",\n                \"link\": \"https://greatist.com/fitness/how-to-start-lifting-weights\",\n                \"snippet\": \"Feb 27, 2022 ... If you're ready to get those sweet lifting #gains, we've got tips from a ... no science that says a longer workout produces better results.\",\n                \"_id\": \"63fd3e8c83c96b99c9da68f5\"\n            },\n            {\n                \"title\": \"10 reasons why men who lift weights make better humans\",\n                \"link\": \"https://www.menshealth.com/uk/building-muscle/a755369/10-reasons-why-weightlifters-are-better-humans/\",\n                \"snippet\": \"Apr 7, 2016 ... It's all thanks to endorphins, your feel-good chemicals released to ease your body during the physical strain of weightlifting. Advertisement - ...\",\n                \"_id\": \"63fd3e8c83c96b99c9da68f6\"\n            },\n            {\n                \"title\": \"Lifting heavy weights vs. light weights: Why one isn't better than the ...\",\n                \"link\": \"https://www.cnet.com/health/fitness/lifting-heavy-weights-vs-light-weights-is-one-better-than-the-other/\",\n                \"snippet\": \"Nov 8, 2019 ... It all comes down to reps. People lift weights with the goal of making their muscles stronger (and, for some, to get those bulky biceps or lean- ...\",\n                \"_id\": \"63fd3e8c83c96b99c9da68f7\"\n            }\n        ],\n        \"_id\": \"63db3e07429276dccc217cff\"\n    },\n    \"calendarWidget\": {\n        \"events\": [\n            {\n                \"title\": \"ya it workeded\",\n                \"description\": \"that was silly\",\n                \"startDate\": \"2012-11-12T05:00:00.000Z\",\n                \"endDate\": \"2012-11-13T05:00:00.000Z\",\n                \"frequency\": \"daily\",\n                \"_id\": \"63dbcd73e19d6572dd54978b\"\n            }\n        ],\n        \"_id\": \"63db3e07429276dccc217d00\"\n    },\n    \"__v\": 0\n}"
+				}
+			]
 		},
 		{
 			"name": "Delete Task",
@@ -408,7 +1253,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/api/hobby/63c16370f4086ef7240fd9ab/widgets/tasks/63c16370f4086ef7240fd9af",
+					"raw": "http://localhost:3000/api/hobby/63db3e07429276dccc217cf9/widgets/tasks/6400ed7483970bd8c8f12",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -417,10 +1262,10 @@
 					"path": [
 						"api",
 						"hobby",
-						"63c16370f4086ef7240fd9ab",
+						"63db3e07429276dccc217cf9",
 						"widgets",
 						"tasks",
-						"63c16370f4086ef7240fd9af"
+						"6400ed7483970bd8c8f12"
 					],
 					"query": [
 						{
@@ -431,7 +1276,77 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Delete Task OK Response",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/hobby/63db3e07429276dccc217cf9/widgets/tasks/63db3e07429276dccc217cfd",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"hobby",
+								"63db3e07429276dccc217cf9",
+								"widgets",
+								"tasks",
+								"63db3e07429276dccc217cfd"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "4487"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"1187-HrpcNhafooUzkAxSglq4iRp75Pc\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 27 Feb 2023 23:43:55 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"_id\": \"63db3e07429276dccc217cfb\",\n    \"user\": \"63db3db9429276dccc217cee\",\n    \"hobby\": \"63db3e07429276dccc217cf9\",\n    \"taskWidget\": {\n        \"tasks\": [\n            {\n                \"task\": \"New Task\",\n                \"completed\": false,\n                \"_id\": \"63db3e07429276dccc217cfd\"\n            },\n            {\n                \"task\": \"Lift 200 Pounds\",\n                \"completed\": true,\n                \"_id\": \"63fd3fd983c96b99c9da6927\"\n            }\n        ],\n        \"_id\": \"63db3e07429276dccc217cfc\"\n    },\n    \"notesWidget\": {\n        \"note\": \"simple note\",\n        \"_id\": \"63db3e07429276dccc217cfe\"\n    },\n    \"externalLinksWidget\": {\n        \"links\": [\n            {\n                \"title\": \"Weight training: Do's and don'ts of proper technique - Mayo Clinic\",\n                \"link\": \"https://www.mayoclinic.org/healthy-lifestyle/fitness/in-depth/weight-training/art-20045842\",\n                \"snippet\": \"Use proper form. Learn to do each exercise correctly. When lifting weights, move through the full range of motion in your joints. The better your form, the ...\",\n                \"_id\": \"63fd3e8c83c96b99c9da68ee\"\n            },\n            {\n                \"title\": \"9 Weight Lifting Tips for Beginners That Will Make Your Workout ...\",\n                \"link\": \"https://www.self.com/story/10-strength-training-tips-for-beginners-that-will-make-your-workout-more-effective\",\n                \"snippet\": \"Jan 14, 2022 ... 9 Weight Lifting Tips for Beginners That Will Make Your Workout More Effective · 1. Start with your bodyweight. · 2. Nail down your form. · 3.\",\n                \"_id\": \"63fd3e8c83c96b99c9da68ef\"\n            },\n            {\n                \"title\": \"25 Tips to Build Muscle Fast | Muscle & Fitness\",\n                \"link\": \"https://www.muscleandfitness.com/workouts/workout-tips/25-tips-help-you-build-muscle-and-get-stronger/\",\n                \"snippet\": \"Apply these concepts to outgrow your clothes and break your lifting records. · Lift heavy, Then Light. · Do Medicine Ball Exercises · Build Up Your Deltoids.\",\n                \"_id\": \"63fd3e8c83c96b99c9da68f0\"\n            },\n            {\n                \"title\": \"How to Get Better at Olympic Weightlifting | BarBend\",\n                \"link\": \"https://barbend.com/get-better-olympic-weightlifting/\",\n                \"snippet\": \"How to Get Better at Olympic Weightlifting · 1. Squat with Integrity · 2. Don't Go Too Heavy · 3. Follow a Program · 4. Learn to Develop Tension · 5. Mobilize the ...\",\n                \"_id\": \"63fd3e8c83c96b99c9da68f1\"\n            },\n            {\n                \"title\": \"Want to Lift Heavy? Here Are 5 Must-Dos to Build a Strong ...\",\n                \"link\": \"https://www.self.com/story/strong-foundation\",\n                \"snippet\": \"Aug 28, 2017 ... “Simulating [the lifts] is one of the most effective things you can do,” Seedman says, “and it can be done anywhere at anytime.” So next time ...\",\n                \"_id\": \"63fd3e8c83c96b99c9da68f2\"\n            },\n            {\n                \"title\": \"7 tips for a safe and successful strength training program - Harvard ...\",\n                \"link\": \"https://www.health.harvard.edu/exercise-and-fitness/7-tips-for-a-safe-and-successful-strength-training-program\",\n                \"snippet\": \"... you maintain the strength you need for everyday activities — lifting groceries, ... though some evidence suggests that two to three sets may be better.\",\n                \"_id\": \"63fd3e8c83c96b99c9da68f3\"\n            },\n            {\n                \"title\": \"5 Tips to Lift Heavier Weights for Strength Training Exercises\",\n                \"link\": \"https://www.menshealth.com/fitness/a27421631/how-to-lift-heavier/\",\n                \"snippet\": \"May 9, 2019 ... Want to Lift Heavier? Follow These 5 Tips. · Practice Makes Perfect · Make Time To Warm Up · Make Time to Train Often · Turn Up the Tension · Fuel ...\",\n                \"_id\": \"63fd3e8c83c96b99c9da68f4\"\n            },\n            {\n                \"title\": \"How to Start Lifting Weights: 11 Beginner Strength Training Tips\",\n                \"link\": \"https://greatist.com/fitness/how-to-start-lifting-weights\",\n                \"snippet\": \"Feb 27, 2022 ... If you're ready to get those sweet lifting #gains, we've got tips from a ... no science that says a longer workout produces better results.\",\n                \"_id\": \"63fd3e8c83c96b99c9da68f5\"\n            },\n            {\n                \"title\": \"10 reasons why men who lift weights make better humans\",\n                \"link\": \"https://www.menshealth.com/uk/building-muscle/a755369/10-reasons-why-weightlifters-are-better-humans/\",\n                \"snippet\": \"Apr 7, 2016 ... It's all thanks to endorphins, your feel-good chemicals released to ease your body during the physical strain of weightlifting. Advertisement - ...\",\n                \"_id\": \"63fd3e8c83c96b99c9da68f6\"\n            },\n            {\n                \"title\": \"Lifting heavy weights vs. light weights: Why one isn't better than the ...\",\n                \"link\": \"https://www.cnet.com/health/fitness/lifting-heavy-weights-vs-light-weights-is-one-better-than-the-other/\",\n                \"snippet\": \"Nov 8, 2019 ... It all comes down to reps. People lift weights with the goal of making their muscles stronger (and, for some, to get those bulky biceps or lean- ...\",\n                \"_id\": \"63fd3e8c83c96b99c9da68f7\"\n            }\n        ],\n        \"_id\": \"63db3e07429276dccc217cff\"\n    },\n    \"calendarWidget\": {\n        \"events\": [\n            {\n                \"title\": \"ya it workeded\",\n                \"description\": \"that was silly\",\n                \"startDate\": \"2012-11-12T05:00:00.000Z\",\n                \"endDate\": \"2012-11-13T05:00:00.000Z\",\n                \"frequency\": \"daily\",\n                \"_id\": \"63dbcd73e19d6572dd54978b\"\n            }\n        ],\n        \"_id\": \"63db3e07429276dccc217d00\"\n    },\n    \"__v\": 0\n}"
+				}
+			]
 		},
 		{
 			"name": "Update Notes",
@@ -450,7 +1365,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"note\": \"life is like a box of warm apple to do, not eat a cake\"\n}",
+					"raw": "{\n    \"note\": \"Make sure to warm up more during next lift\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -458,7 +1373,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/hobby/63c16370f4086ef7240fd9ab/widgets/notes",
+					"raw": "http://localhost:3000/api/hobby/63db3e07429276dccc217cf9/widgets/notes",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -467,7 +1382,7 @@
 					"path": [
 						"api",
 						"hobby",
-						"63c16370f4086ef7240fd9ab",
+						"63db3e07429276dccc217cf9",
 						"widgets",
 						"notes"
 					],
@@ -480,45 +1395,85 @@
 					]
 				}
 			},
-			"response": []
-		},
-		{
-			"name": "Delete Hobby",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYmY4ODdjMTE2YTcxYTZmOTgxNzkxNSIsImV4cCI6MTY3ODcyNzk0NiwiaWF0IjoxNjczNTQ3NTQ2fQ.6zF-BtsBylh5npIg44HKTCOUDWMho61Yrj32vGklS7s",
-							"type": "string"
+			"response": [
+				{
+					"name": "Update Notes OK Response",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"note\": \"Make sure to warm up more during next lift\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/hobby/63db3e07429276dccc217cf9/widgets/notes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"hobby",
+								"63db3e07429276dccc217cf9",
+								"widgets",
+								"notes"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
 						}
-					]
-				},
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:3000/api/hobby/636af87b16c22d643afd36ec",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"api",
-						"hobby",
-						"636af87b16c22d643afd36ec"
-					],
-					"query": [
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
 						{
-							"key": "",
-							"value": null,
-							"disabled": true
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "4518"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"11a6-fcBvXQV6imy6EP5ned5LumZ329Y\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 27 Feb 2023 23:46:36 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
 						}
-					]
+					],
+					"cookie": [],
+					"body": "{\n    \"_id\": \"63db3e07429276dccc217cfb\",\n    \"user\": \"63db3db9429276dccc217cee\",\n    \"hobby\": \"63db3e07429276dccc217cf9\",\n    \"taskWidget\": {\n        \"tasks\": [\n            {\n                \"task\": \"New Task\",\n                \"completed\": false,\n                \"_id\": \"63db3e07429276dccc217cfd\"\n            },\n            {\n                \"task\": \"Lift 200 Pounds\",\n                \"completed\": true,\n                \"_id\": \"63fd3fd983c96b99c9da6927\"\n            }\n        ],\n        \"_id\": \"63db3e07429276dccc217cfc\"\n    },\n    \"notesWidget\": {\n        \"note\": \"Make sure to warm up more during next lift\",\n        \"_id\": \"63db3e07429276dccc217cfe\"\n    },\n    \"externalLinksWidget\": {\n        \"links\": [\n            {\n                \"title\": \"Weight training: Do's and don'ts of proper technique - Mayo Clinic\",\n                \"link\": \"https://www.mayoclinic.org/healthy-lifestyle/fitness/in-depth/weight-training/art-20045842\",\n                \"snippet\": \"Use proper form. Learn to do each exercise correctly. When lifting weights, move through the full range of motion in your joints. The better your form, the ...\",\n                \"_id\": \"63fd3e8c83c96b99c9da68ee\"\n            },\n            {\n                \"title\": \"9 Weight Lifting Tips for Beginners That Will Make Your Workout ...\",\n                \"link\": \"https://www.self.com/story/10-strength-training-tips-for-beginners-that-will-make-your-workout-more-effective\",\n                \"snippet\": \"Jan 14, 2022 ... 9 Weight Lifting Tips for Beginners That Will Make Your Workout More Effective · 1. Start with your bodyweight. · 2. Nail down your form. · 3.\",\n                \"_id\": \"63fd3e8c83c96b99c9da68ef\"\n            },\n            {\n                \"title\": \"25 Tips to Build Muscle Fast | Muscle & Fitness\",\n                \"link\": \"https://www.muscleandfitness.com/workouts/workout-tips/25-tips-help-you-build-muscle-and-get-stronger/\",\n                \"snippet\": \"Apply these concepts to outgrow your clothes and break your lifting records. · Lift heavy, Then Light. · Do Medicine Ball Exercises · Build Up Your Deltoids.\",\n                \"_id\": \"63fd3e8c83c96b99c9da68f0\"\n            },\n            {\n                \"title\": \"How to Get Better at Olympic Weightlifting | BarBend\",\n                \"link\": \"https://barbend.com/get-better-olympic-weightlifting/\",\n                \"snippet\": \"How to Get Better at Olympic Weightlifting · 1. Squat with Integrity · 2. Don't Go Too Heavy · 3. Follow a Program · 4. Learn to Develop Tension · 5. Mobilize the ...\",\n                \"_id\": \"63fd3e8c83c96b99c9da68f1\"\n            },\n            {\n                \"title\": \"Want to Lift Heavy? Here Are 5 Must-Dos to Build a Strong ...\",\n                \"link\": \"https://www.self.com/story/strong-foundation\",\n                \"snippet\": \"Aug 28, 2017 ... “Simulating [the lifts] is one of the most effective things you can do,” Seedman says, “and it can be done anywhere at anytime.” So next time ...\",\n                \"_id\": \"63fd3e8c83c96b99c9da68f2\"\n            },\n            {\n                \"title\": \"7 tips for a safe and successful strength training program - Harvard ...\",\n                \"link\": \"https://www.health.harvard.edu/exercise-and-fitness/7-tips-for-a-safe-and-successful-strength-training-program\",\n                \"snippet\": \"... you maintain the strength you need for everyday activities — lifting groceries, ... though some evidence suggests that two to three sets may be better.\",\n                \"_id\": \"63fd3e8c83c96b99c9da68f3\"\n            },\n            {\n                \"title\": \"5 Tips to Lift Heavier Weights for Strength Training Exercises\",\n                \"link\": \"https://www.menshealth.com/fitness/a27421631/how-to-lift-heavier/\",\n                \"snippet\": \"May 9, 2019 ... Want to Lift Heavier? Follow These 5 Tips. · Practice Makes Perfect · Make Time To Warm Up · Make Time to Train Often · Turn Up the Tension · Fuel ...\",\n                \"_id\": \"63fd3e8c83c96b99c9da68f4\"\n            },\n            {\n                \"title\": \"How to Start Lifting Weights: 11 Beginner Strength Training Tips\",\n                \"link\": \"https://greatist.com/fitness/how-to-start-lifting-weights\",\n                \"snippet\": \"Feb 27, 2022 ... If you're ready to get those sweet lifting #gains, we've got tips from a ... no science that says a longer workout produces better results.\",\n                \"_id\": \"63fd3e8c83c96b99c9da68f5\"\n            },\n            {\n                \"title\": \"10 reasons why men who lift weights make better humans\",\n                \"link\": \"https://www.menshealth.com/uk/building-muscle/a755369/10-reasons-why-weightlifters-are-better-humans/\",\n                \"snippet\": \"Apr 7, 2016 ... It's all thanks to endorphins, your feel-good chemicals released to ease your body during the physical strain of weightlifting. Advertisement - ...\",\n                \"_id\": \"63fd3e8c83c96b99c9da68f6\"\n            },\n            {\n                \"title\": \"Lifting heavy weights vs. light weights: Why one isn't better than the ...\",\n                \"link\": \"https://www.cnet.com/health/fitness/lifting-heavy-weights-vs-light-weights-is-one-better-than-the-other/\",\n                \"snippet\": \"Nov 8, 2019 ... It all comes down to reps. People lift weights with the goal of making their muscles stronger (and, for some, to get those bulky biceps or lean- ...\",\n                \"_id\": \"63fd3e8c83c96b99c9da68f7\"\n            }\n        ],\n        \"_id\": \"63db3e07429276dccc217cff\"\n    },\n    \"calendarWidget\": {\n        \"events\": [\n            {\n                \"title\": \"ya it workeded\",\n                \"description\": \"that was silly\",\n                \"startDate\": \"2012-11-12T05:00:00.000Z\",\n                \"endDate\": \"2012-11-13T05:00:00.000Z\",\n                \"frequency\": \"daily\",\n                \"_id\": \"63dbcd73e19d6572dd54978b\"\n            }\n        ],\n        \"_id\": \"63db3e07429276dccc217d00\"\n    },\n    \"__v\": 0\n}"
 				}
-			},
-			"response": []
+			]
 		},
 		{
 			"name": "Get External Links",
@@ -536,7 +1491,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/api/hobby/63c6ccc4b354191d93c00a5a/widgets/externallinks",
+					"raw": "http://localhost:3000/api/hobby/63db3e07429276dccc217cf9/widgets/externallinks",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -545,13 +1500,75 @@
 					"path": [
 						"api",
 						"hobby",
-						"63c6ccc4b354191d93c00a5a",
+						"63db3e07429276dccc217cf9",
 						"widgets",
 						"externallinks"
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Get External Links OK Response",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/hobby/63db3e07429276dccc217cf9/widgets/externallinks",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"hobby",
+								"63db3e07429276dccc217cf9",
+								"widgets",
+								"externallinks"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "4518"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"11a6-fcBvXQV6imy6EP5ned5LumZ329Y\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 27 Feb 2023 23:47:18 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"_id\": \"63db3e07429276dccc217cfb\",\n    \"user\": \"63db3db9429276dccc217cee\",\n    \"hobby\": \"63db3e07429276dccc217cf9\",\n    \"taskWidget\": {\n        \"tasks\": [\n            {\n                \"task\": \"New Task\",\n                \"completed\": false,\n                \"_id\": \"63db3e07429276dccc217cfd\"\n            },\n            {\n                \"task\": \"Lift 200 Pounds\",\n                \"completed\": true,\n                \"_id\": \"63fd3fd983c96b99c9da6927\"\n            }\n        ],\n        \"_id\": \"63db3e07429276dccc217cfc\"\n    },\n    \"notesWidget\": {\n        \"note\": \"Make sure to warm up more during next lift\",\n        \"_id\": \"63db3e07429276dccc217cfe\"\n    },\n    \"externalLinksWidget\": {\n        \"links\": [\n            {\n                \"title\": \"Weight training: Do's and don'ts of proper technique - Mayo Clinic\",\n                \"link\": \"https://www.mayoclinic.org/healthy-lifestyle/fitness/in-depth/weight-training/art-20045842\",\n                \"snippet\": \"Use proper form. Learn to do each exercise correctly. When lifting weights, move through the full range of motion in your joints. The better your form, the ...\",\n                \"_id\": \"63fd3e8c83c96b99c9da68ee\"\n            },\n            {\n                \"title\": \"9 Weight Lifting Tips for Beginners That Will Make Your Workout ...\",\n                \"link\": \"https://www.self.com/story/10-strength-training-tips-for-beginners-that-will-make-your-workout-more-effective\",\n                \"snippet\": \"Jan 14, 2022 ... 9 Weight Lifting Tips for Beginners That Will Make Your Workout More Effective · 1. Start with your bodyweight. · 2. Nail down your form. · 3.\",\n                \"_id\": \"63fd3e8c83c96b99c9da68ef\"\n            },\n            {\n                \"title\": \"25 Tips to Build Muscle Fast | Muscle & Fitness\",\n                \"link\": \"https://www.muscleandfitness.com/workouts/workout-tips/25-tips-help-you-build-muscle-and-get-stronger/\",\n                \"snippet\": \"Apply these concepts to outgrow your clothes and break your lifting records. · Lift heavy, Then Light. · Do Medicine Ball Exercises · Build Up Your Deltoids.\",\n                \"_id\": \"63fd3e8c83c96b99c9da68f0\"\n            },\n            {\n                \"title\": \"How to Get Better at Olympic Weightlifting | BarBend\",\n                \"link\": \"https://barbend.com/get-better-olympic-weightlifting/\",\n                \"snippet\": \"How to Get Better at Olympic Weightlifting · 1. Squat with Integrity · 2. Don't Go Too Heavy · 3. Follow a Program · 4. Learn to Develop Tension · 5. Mobilize the ...\",\n                \"_id\": \"63fd3e8c83c96b99c9da68f1\"\n            },\n            {\n                \"title\": \"Want to Lift Heavy? Here Are 5 Must-Dos to Build a Strong ...\",\n                \"link\": \"https://www.self.com/story/strong-foundation\",\n                \"snippet\": \"Aug 28, 2017 ... “Simulating [the lifts] is one of the most effective things you can do,” Seedman says, “and it can be done anywhere at anytime.” So next time ...\",\n                \"_id\": \"63fd3e8c83c96b99c9da68f2\"\n            },\n            {\n                \"title\": \"7 tips for a safe and successful strength training program - Harvard ...\",\n                \"link\": \"https://www.health.harvard.edu/exercise-and-fitness/7-tips-for-a-safe-and-successful-strength-training-program\",\n                \"snippet\": \"... you maintain the strength you need for everyday activities — lifting groceries, ... though some evidence suggests that two to three sets may be better.\",\n                \"_id\": \"63fd3e8c83c96b99c9da68f3\"\n            },\n            {\n                \"title\": \"5 Tips to Lift Heavier Weights for Strength Training Exercises\",\n                \"link\": \"https://www.menshealth.com/fitness/a27421631/how-to-lift-heavier/\",\n                \"snippet\": \"May 9, 2019 ... Want to Lift Heavier? Follow These 5 Tips. · Practice Makes Perfect · Make Time To Warm Up · Make Time to Train Often · Turn Up the Tension · Fuel ...\",\n                \"_id\": \"63fd3e8c83c96b99c9da68f4\"\n            },\n            {\n                \"title\": \"How to Start Lifting Weights: 11 Beginner Strength Training Tips\",\n                \"link\": \"https://greatist.com/fitness/how-to-start-lifting-weights\",\n                \"snippet\": \"Feb 27, 2022 ... If you're ready to get those sweet lifting #gains, we've got tips from a ... no science that says a longer workout produces better results.\",\n                \"_id\": \"63fd3e8c83c96b99c9da68f5\"\n            },\n            {\n                \"title\": \"10 reasons why men who lift weights make better humans\",\n                \"link\": \"https://www.menshealth.com/uk/building-muscle/a755369/10-reasons-why-weightlifters-are-better-humans/\",\n                \"snippet\": \"Apr 7, 2016 ... It's all thanks to endorphins, your feel-good chemicals released to ease your body during the physical strain of weightlifting. Advertisement - ...\",\n                \"_id\": \"63fd3e8c83c96b99c9da68f6\"\n            },\n            {\n                \"title\": \"Lifting heavy weights vs. light weights: Why one isn't better than the ...\",\n                \"link\": \"https://www.cnet.com/health/fitness/lifting-heavy-weights-vs-light-weights-is-one-better-than-the-other/\",\n                \"snippet\": \"Nov 8, 2019 ... It all comes down to reps. People lift weights with the goal of making their muscles stronger (and, for some, to get those bulky biceps or lean- ...\",\n                \"_id\": \"63fd3e8c83c96b99c9da68f7\"\n            }\n        ],\n        \"_id\": \"63db3e07429276dccc217cff\"\n    },\n    \"calendarWidget\": {\n        \"events\": [\n            {\n                \"title\": \"ya it workeded\",\n                \"description\": \"that was silly\",\n                \"startDate\": \"2012-11-12T05:00:00.000Z\",\n                \"endDate\": \"2012-11-13T05:00:00.000Z\",\n                \"frequency\": \"daily\",\n                \"_id\": \"63dbcd73e19d6572dd54978b\"\n            }\n        ],\n        \"_id\": \"63db3e07429276dccc217d00\"\n    },\n    \"__v\": 0\n}"
+				}
+			]
 		},
 		{
 			"name": "Get External Links from Query",
@@ -569,7 +1586,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/api/hobby/63db3e07429276dccc217cf9/widgets/externallinks?query=How to fish",
+					"raw": "http://localhost:3000/api/hobby/63db3e07429276dccc217cf9/widgets/externallinks?query=How to get better at lifting.",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -585,12 +1602,80 @@
 					"query": [
 						{
 							"key": "query",
-							"value": "How to fish"
+							"value": "How to get better at lifting."
 						}
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Get External Links from Query OK Response",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/hobby/63db3e07429276dccc217cf9/widgets/externallinks?query=How to get better at lifting.",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"hobby",
+								"63db3e07429276dccc217cf9",
+								"widgets",
+								"externallinks"
+							],
+							"query": [
+								{
+									"key": "query",
+									"value": "How to get better at lifting."
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "4483"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"1183-ZC0ULFrp14XbRVVwkEyRf4HDyyM\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 27 Feb 2023 23:36:44 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"_id\": \"63db3e07429276dccc217cfb\",\n    \"user\": \"63db3db9429276dccc217cee\",\n    \"hobby\": \"63db3e07429276dccc217cf9\",\n    \"taskWidget\": {\n        \"tasks\": [\n            {\n                \"task\": \"New Task\",\n                \"completed\": false,\n                \"_id\": \"63db3e07429276dccc217cfd\"\n            },\n            {\n                \"task\": \"eat a fish\",\n                \"completed\": false,\n                \"_id\": \"63dbcdaee19d6572dd54979b\"\n            }\n        ],\n        \"_id\": \"63db3e07429276dccc217cfc\"\n    },\n    \"notesWidget\": {\n        \"note\": \"simple note\",\n        \"_id\": \"63db3e07429276dccc217cfe\"\n    },\n    \"externalLinksWidget\": {\n        \"links\": [\n            {\n                \"title\": \"Weight training: Do's and don'ts of proper technique - Mayo Clinic\",\n                \"link\": \"https://www.mayoclinic.org/healthy-lifestyle/fitness/in-depth/weight-training/art-20045842\",\n                \"snippet\": \"Use proper form. Learn to do each exercise correctly. When lifting weights, move through the full range of motion in your joints. The better your form, the ...\",\n                \"_id\": \"63fd3e8c83c96b99c9da68ee\"\n            },\n            {\n                \"title\": \"9 Weight Lifting Tips for Beginners That Will Make Your Workout ...\",\n                \"link\": \"https://www.self.com/story/10-strength-training-tips-for-beginners-that-will-make-your-workout-more-effective\",\n                \"snippet\": \"Jan 14, 2022 ... 9 Weight Lifting Tips for Beginners That Will Make Your Workout More Effective · 1. Start with your bodyweight. · 2. Nail down your form. · 3.\",\n                \"_id\": \"63fd3e8c83c96b99c9da68ef\"\n            },\n            {\n                \"title\": \"25 Tips to Build Muscle Fast | Muscle & Fitness\",\n                \"link\": \"https://www.muscleandfitness.com/workouts/workout-tips/25-tips-help-you-build-muscle-and-get-stronger/\",\n                \"snippet\": \"Apply these concepts to outgrow your clothes and break your lifting records. · Lift heavy, Then Light. · Do Medicine Ball Exercises · Build Up Your Deltoids.\",\n                \"_id\": \"63fd3e8c83c96b99c9da68f0\"\n            },\n            {\n                \"title\": \"How to Get Better at Olympic Weightlifting | BarBend\",\n                \"link\": \"https://barbend.com/get-better-olympic-weightlifting/\",\n                \"snippet\": \"How to Get Better at Olympic Weightlifting · 1. Squat with Integrity · 2. Don't Go Too Heavy · 3. Follow a Program · 4. Learn to Develop Tension · 5. Mobilize the ...\",\n                \"_id\": \"63fd3e8c83c96b99c9da68f1\"\n            },\n            {\n                \"title\": \"Want to Lift Heavy? Here Are 5 Must-Dos to Build a Strong ...\",\n                \"link\": \"https://www.self.com/story/strong-foundation\",\n                \"snippet\": \"Aug 28, 2017 ... “Simulating [the lifts] is one of the most effective things you can do,” Seedman says, “and it can be done anywhere at anytime.” So next time ...\",\n                \"_id\": \"63fd3e8c83c96b99c9da68f2\"\n            },\n            {\n                \"title\": \"7 tips for a safe and successful strength training program - Harvard ...\",\n                \"link\": \"https://www.health.harvard.edu/exercise-and-fitness/7-tips-for-a-safe-and-successful-strength-training-program\",\n                \"snippet\": \"... you maintain the strength you need for everyday activities — lifting groceries, ... though some evidence suggests that two to three sets may be better.\",\n                \"_id\": \"63fd3e8c83c96b99c9da68f3\"\n            },\n            {\n                \"title\": \"5 Tips to Lift Heavier Weights for Strength Training Exercises\",\n                \"link\": \"https://www.menshealth.com/fitness/a27421631/how-to-lift-heavier/\",\n                \"snippet\": \"May 9, 2019 ... Want to Lift Heavier? Follow These 5 Tips. · Practice Makes Perfect · Make Time To Warm Up · Make Time to Train Often · Turn Up the Tension · Fuel ...\",\n                \"_id\": \"63fd3e8c83c96b99c9da68f4\"\n            },\n            {\n                \"title\": \"How to Start Lifting Weights: 11 Beginner Strength Training Tips\",\n                \"link\": \"https://greatist.com/fitness/how-to-start-lifting-weights\",\n                \"snippet\": \"Feb 27, 2022 ... If you're ready to get those sweet lifting #gains, we've got tips from a ... no science that says a longer workout produces better results.\",\n                \"_id\": \"63fd3e8c83c96b99c9da68f5\"\n            },\n            {\n                \"title\": \"10 reasons why men who lift weights make better humans\",\n                \"link\": \"https://www.menshealth.com/uk/building-muscle/a755369/10-reasons-why-weightlifters-are-better-humans/\",\n                \"snippet\": \"Apr 7, 2016 ... It's all thanks to endorphins, your feel-good chemicals released to ease your body during the physical strain of weightlifting. Advertisement - ...\",\n                \"_id\": \"63fd3e8c83c96b99c9da68f6\"\n            },\n            {\n                \"title\": \"Lifting heavy weights vs. light weights: Why one isn't better than the ...\",\n                \"link\": \"https://www.cnet.com/health/fitness/lifting-heavy-weights-vs-light-weights-is-one-better-than-the-other/\",\n                \"snippet\": \"Nov 8, 2019 ... It all comes down to reps. People lift weights with the goal of making their muscles stronger (and, for some, to get those bulky biceps or lean- ...\",\n                \"_id\": \"63fd3e8c83c96b99c9da68f7\"\n            }\n        ],\n        \"_id\": \"63db3e07429276dccc217cff\"\n    },\n    \"calendarWidget\": {\n        \"events\": [\n            {\n                \"title\": \"ya it workeded\",\n                \"description\": \"that was silly\",\n                \"startDate\": \"2012-11-12T05:00:00.000Z\",\n                \"endDate\": \"2012-11-13T05:00:00.000Z\",\n                \"frequency\": \"daily\",\n                \"_id\": \"63dbcd73e19d6572dd54978b\"\n            }\n        ],\n        \"_id\": \"63db3e07429276dccc217d00\"\n    },\n    \"__v\": 0\n}"
+				}
+			]
 		},
 		{
 			"name": "Add Calendar Event",
@@ -609,7 +1694,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"title\": \"ya it workeded\",\n    \"description\":  \"that was silly\",\n    \"startDate\": \"11/12/12\",\n    \"endDate\": \"11/13/12\",\n    \"frequency\": \"daily\"\n}",
+					"raw": "{\n    \"title\": \"Try New Lifting\",\n    \"description\":  \"I am going to try new lifts\",\n    \"startDate\": \"11/12/23\",\n    \"endDate\": \"11/13/23\",\n    \"frequency\": \"weekly\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -640,7 +1725,86 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Add Calendar Event OK Response",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Try New Lifting\",\n    \"description\":  \"I am going to try new lifts\",\n    \"startDate\": \"11/12/23\",\n    \"endDate\": \"11/13/23\",\n    \"frequency\": \"weekly\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/hobby/63db3e07429276dccc217cf9/widgets/calendar/events",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"hobby",
+								"63db3e07429276dccc217cf9",
+								"widgets",
+								"calendar",
+								"events"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "4720"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"1270-5v/zbdIl5FJagW3XVs2Ubttd/cU\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 27 Feb 2023 23:50:07 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"_id\": \"63db3e07429276dccc217cfb\",\n    \"user\": \"63db3db9429276dccc217cee\",\n    \"hobby\": \"63db3e07429276dccc217cf9\",\n    \"taskWidget\": {\n        \"tasks\": [\n            {\n                \"task\": \"New Task\",\n                \"completed\": false,\n                \"_id\": \"63db3e07429276dccc217cfd\"\n            },\n            {\n                \"task\": \"Lift 200 Pounds\",\n                \"completed\": true,\n                \"_id\": \"63fd3fd983c96b99c9da6927\"\n            }\n        ],\n        \"_id\": \"63db3e07429276dccc217cfc\"\n    },\n    \"notesWidget\": {\n        \"note\": \"Make sure to warm up more during next lift\",\n        \"_id\": \"63db3e07429276dccc217cfe\"\n    },\n    \"externalLinksWidget\": {\n        \"links\": [\n            {\n                \"title\": \"Weight training: Do's and don'ts of proper technique - Mayo Clinic\",\n                \"link\": \"https://www.mayoclinic.org/healthy-lifestyle/fitness/in-depth/weight-training/art-20045842\",\n                \"snippet\": \"Use proper form. Learn to do each exercise correctly. When lifting weights, move through the full range of motion in your joints. The better your form, the ...\",\n                \"_id\": \"63fd3e8c83c96b99c9da68ee\"\n            },\n            {\n                \"title\": \"9 Weight Lifting Tips for Beginners That Will Make Your Workout ...\",\n                \"link\": \"https://www.self.com/story/10-strength-training-tips-for-beginners-that-will-make-your-workout-more-effective\",\n                \"snippet\": \"Jan 14, 2022 ... 9 Weight Lifting Tips for Beginners That Will Make Your Workout More Effective · 1. Start with your bodyweight. · 2. Nail down your form. · 3.\",\n                \"_id\": \"63fd3e8c83c96b99c9da68ef\"\n            },\n            {\n                \"title\": \"25 Tips to Build Muscle Fast | Muscle & Fitness\",\n                \"link\": \"https://www.muscleandfitness.com/workouts/workout-tips/25-tips-help-you-build-muscle-and-get-stronger/\",\n                \"snippet\": \"Apply these concepts to outgrow your clothes and break your lifting records. · Lift heavy, Then Light. · Do Medicine Ball Exercises · Build Up Your Deltoids.\",\n                \"_id\": \"63fd3e8c83c96b99c9da68f0\"\n            },\n            {\n                \"title\": \"How to Get Better at Olympic Weightlifting | BarBend\",\n                \"link\": \"https://barbend.com/get-better-olympic-weightlifting/\",\n                \"snippet\": \"How to Get Better at Olympic Weightlifting · 1. Squat with Integrity · 2. Don't Go Too Heavy · 3. Follow a Program · 4. Learn to Develop Tension · 5. Mobilize the ...\",\n                \"_id\": \"63fd3e8c83c96b99c9da68f1\"\n            },\n            {\n                \"title\": \"Want to Lift Heavy? Here Are 5 Must-Dos to Build a Strong ...\",\n                \"link\": \"https://www.self.com/story/strong-foundation\",\n                \"snippet\": \"Aug 28, 2017 ... “Simulating [the lifts] is one of the most effective things you can do,” Seedman says, “and it can be done anywhere at anytime.” So next time ...\",\n                \"_id\": \"63fd3e8c83c96b99c9da68f2\"\n            },\n            {\n                \"title\": \"7 tips for a safe and successful strength training program - Harvard ...\",\n                \"link\": \"https://www.health.harvard.edu/exercise-and-fitness/7-tips-for-a-safe-and-successful-strength-training-program\",\n                \"snippet\": \"... you maintain the strength you need for everyday activities — lifting groceries, ... though some evidence suggests that two to three sets may be better.\",\n                \"_id\": \"63fd3e8c83c96b99c9da68f3\"\n            },\n            {\n                \"title\": \"5 Tips to Lift Heavier Weights for Strength Training Exercises\",\n                \"link\": \"https://www.menshealth.com/fitness/a27421631/how-to-lift-heavier/\",\n                \"snippet\": \"May 9, 2019 ... Want to Lift Heavier? Follow These 5 Tips. · Practice Makes Perfect · Make Time To Warm Up · Make Time to Train Often · Turn Up the Tension · Fuel ...\",\n                \"_id\": \"63fd3e8c83c96b99c9da68f4\"\n            },\n            {\n                \"title\": \"How to Start Lifting Weights: 11 Beginner Strength Training Tips\",\n                \"link\": \"https://greatist.com/fitness/how-to-start-lifting-weights\",\n                \"snippet\": \"Feb 27, 2022 ... If you're ready to get those sweet lifting #gains, we've got tips from a ... no science that says a longer workout produces better results.\",\n                \"_id\": \"63fd3e8c83c96b99c9da68f5\"\n            },\n            {\n                \"title\": \"10 reasons why men who lift weights make better humans\",\n                \"link\": \"https://www.menshealth.com/uk/building-muscle/a755369/10-reasons-why-weightlifters-are-better-humans/\",\n                \"snippet\": \"Apr 7, 2016 ... It's all thanks to endorphins, your feel-good chemicals released to ease your body during the physical strain of weightlifting. Advertisement - ...\",\n                \"_id\": \"63fd3e8c83c96b99c9da68f6\"\n            },\n            {\n                \"title\": \"Lifting heavy weights vs. light weights: Why one isn't better than the ...\",\n                \"link\": \"https://www.cnet.com/health/fitness/lifting-heavy-weights-vs-light-weights-is-one-better-than-the-other/\",\n                \"snippet\": \"Nov 8, 2019 ... It all comes down to reps. People lift weights with the goal of making their muscles stronger (and, for some, to get those bulky biceps or lean- ...\",\n                \"_id\": \"63fd3e8c83c96b99c9da68f7\"\n            }\n        ],\n        \"_id\": \"63db3e07429276dccc217cff\"\n    },\n    \"calendarWidget\": {\n        \"events\": [\n            {\n                \"title\": \"ya it workeded\",\n                \"description\": \"that was silly\",\n                \"startDate\": \"2012-11-12T05:00:00.000Z\",\n                \"endDate\": \"2012-11-13T05:00:00.000Z\",\n                \"frequency\": \"daily\",\n                \"_id\": \"63dbcd73e19d6572dd54978b\"\n            },\n            {\n                \"title\": \"Try New Lifting\",\n                \"description\": \"I am going to try new lifts\",\n                \"startDate\": \"2023-11-12T05:00:00.000Z\",\n                \"endDate\": \"2023-11-13T05:00:00.000Z\",\n                \"frequency\": \"weekly\",\n                \"_id\": \"63fd41af83c96b99c9da6965\"\n            }\n        ],\n        \"_id\": \"63db3e07429276dccc217d00\"\n    },\n    \"__v\": 0\n}"
+				}
+			]
 		},
 		{
 			"name": "Update Calendar Event",
@@ -659,7 +1823,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"title\": \"WORKING\"\n}",
+					"raw": "{\n    \"title\": \"New Lifting Program\",\n    \"description\": \"I am going to try new lifts\",\n    \"startDate\": \"2023-11-12T05:00:00.000Z\",\n    \"endDate\": \"2023-11-13T05:00:00.000Z\",\n    \"frequency\": \"weekly\",\n    \"_id\": \"63fd41af83c96b99c9da6965\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -667,7 +1831,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/hobby/63db3e07429276dccc217cf9/widgets/calendar/events/63db44835ce1d0ebd30d7c78",
+					"raw": "http://localhost:3000/api/hobby/63db3e07429276dccc217cf9/widgets/calendar/events/63fd41af83c96b99c9da6965",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -680,7 +1844,7 @@
 						"widgets",
 						"calendar",
 						"events",
-						"63db44835ce1d0ebd30d7c78"
+						"63fd41af83c96b99c9da6965"
 					],
 					"query": [
 						{
@@ -691,7 +1855,87 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Update Calendar Event OK Response",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"New Lifting Program\",\n    \"description\": \"I am going to try new lifts\",\n    \"startDate\": \"2023-11-12T05:00:00.000Z\",\n    \"endDate\": \"2023-11-13T05:00:00.000Z\",\n    \"frequency\": \"weekly\",\n    \"_id\": \"63fd41af83c96b99c9da6965\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/hobby/63db3e07429276dccc217cf9/widgets/calendar/events/63fd41af83c96b99c9da6965",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"hobby",
+								"63db3e07429276dccc217cf9",
+								"widgets",
+								"calendar",
+								"events",
+								"63fd41af83c96b99c9da6965"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "4724"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"1274-iTF9NRFan/7Xd4C+q0G3bE5Ga30\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 28 Feb 2023 00:18:21 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"_id\": \"63db3e07429276dccc217cfb\",\n    \"user\": \"63db3db9429276dccc217cee\",\n    \"hobby\": \"63db3e07429276dccc217cf9\",\n    \"taskWidget\": {\n        \"tasks\": [\n            {\n                \"task\": \"New Task\",\n                \"completed\": false,\n                \"_id\": \"63db3e07429276dccc217cfd\"\n            },\n            {\n                \"task\": \"Lift 200 Pounds\",\n                \"completed\": true,\n                \"_id\": \"63fd3fd983c96b99c9da6927\"\n            }\n        ],\n        \"_id\": \"63db3e07429276dccc217cfc\"\n    },\n    \"notesWidget\": {\n        \"note\": \"Make sure to warm up more during next lift\",\n        \"_id\": \"63db3e07429276dccc217cfe\"\n    },\n    \"externalLinksWidget\": {\n        \"links\": [\n            {\n                \"title\": \"Weight training: Do's and don'ts of proper technique - Mayo Clinic\",\n                \"link\": \"https://www.mayoclinic.org/healthy-lifestyle/fitness/in-depth/weight-training/art-20045842\",\n                \"snippet\": \"Use proper form. Learn to do each exercise correctly. When lifting weights, move through the full range of motion in your joints. The better your form, the ...\",\n                \"_id\": \"63fd3e8c83c96b99c9da68ee\"\n            },\n            {\n                \"title\": \"9 Weight Lifting Tips for Beginners That Will Make Your Workout ...\",\n                \"link\": \"https://www.self.com/story/10-strength-training-tips-for-beginners-that-will-make-your-workout-more-effective\",\n                \"snippet\": \"Jan 14, 2022 ... 9 Weight Lifting Tips for Beginners That Will Make Your Workout More Effective · 1. Start with your bodyweight. · 2. Nail down your form. · 3.\",\n                \"_id\": \"63fd3e8c83c96b99c9da68ef\"\n            },\n            {\n                \"title\": \"25 Tips to Build Muscle Fast | Muscle & Fitness\",\n                \"link\": \"https://www.muscleandfitness.com/workouts/workout-tips/25-tips-help-you-build-muscle-and-get-stronger/\",\n                \"snippet\": \"Apply these concepts to outgrow your clothes and break your lifting records. · Lift heavy, Then Light. · Do Medicine Ball Exercises · Build Up Your Deltoids.\",\n                \"_id\": \"63fd3e8c83c96b99c9da68f0\"\n            },\n            {\n                \"title\": \"How to Get Better at Olympic Weightlifting | BarBend\",\n                \"link\": \"https://barbend.com/get-better-olympic-weightlifting/\",\n                \"snippet\": \"How to Get Better at Olympic Weightlifting · 1. Squat with Integrity · 2. Don't Go Too Heavy · 3. Follow a Program · 4. Learn to Develop Tension · 5. Mobilize the ...\",\n                \"_id\": \"63fd3e8c83c96b99c9da68f1\"\n            },\n            {\n                \"title\": \"Want to Lift Heavy? Here Are 5 Must-Dos to Build a Strong ...\",\n                \"link\": \"https://www.self.com/story/strong-foundation\",\n                \"snippet\": \"Aug 28, 2017 ... “Simulating [the lifts] is one of the most effective things you can do,” Seedman says, “and it can be done anywhere at anytime.” So next time ...\",\n                \"_id\": \"63fd3e8c83c96b99c9da68f2\"\n            },\n            {\n                \"title\": \"7 tips for a safe and successful strength training program - Harvard ...\",\n                \"link\": \"https://www.health.harvard.edu/exercise-and-fitness/7-tips-for-a-safe-and-successful-strength-training-program\",\n                \"snippet\": \"... you maintain the strength you need for everyday activities — lifting groceries, ... though some evidence suggests that two to three sets may be better.\",\n                \"_id\": \"63fd3e8c83c96b99c9da68f3\"\n            },\n            {\n                \"title\": \"5 Tips to Lift Heavier Weights for Strength Training Exercises\",\n                \"link\": \"https://www.menshealth.com/fitness/a27421631/how-to-lift-heavier/\",\n                \"snippet\": \"May 9, 2019 ... Want to Lift Heavier? Follow These 5 Tips. · Practice Makes Perfect · Make Time To Warm Up · Make Time to Train Often · Turn Up the Tension · Fuel ...\",\n                \"_id\": \"63fd3e8c83c96b99c9da68f4\"\n            },\n            {\n                \"title\": \"How to Start Lifting Weights: 11 Beginner Strength Training Tips\",\n                \"link\": \"https://greatist.com/fitness/how-to-start-lifting-weights\",\n                \"snippet\": \"Feb 27, 2022 ... If you're ready to get those sweet lifting #gains, we've got tips from a ... no science that says a longer workout produces better results.\",\n                \"_id\": \"63fd3e8c83c96b99c9da68f5\"\n            },\n            {\n                \"title\": \"10 reasons why men who lift weights make better humans\",\n                \"link\": \"https://www.menshealth.com/uk/building-muscle/a755369/10-reasons-why-weightlifters-are-better-humans/\",\n                \"snippet\": \"Apr 7, 2016 ... It's all thanks to endorphins, your feel-good chemicals released to ease your body during the physical strain of weightlifting. Advertisement - ...\",\n                \"_id\": \"63fd3e8c83c96b99c9da68f6\"\n            },\n            {\n                \"title\": \"Lifting heavy weights vs. light weights: Why one isn't better than the ...\",\n                \"link\": \"https://www.cnet.com/health/fitness/lifting-heavy-weights-vs-light-weights-is-one-better-than-the-other/\",\n                \"snippet\": \"Nov 8, 2019 ... It all comes down to reps. People lift weights with the goal of making their muscles stronger (and, for some, to get those bulky biceps or lean- ...\",\n                \"_id\": \"63fd3e8c83c96b99c9da68f7\"\n            }\n        ],\n        \"_id\": \"63db3e07429276dccc217cff\"\n    },\n    \"calendarWidget\": {\n        \"events\": [\n            {\n                \"title\": \"ya it workeded\",\n                \"description\": \"that was silly\",\n                \"startDate\": \"2012-11-12T05:00:00.000Z\",\n                \"endDate\": \"2012-11-13T05:00:00.000Z\",\n                \"frequency\": \"daily\",\n                \"_id\": \"63dbcd73e19d6572dd54978b\"\n            },\n            {\n                \"title\": \"New Lifting Program\",\n                \"description\": \"I am going to try new lifts\",\n                \"startDate\": \"2023-11-12T05:00:00.000Z\",\n                \"endDate\": \"2023-11-13T05:00:00.000Z\",\n                \"frequency\": \"weekly\",\n                \"_id\": \"63fd41af83c96b99c9da6965\"\n            }\n        ],\n        \"_id\": \"63db3e07429276dccc217d00\"\n    },\n    \"__v\": 0\n}"
+				}
+			]
 		},
 		{
 			"name": "Delete Calendar Event",
@@ -709,7 +1953,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/api/hobby/63db3e07429276dccc217cf9/widgets/calendar/events/63dbca0be19d6572dd549785",
+					"raw": "http://localhost:3000/api/hobby/63db3e07429276dccc217cf9/widgets/calendar/events/63fd41af83c96b99c9da6965",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -722,7 +1966,7 @@
 						"widgets",
 						"calendar",
 						"events",
-						"63dbca0be19d6572dd549785"
+						"63fd41af83c96b99c9da6965"
 					],
 					"query": [
 						{
@@ -733,7 +1977,78 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Delete Calendar Event OK Response",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/hobby/63db3e07429276dccc217cf9/widgets/calendar/events/63fd41af83c96b99c9da6965",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"hobby",
+								"63db3e07429276dccc217cf9",
+								"widgets",
+								"calendar",
+								"events",
+								"63fd41af83c96b99c9da6965"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "4518"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"11a6-fcBvXQV6imy6EP5ned5LumZ329Y\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 28 Feb 2023 00:21:12 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"_id\": \"63db3e07429276dccc217cfb\",\n    \"user\": \"63db3db9429276dccc217cee\",\n    \"hobby\": \"63db3e07429276dccc217cf9\",\n    \"taskWidget\": {\n        \"tasks\": [\n            {\n                \"task\": \"New Task\",\n                \"completed\": false,\n                \"_id\": \"63db3e07429276dccc217cfd\"\n            },\n            {\n                \"task\": \"Lift 200 Pounds\",\n                \"completed\": true,\n                \"_id\": \"63fd3fd983c96b99c9da6927\"\n            }\n        ],\n        \"_id\": \"63db3e07429276dccc217cfc\"\n    },\n    \"notesWidget\": {\n        \"note\": \"Make sure to warm up more during next lift\",\n        \"_id\": \"63db3e07429276dccc217cfe\"\n    },\n    \"externalLinksWidget\": {\n        \"links\": [\n            {\n                \"title\": \"Weight training: Do's and don'ts of proper technique - Mayo Clinic\",\n                \"link\": \"https://www.mayoclinic.org/healthy-lifestyle/fitness/in-depth/weight-training/art-20045842\",\n                \"snippet\": \"Use proper form. Learn to do each exercise correctly. When lifting weights, move through the full range of motion in your joints. The better your form, the ...\",\n                \"_id\": \"63fd3e8c83c96b99c9da68ee\"\n            },\n            {\n                \"title\": \"9 Weight Lifting Tips for Beginners That Will Make Your Workout ...\",\n                \"link\": \"https://www.self.com/story/10-strength-training-tips-for-beginners-that-will-make-your-workout-more-effective\",\n                \"snippet\": \"Jan 14, 2022 ... 9 Weight Lifting Tips for Beginners That Will Make Your Workout More Effective · 1. Start with your bodyweight. · 2. Nail down your form. · 3.\",\n                \"_id\": \"63fd3e8c83c96b99c9da68ef\"\n            },\n            {\n                \"title\": \"25 Tips to Build Muscle Fast | Muscle & Fitness\",\n                \"link\": \"https://www.muscleandfitness.com/workouts/workout-tips/25-tips-help-you-build-muscle-and-get-stronger/\",\n                \"snippet\": \"Apply these concepts to outgrow your clothes and break your lifting records. · Lift heavy, Then Light. · Do Medicine Ball Exercises · Build Up Your Deltoids.\",\n                \"_id\": \"63fd3e8c83c96b99c9da68f0\"\n            },\n            {\n                \"title\": \"How to Get Better at Olympic Weightlifting | BarBend\",\n                \"link\": \"https://barbend.com/get-better-olympic-weightlifting/\",\n                \"snippet\": \"How to Get Better at Olympic Weightlifting · 1. Squat with Integrity · 2. Don't Go Too Heavy · 3. Follow a Program · 4. Learn to Develop Tension · 5. Mobilize the ...\",\n                \"_id\": \"63fd3e8c83c96b99c9da68f1\"\n            },\n            {\n                \"title\": \"Want to Lift Heavy? Here Are 5 Must-Dos to Build a Strong ...\",\n                \"link\": \"https://www.self.com/story/strong-foundation\",\n                \"snippet\": \"Aug 28, 2017 ... “Simulating [the lifts] is one of the most effective things you can do,” Seedman says, “and it can be done anywhere at anytime.” So next time ...\",\n                \"_id\": \"63fd3e8c83c96b99c9da68f2\"\n            },\n            {\n                \"title\": \"7 tips for a safe and successful strength training program - Harvard ...\",\n                \"link\": \"https://www.health.harvard.edu/exercise-and-fitness/7-tips-for-a-safe-and-successful-strength-training-program\",\n                \"snippet\": \"... you maintain the strength you need for everyday activities — lifting groceries, ... though some evidence suggests that two to three sets may be better.\",\n                \"_id\": \"63fd3e8c83c96b99c9da68f3\"\n            },\n            {\n                \"title\": \"5 Tips to Lift Heavier Weights for Strength Training Exercises\",\n                \"link\": \"https://www.menshealth.com/fitness/a27421631/how-to-lift-heavier/\",\n                \"snippet\": \"May 9, 2019 ... Want to Lift Heavier? Follow These 5 Tips. · Practice Makes Perfect · Make Time To Warm Up · Make Time to Train Often · Turn Up the Tension · Fuel ...\",\n                \"_id\": \"63fd3e8c83c96b99c9da68f4\"\n            },\n            {\n                \"title\": \"How to Start Lifting Weights: 11 Beginner Strength Training Tips\",\n                \"link\": \"https://greatist.com/fitness/how-to-start-lifting-weights\",\n                \"snippet\": \"Feb 27, 2022 ... If you're ready to get those sweet lifting #gains, we've got tips from a ... no science that says a longer workout produces better results.\",\n                \"_id\": \"63fd3e8c83c96b99c9da68f5\"\n            },\n            {\n                \"title\": \"10 reasons why men who lift weights make better humans\",\n                \"link\": \"https://www.menshealth.com/uk/building-muscle/a755369/10-reasons-why-weightlifters-are-better-humans/\",\n                \"snippet\": \"Apr 7, 2016 ... It's all thanks to endorphins, your feel-good chemicals released to ease your body during the physical strain of weightlifting. Advertisement - ...\",\n                \"_id\": \"63fd3e8c83c96b99c9da68f6\"\n            },\n            {\n                \"title\": \"Lifting heavy weights vs. light weights: Why one isn't better than the ...\",\n                \"link\": \"https://www.cnet.com/health/fitness/lifting-heavy-weights-vs-light-weights-is-one-better-than-the-other/\",\n                \"snippet\": \"Nov 8, 2019 ... It all comes down to reps. People lift weights with the goal of making their muscles stronger (and, for some, to get those bulky biceps or lean- ...\",\n                \"_id\": \"63fd3e8c83c96b99c9da68f7\"\n            }\n        ],\n        \"_id\": \"63db3e07429276dccc217cff\"\n    },\n    \"calendarWidget\": {\n        \"events\": [\n            {\n                \"title\": \"ya it workeded\",\n                \"description\": \"that was silly\",\n                \"startDate\": \"2012-11-12T05:00:00.000Z\",\n                \"endDate\": \"2012-11-13T05:00:00.000Z\",\n                \"frequency\": \"daily\",\n                \"_id\": \"63dbcd73e19d6572dd54978b\"\n            }\n        ],\n        \"_id\": \"63db3e07429276dccc217d00\"\n    },\n    \"__v\": 0\n}"
+				}
+			]
 		},
 		{
 			"name": "Add Motivation Post",
@@ -760,23 +2075,23 @@
 						},
 						{
 							"key": "title",
-							"value": "some motivation",
+							"value": "Really Cool Calve Raise",
 							"type": "text"
 						},
 						{
 							"key": "sharable",
-							"value": "false",
+							"value": "true",
 							"type": "text"
 						},
 						{
 							"key": "description",
-							"value": "a description",
+							"value": "I was able to bench press 23 pounds",
 							"type": "text"
 						}
 					]
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/hobby/63db3e07429276dccc217cf9/widgets/motivation/post",
+					"raw": "http://localhost:3000/api/hobby/640548545d018f73e69ca97a/widgets/motivation/post",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -785,7 +2100,7 @@
 					"path": [
 						"api",
 						"hobby",
-						"63db3e07429276dccc217cf9",
+						"640548545d018f73e69ca97a",
 						"widgets",
 						"motivation",
 						"post"
@@ -799,7 +2114,102 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Add Motivation Post OK Response",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "photo",
+									"type": "file",
+									"src": "/Users/jackmchugh/Desktop/response.heic"
+								},
+								{
+									"key": "title",
+									"value": "New Lifting Record",
+									"type": "text"
+								},
+								{
+									"key": "sharable",
+									"value": "false",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "I was able to bench press 300 pounds",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/hobby/63db3e07429276dccc217cf9/widgets/motivation/post",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"hobby",
+								"63db3e07429276dccc217cf9",
+								"widgets",
+								"motivation",
+								"post"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "347"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"15b-MUmgCA9c3CWNgwlcJsTKpVzT2DQ\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 28 Feb 2023 00:33:14 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"user\": {\n        \"_id\": \"63db3db9429276dccc217cee\",\n        \"name\": \"John Appleseed\",\n        \"__v\": 0\n    },\n    \"hobby\": {\n        \"id\": \"63db3e07429276dccc217cf9\",\n        \"name\": \"Lifting\"\n    },\n    \"title\": \"New Lifting Record\",\n    \"description\": \"I was able to bench press 300 pounds\",\n    \"sharable\": false,\n    \"postDate\": \"2023-02-28T00:33:14.227Z\",\n    \"image\": \"63fd4bca76c3439513922145\",\n    \"_id\": \"63fd4bca76c343951392215e\",\n    \"__v\": 0\n}"
+				}
+			]
 		},
 		{
 			"name": "Delete Motivation Post",
@@ -817,7 +2227,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/api/hobby/63db3e07429276dccc217cf9/widgets/motivation/post/63ed3345223ae618eabfd298",
+					"raw": "http://localhost:3000/api/hobby/63db3e07429276dccc217cf9/widgets/motivation/post/63fd4bca76c343951392215e",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -830,7 +2240,7 @@
 						"widgets",
 						"motivation",
 						"post",
-						"63ed3345223ae618eabfd298"
+						"63fd4bca76c343951392215e"
 					],
 					"query": [
 						{
@@ -841,7 +2251,78 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Delete Motivation Post OK Response",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/hobby/63db3e07429276dccc217cf9/widgets/motivation/post/63fd4bca76c343951392215e",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"hobby",
+								"63db3e07429276dccc217cf9",
+								"widgets",
+								"motivation",
+								"post",
+								"63fd4bca76c343951392215e"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "36"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"24-/VrmG3vcjhu+TWyLWwTOv+73kjw\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 28 Feb 2023 00:37:55 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Post and image deleted\"\n}"
+				}
+			]
 		},
 		{
 			"name": "Get Motivation Posts",
@@ -882,7 +2363,190 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Get Motivation Posts OK Response",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/hobby/63db3e07429276dccc217cf9/widgets/motivation/post",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"hobby",
+								"63db3e07429276dccc217cf9",
+								"widgets",
+								"motivation",
+								"post"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "349"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"15d-P06iyVaLjXOoLqzLchnd/GiLE8s\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 28 Feb 2023 03:09:45 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"_id\": \"63fd4d7476c3439513922184\",\n        \"user\": {\n            \"_id\": \"63db3db9429276dccc217cee\",\n            \"name\": \"John Appleseed\",\n            \"__v\": 0\n        },\n        \"hobby\": {\n            \"id\": \"63db3e07429276dccc217cf9\",\n            \"name\": \"Lifting\"\n        },\n        \"title\": \"New Lifting Record\",\n        \"description\": \"I was able to bench press 300 pounds\",\n        \"sharable\": false,\n        \"postDate\": \"2023-02-28T00:40:20.689Z\",\n        \"image\": \"63fd4d7476c343951392216b\",\n        \"__v\": 0\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Get Single Motivation Post",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Bearer Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/hobby/63db3e07429276dccc217cf9/widgets/motivation/post/6400f888300a3ea5ea5ec33a",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"hobby",
+						"63db3e07429276dccc217cf9",
+						"widgets",
+						"motivation",
+						"post",
+						"6400f888300a3ea5ea5ec33a"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get Single Motivation Post OK Response",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/hobby/63db3e07429276dccc217cf9/widgets/motivation/post/6400f888300a3ea5ea5ec33a",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"hobby",
+								"63db3e07429276dccc217cf9",
+								"widgets",
+								"motivation",
+								"post",
+								"6400f888300a3ea5ea5ec33a"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "346"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"15a-GS2k9mIYPn+6d9y+O6+EpM8ptx0\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 02 Mar 2023 19:31:11 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"_id\": \"6400f888300a3ea5ea5ec33a\",\n    \"user\": {\n        \"_id\": \"63db3db9429276dccc217cee\",\n        \"name\": \"John Appleseed\",\n        \"__v\": 0\n    },\n    \"hobby\": {\n        \"id\": \"63db3e07429276dccc217cf9\",\n        \"name\": \"Lifting\"\n    },\n    \"title\": \"New Lifting Records\",\n    \"description\": \"I was able to bench press 23 pounds\",\n    \"sharable\": true,\n    \"postDate\": \"2023-03-02T19:27:04.337Z\",\n    \"image\": \"6400f888300a3ea5ea5ec311\",\n    \"__v\": 0\n}"
+				}
+			]
 		},
 		{
 			"name": "Get Motivation Public Posts",
@@ -922,7 +2586,76 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "Get Motivation Public Posts OK Response",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/hobby/63db3e07429276dccc217cf9/widgets/motivation/post?scope=public",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"hobby",
+								"63db3e07429276dccc217cf9",
+								"widgets",
+								"motivation",
+								"post"
+							],
+							"query": [
+								{
+									"key": "scope",
+									"value": "public"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "347"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"15b-fnqykNavh34SsxBPTC8cBPZE4is\""
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 28 Feb 2023 03:14:26 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"_id\": \"63fd718776c34395139221c4\",\n        \"user\": {\n            \"_id\": \"63db3db9429276dccc217cee\",\n            \"name\": \"John Appleseed\",\n            \"__v\": 0\n        },\n        \"hobby\": {\n            \"id\": \"63db3e07429276dccc217cf9\",\n            \"name\": \"Lifting\"\n        },\n        \"title\": \"New Lifting Record\",\n        \"description\": \"I was able to bench press 23 pounds\",\n        \"sharable\": true,\n        \"postDate\": \"2023-02-28T03:14:15.398Z\",\n        \"image\": \"63fd718776c34395139221ab\",\n        \"__v\": 0\n    }\n]"
+				}
+			]
 		},
 		{
 			"name": "Get Motivation Posts Image",
@@ -940,7 +2673,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/api/hobby/63db3e07429276dccc217cf9/widgets/motivation/post/63eda3f9e198b779ca4134b3/image",
+					"raw": "http://localhost:3000/api/hobby/63db3e07429276dccc217cf9/widgets/motivation/post/63fd718776c34395139221c4/image",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -953,7 +2686,7 @@
 						"widgets",
 						"motivation",
 						"post",
-						"63eda3f9e198b779ca4134b3",
+						"63fd718776c34395139221c4",
 						"image"
 					],
 					"query": [
@@ -963,9 +2696,327 @@
 							"disabled": true
 						}
 					]
-				}
+				},
+				"description": "There is no example response for this since the response is too large."
 			},
 			"response": []
+		},
+		{
+			"name": "Get AI Response from Message",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Bearer Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/hobby/64016871a3e405273e6366c0/widgets/assistant?message=I am sorry for bothering you",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"hobby",
+						"64016871a3e405273e6366c0",
+						"widgets",
+						"assistant"
+					],
+					"query": [
+						{
+							"key": "message",
+							"value": "I am sorry for bothering you"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get AI Response OK Message",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/hobby/6400ebaf83970bd8c8f12aec/widgets/assistant?message=what is you name and purpose?",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"hobby",
+								"6400ebaf83970bd8c8f12aec",
+								"widgets",
+								"assistant"
+							],
+							"query": [
+								{
+									"key": "message",
+									"value": "what is you name and purpose?"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "303"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"12f-4G8TqI0OPwz9jJw7rRyRwwyqwmI\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 02 Mar 2023 18:38:44 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"My name is Erica and my purpose is to provide assistance and guidance to people like you who are interested in the lifting hobby. I'm here to answer any questions you may have, offer support and encouragement, and help you achieve your fitness and health goals. How can I assist you today?\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Get AI Response from Message with History",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Bearer Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/hobby/6400ebaf83970bd8c8f12aec/widgets/assistant?history=true&message=How do I grow my quads?",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"hobby",
+						"6400ebaf83970bd8c8f12aec",
+						"widgets",
+						"assistant"
+					],
+					"query": [
+						{
+							"key": "history",
+							"value": "true"
+						},
+						{
+							"key": "message",
+							"value": "How do I grow my quads?"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get AI Response from Message OK Response",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/hobby/6400ebaf83970bd8c8f12aec/widgets/assistant?history=true&message=How do I grow my quads?",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"hobby",
+								"6400ebaf83970bd8c8f12aec",
+								"widgets",
+								"assistant"
+							],
+							"query": [
+								{
+									"key": "history",
+									"value": "true"
+								},
+								{
+									"key": "message",
+									"value": "How do I grow my quads?"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "2947"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"b83-4ii/LrUTP8EZ4WP16x1V6EouHIs\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 02 Mar 2023 18:45:10 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"role\": \"user\",\n        \"content\": \"hello\",\n        \"date\": \"2023-03-02T18:32:42.666Z\"\n    },\n    {\n        \"role\": \"assistant\",\n        \"content\": \"Hi there! How can I assist you in your lifting journey today?\",\n        \"date\": \"2023-03-02T18:32:43.319Z\"\n    },\n    {\n        \"role\": \"user\",\n        \"content\": \"How many push ups should I do\",\n        \"date\": \"2023-03-02T18:33:05.125Z\"\n    },\n    {\n        \"role\": \"assistant\",\n        \"content\": \"That's a great question! How many push-ups you should do depends on your fitness level and goals. If you're just starting, it's important to start with a smaller number of push-ups and gradually increase as your body adapts. A good way to start is with 3 sets of 8-10 push-ups, taking breaks between sets as needed. If you feel comfortable with that, try adding an extra set or increasing the reps gradually over time. Remember, consistency is key!\",\n        \"date\": \"2023-03-02T18:33:06.662Z\"\n    },\n    {\n        \"role\": \"user\",\n        \"content\": \"When will my body addapt\",\n        \"date\": \"2023-03-02T18:33:30.180Z\"\n    },\n    {\n        \"role\": \"assistant\",\n        \"content\": \"Your body will begin to adapt to the stress of push-ups after regular and consistent effort over time. It's important to challenge yourself but also to listen to your body and avoid pushing too hard too soon, as this can lead to injury or burnout. With time and effort, your body will become stronger, and you'll be able to perform more push-ups with better form and technique. Make sure to also fuel your body with healthy foods and give yourself adequate rest and recovery between workouts. Keep up the good work and stay motivated!\",\n        \"date\": \"2023-03-02T18:33:31.649Z\"\n    },\n    {\n        \"role\": \"user\",\n        \"content\": \"what is you name and purpose?\",\n        \"date\": \"2023-03-02T18:38:43.443Z\"\n    },\n    {\n        \"role\": \"assistant\",\n        \"content\": \"My name is Erica and my purpose is to provide assistance and guidance to people like you who are interested in the lifting hobby. I'm here to answer any questions you may have, offer support and encouragement, and help you achieve your fitness and health goals. How can I assist you today?\",\n        \"date\": \"2023-03-02T18:38:44.575Z\"\n    },\n    {\n        \"role\": \"user\",\n        \"content\": \"How do I grow my quads?\",\n        \"date\": \"2023-03-02T18:45:08.210Z\"\n    },\n    {\n        \"role\": \"assistant\",\n        \"content\": \"There are many exercises and techniques that can help you grow your quads. Firstly, it's important to incorporate compound exercises, such as squats and lunges, into your routine. These exercises target multiple muscle groups, including the quads, and can help you build overall strength and muscle mass. Additionally, isolation exercises, such as leg extensions and leg presses, can also help you target your quads directly.\\n\\nTo maximize muscle growth, it's important to challenge yourself with heavier weights, progressive overload, and proper form. In addition to strength training, make sure to also incorporate adequate rest and recovery time, as well as proper nutrition to fuel your muscles and aid in recovery.\\n\\nRemember, consistency is key when it comes to building muscle. Keep at it, stay motivated, and you'll see progress over time!\",\n        \"date\": \"2023-03-02T18:45:10.307Z\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Get AI Chat History",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Bearer Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/hobby/64016871a3e405273e6366c0/widgets/assistant",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"hobby",
+						"64016871a3e405273e6366c0",
+						"widgets",
+						"assistant"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get AI Chat History OK Response",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/hobby/6400ebaf83970bd8c8f12aec/widgets/assistant",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"hobby",
+								"6400ebaf83970bd8c8f12aec",
+								"widgets",
+								"assistant"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "2947"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"b83-4ii/LrUTP8EZ4WP16x1V6EouHIs\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 02 Mar 2023 18:47:09 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"role\": \"user\",\n        \"content\": \"hello\",\n        \"date\": \"2023-03-02T18:32:42.666Z\"\n    },\n    {\n        \"role\": \"assistant\",\n        \"content\": \"Hi there! How can I assist you in your lifting journey today?\",\n        \"date\": \"2023-03-02T18:32:43.319Z\"\n    },\n    {\n        \"role\": \"user\",\n        \"content\": \"How many push ups should I do\",\n        \"date\": \"2023-03-02T18:33:05.125Z\"\n    },\n    {\n        \"role\": \"assistant\",\n        \"content\": \"That's a great question! How many push-ups you should do depends on your fitness level and goals. If you're just starting, it's important to start with a smaller number of push-ups and gradually increase as your body adapts. A good way to start is with 3 sets of 8-10 push-ups, taking breaks between sets as needed. If you feel comfortable with that, try adding an extra set or increasing the reps gradually over time. Remember, consistency is key!\",\n        \"date\": \"2023-03-02T18:33:06.662Z\"\n    },\n    {\n        \"role\": \"user\",\n        \"content\": \"When will my body addapt\",\n        \"date\": \"2023-03-02T18:33:30.180Z\"\n    },\n    {\n        \"role\": \"assistant\",\n        \"content\": \"Your body will begin to adapt to the stress of push-ups after regular and consistent effort over time. It's important to challenge yourself but also to listen to your body and avoid pushing too hard too soon, as this can lead to injury or burnout. With time and effort, your body will become stronger, and you'll be able to perform more push-ups with better form and technique. Make sure to also fuel your body with healthy foods and give yourself adequate rest and recovery between workouts. Keep up the good work and stay motivated!\",\n        \"date\": \"2023-03-02T18:33:31.649Z\"\n    },\n    {\n        \"role\": \"user\",\n        \"content\": \"what is you name and purpose?\",\n        \"date\": \"2023-03-02T18:38:43.443Z\"\n    },\n    {\n        \"role\": \"assistant\",\n        \"content\": \"My name is Erica and my purpose is to provide assistance and guidance to people like you who are interested in the lifting hobby. I'm here to answer any questions you may have, offer support and encouragement, and help you achieve your fitness and health goals. How can I assist you today?\",\n        \"date\": \"2023-03-02T18:38:44.575Z\"\n    },\n    {\n        \"role\": \"user\",\n        \"content\": \"How do I grow my quads?\",\n        \"date\": \"2023-03-02T18:45:08.210Z\"\n    },\n    {\n        \"role\": \"assistant\",\n        \"content\": \"There are many exercises and techniques that can help you grow your quads. Firstly, it's important to incorporate compound exercises, such as squats and lunges, into your routine. These exercises target multiple muscle groups, including the quads, and can help you build overall strength and muscle mass. Additionally, isolation exercises, such as leg extensions and leg presses, can also help you target your quads directly.\\n\\nTo maximize muscle growth, it's important to challenge yourself with heavier weights, progressive overload, and proper form. In addition to strength training, make sure to also incorporate adequate rest and recovery time, as well as proper nutrition to fuel your muscles and aid in recovery.\\n\\nRemember, consistency is key when it comes to building muscle. Keep at it, stay motivated, and you'll see progress over time!\",\n        \"date\": \"2023-03-02T18:45:10.307Z\"\n    }\n]"
+				}
+			]
 		}
 	],
 	"variable": [
