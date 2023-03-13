@@ -5,9 +5,9 @@ services:
     container_name: hobbyistic-angular
     image: angular
     restart: always
-    build: ./hobbyistic/
+    build: ./Hobbyistic/
     ports: 
-      - "4200:4200"
+      - "443:443"
     links:
       - node
     depends_on:

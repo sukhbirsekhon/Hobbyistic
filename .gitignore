@@ -12,6 +12,7 @@ report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 
 #Mongo data
 data
+certs
 
 # Runtime data
 pids
