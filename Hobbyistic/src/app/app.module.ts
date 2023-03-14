@@ -23,6 +23,9 @@ import { MotivationComponent } from './user/dashboard/motivation/motivation.comp
 import { AddHobbyComponent } from './user/add-hobby/add-hobby.component';
 import { EditHobbyComponent } from './user/edit-hobby/edit-hobby.component';
 import { AddPostComponent } from './user/add-post/add-post.component';
+import { AddTaskComponent } from './user/add-task/add-task.component';
+import { EditTaskComponent } from './user/edit-task/edit-task.component';
+
 
 @NgModule({
   declarations: [
@@ -41,6 +44,8 @@ import { AddPostComponent } from './user/add-post/add-post.component';
     AddHobbyComponent,
     EditHobbyComponent,
     AddPostComponent
+    AddTaskComponent,
+    EditTaskComponent
   ],
   imports: [
     BrowserModule,

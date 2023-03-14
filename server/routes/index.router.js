@@ -25,6 +25,7 @@ router.get('/hobby/:hobbyId/widgets', auth.required, widgetsController.getWigets
 
 ///task widget
 router.get('/hobby/:hobbyId/widgets/tasks', auth.required, widgetsController.getTaskWidget);
+router.get('/hobby/:hobbyId/widgets/tasks/:taskId', auth.required, widgetsController.getSingleTask);
 router.post('/hobby/:hobbyId/widgets/tasks', auth.required, widgetsController.addTask);
 router.put('/hobby/:hobbyId/widgets/tasks/:taskId', auth.required, widgetsController.updateTask);
 router.delete('/hobby/:hobbyId/widgets/tasks/:taskId', auth.required, widgetsController.deleteTask);
