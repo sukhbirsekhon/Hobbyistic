@@ -7,6 +7,7 @@ export interface MotivationWidget {
     sharable?:    boolean;
     postDate?:    Date;
     image?:       string;
+    dbImage?:     any;
     __v?:         number;
 }
 

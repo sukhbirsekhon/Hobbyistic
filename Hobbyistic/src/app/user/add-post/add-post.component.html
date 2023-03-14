@@ -1,22 +1,37 @@
 <div class="container">
+    
     <div class="row topLayout">
+        
         <div class="col-lg-4 titleLayout">
+            
             <div class="dropdown">
+
                 <button class="dropdown-toggle dropBtn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Motivation <img src="../assets/images/dropdwn.png" id="dropIcon"/></button>
+                
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+
                     <a class="dropdown-item drop-Item" routerLink="/main">Dashboard</a><br>
                     <a class="dropdown-item drop-Item" [routerLink]="['/dashboard', hobby.id]">My Widgets</a><br>
                     <a class="dropdown-item drop-Item" [routerLink]="['/calendar', hobby.id]">Calendar</a><br>
                     <a class="dropdown-item drop-Item" [routerLink]="['/checklist', hobby.id]">Task List</a><br>
                     <a class="dropdown-item drop-Item" [routerLink]="['/external-links', hobby.id]">Useful Links</a>
+
                 </div>
+
             </div>
+
         </div>
+
         <div class="col-sm-12 col-md-6 col-lg-4 boxLayout">
+            
             <p><a class="title" routerLink="/main">Hobbyistic</a></p>  
+        
         </div>
+        
         <div class="col-lg-1"></div>
+
         <div class="col-md-6 col-lg-3 iconLayout">
+
             <div class="row">
                 <div class="col-md-4 col-lg-4">
                     <img src="../assets/images/Logout.png" alt="Logout" routerLink="/login"/>
@@ -28,53 +43,29 @@
                     <img src="../assets/images/Settings.png" alt="Settings"/>
                 </div>
             </div>
+
         </div>
+    
     </div>
 
-    <div [style.display]="isPostsVisible ? 'block' : 'none'">
+    <div>
+        <form #addPostForm="ngForm" (ngSubmit)="submitPost(addPostForm)">
+            <input [ngModelOptions]="{standalone: true}" [(ngModel)]="motivationWidget.title" placeholder="Add Title"/><br>
+            <input [ngModelOptions]="{standalone: true}" [(ngModel)]="motivationWidget.description" placeholder="Add Description"/><br>
+            <input type="checkbox" [ngModelOptions]="{standalone: true}" [(ngModel)]="motivationWidget.sharable" name=""/>
 
-        <div [style.display]="isPublicVisible ? 'block' : 'none'"> 
-            <h1>Public Posts</h1>
-        </div>
-        <div [style.display]="isPublicVisible ? 'block' : 'none'" *ngFor = "let post of publicPosts">
-            
-            <h2>{{ post.title }}</h2>
-            <img [src]="post.dbImage" alt="An Image that motivates">
-            <p>{{ post.description }}</p>
-            
-            <div>
-                <p>Posted on {{ post.postDate }}</p>
+            <input type="file" class="file-input" (change)="onFileSelected($event)" accept="image/*" #fileUpload>
+            <div class="file-upload">
+                {{fileName || "No file uploaded yet."}}
+                <img src="../assets/images/upload.jpg" (click)="fileUpload.click()" />
+                
             </div>
-            <img src="../assets/images/delete.svg" (click)="viewDeleteForm(); getSinglePostInstance(post)" class="deleteBtn" style="width: 2.25em">
-        </div>
-
-        <div [style.display]="isUserVisible ? 'block' : 'none'">
-            <h1>Your Posts</h1>
-        </div>
-
-        <div [style.display]="isUserVisible ? 'block' : 'none'" *ngFor = "let upost of userPosts">
-
-            <h2>{{ upost.title }}</h2>
-            <img [src]="upost.dbImage" alt="An Image that motivates">
-            <p>{{ upost.description }}</p>
-
-            <div>
-                <p>Posted on {{ upost.postDate }}</p>
+            <div [style.display]="warning ? 'block' : 'none'">
+                <p class="warningMsg">Please submit an image to continue</p>
             </div>
-            <img src="../assets/images/delete.svg" (click)="viewDeleteForm(); getSinglePostInstance(upost)" class="deleteBtn" style="width: 2.25em">
-        </div>
-
-        <img src="../assets/images/add.svg" [routerLink]="['/add-post', hobby.id]" />
-        <button (click)="viewUserPosts()">My Posts</button>
-        <button (click)="viewPublicPosts()">Public Posts</button>
-        
+            <input type="submit" value="Submit"/>
+            <input type="button" value="Cancel" [routerLink]="['/motivation', hobby.id]"/> 
+        </form>
     </div>
 
-    <div [style.display]="isDeleteFormVisible ? 'block' : 'none'">
-        <p>Are you sure you'd like to delete this post?</p>
-        <button (click)="deletePost(); reload();">Yes</button>
-        <button (click)="viewPosts()">No</button>
-    </div>
 </div>
-
-

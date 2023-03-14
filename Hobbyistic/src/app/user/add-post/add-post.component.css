@@ -13,7 +13,7 @@
     background-color: #DBE4EE;
 }
 
-img:not(#addIcon)
+img:not(#addIcon):not(#dropIcon)
 {
     width: 3em;
 }
@@ -25,6 +25,37 @@ img:not(#addIcon)
     text-align: center;
 }
 
+.dropBtn
+{
+    background-color: transparent;
+    color:#DBE4EE;
+    border: none;
+    padding-top: 0.35em;
+}
+
+.dropdown
+{
+    text-align: left;
+}
+
+.drop-Item
+{
+    color: #DBE4EE;
+}
+
+.dropdown-menu
+{
+    background-color: #27473A;
+    margin-top: 2.1em;
+    width: 60%;
+    text-align: center;
+}
+
+#dropIcon
+{
+    width: 1em;
+}
+
 #addIcon
 {
     margin-top: 1.5em;
@@ -34,26 +65,30 @@ img:not(#addIcon)
 
 #addIcon:hover
 {
-    background-color: #386150;
+    background-color: #27473A;
     border-radius: 100%;
 }
 
-p, .title, h2
+.title, h2
 {
     color: #DBE4EE;
 }
 
-h2
+.linkBox
+{
+    border: solid 1px black;
+}
+
+h2, .dropBtn
 {
     text-align: center;
     font-size: 3em;
     margin-top: 0;
-    padding-top: 0.5em;
 }
 
-.dropdown
+h2
 {
-    text-align: left;
+    padding-top: 0.5em;
 }
 
 .topLayout
@@ -72,12 +107,6 @@ h2
     border-radius: 2.5px;
 }
 
-.hobbyName h2
-{
-    padding-top: 1em;
-    color: black;
-}
-
 .boxLayout
 {
     text-align: center; 
@@ -88,25 +117,26 @@ h2
     padding-top: 0.5em;
 }
 
+.hobbyName h2
+{
+    padding-top: 1em;
+    color: black;
+}
+
 .iconLayout
 {
     padding-top: 2.5em;
     text-align: center;
 }
 
-.widgetBox, .widgetSubBox
+.widgetBox
 {
     border: solid 1px black;
-    border-radius: 20px;
-    padding-top: 1em;
-    background-color: #27473A;
 }
 
 a
 {
     font-size: 2em;
-    font-family: 'Caveat', cursive;
-    color: #DBE4EE;
 }
 
 p
@@ -116,17 +146,23 @@ p
 
 .allWidgets
 {
-    margin-bottom: 1em;
+    margin-top: 5em;
 }
 
 .widgetBox
 {
-    padding-bottom: 33em;
+    padding-top: 7.5em;
+    padding-bottom: 7.55em;
 }
 
-.widgetSubBox
+.file-input
 {
-    padding-bottom: 14.15em;
+    display: none;
+}
+
+.warningMsg
+{
+    color:darkred;
 }
 
 @media screen and (max-width: 768px) {

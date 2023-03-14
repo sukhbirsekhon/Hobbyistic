@@ -144,6 +144,11 @@ p
     text-align: center;
 }
 
+.deleteBtn
+{
+    cursor: pointer;
+}
+
 .allWidgets
 {
     margin-top: 5em;
