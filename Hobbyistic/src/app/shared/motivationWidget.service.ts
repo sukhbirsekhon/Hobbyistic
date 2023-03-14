@@ -37,10 +37,10 @@ export class motivationWidgetService
         return this.http.get<MotivationWidget>("http://localhost:3000/api/hobby/" + hobby.id + "/widgets/motivation/post/" + motivationWidget._id, {headers: header});
     }
 
-    getPostImage(hobby: Hobby, motivationWidget: MotivationWidget): Observable<MotivationWidget>{
+    getPostImage(hobby: Hobby, motivationWidget: MotivationWidget): Observable<Blob>{
         let header = new HttpHeaders().set('Authorization',`Bearer ${localStorage.getItem('token')!}`);
-        return this.http.get<MotivationWidget>("http://localhost:3000/api/hobby/" + hobby.id + "/widgets/motivation/post/" + motivationWidget.image + "/image", {headers: header});
-    }
+        return this.http.get("http://localhost:3000/api/hobby/" + hobby.id + "/widgets/motivation/post/" + motivationWidget._id + "/image", {headers: header, responseType: 'blob'});
+      }
 
     addPost(hobby: Hobby, motivationWidget: MotivationWidget): Observable<MotivationWidget>{
         let header = new HttpHeaders().set('Authorization',`Bearer ${localStorage.getItem('token')!}`);

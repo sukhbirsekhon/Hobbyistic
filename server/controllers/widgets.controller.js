@@ -298,7 +298,7 @@ module.exports.addMotivationPost = (req, res, next) => {
         if (!user) { 
             return res.status(401).json({errors: {user: "Unauthorized"}}); 
         }
-    Hobby.findOne({user: req.auth.id, hobby: req.params.hobbyId}, (err, hobby) => {
+    Hobby.findOne({user: req.auth.id, _id: req.params.hobbyId}, (err, hobby) => {
         if (err) {
             return next(err);
         }
@@ -329,16 +329,16 @@ module.exports.addMotivationPost = (req, res, next) => {
 }
 
 module.exports.getPostImage = (req, res, next) => {
-const bucket = new GridFSBucket(mongoose.connection.db, {bucketName: 'photo'});
-  if (req.auth == null) {
-    return res.status(401).json({ errors: { user: 'Unauthorized' } });
-  }
-  User.findById(req.auth.id)
-    .then(function (user) {
-      if (!user) {
+    const bucket = new GridFSBucket(mongoose.connection.db, {bucketName: 'photo'});
+    if (req.auth == null) {
         return res.status(401).json({ errors: { user: 'Unauthorized' } });
-      }
-      Post.findOne({ user: req.auth.id, hobby: req.params.hobbyId,_id: req.params.postId , $or: [{sharable: true, _id: req.params.postId}]}).then(function(post) {
+    }
+    User.findById(req.auth.id)
+    .then(function (user) {
+        if (!user) {
+        return res.status(401).json({ errors: { user: 'Unauthorized' } });
+        }
+        Post.findOne({$or:[{_id:req.params.postId,sharable:true},{_id:req.params.postId,sharable:false,user:req.auth.id,hobby:req.params.hobbyId}]}).then(function(post) {
         if (!post) {
             return res.status(404).json({ errors: { post: 'Post not found' } });
         }
@@ -376,6 +376,7 @@ module.exports.getMotivationPosts = (req, res, next) => {
 };
 
 module.exports.deleteMotivationPost = (req, res, next) => {
+    console.log('delete called');
     const bucket = new GridFSBucket(mongoose.connection.db, {bucketName: 'photo'});
     if (req.auth == null) {
         return res.status(401).json({errors: {user: "Unauthorized"}}); 
