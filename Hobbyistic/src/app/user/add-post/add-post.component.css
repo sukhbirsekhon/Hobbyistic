@@ -103,13 +103,13 @@ h2
 
 .hobbyBox
 {
-    border: 1px solid #ffffff;
+    border: 1px solid #333;
     border-radius: 2.5px;
 }
 
 .boxLayout
 {
-    text-align: center;
+    text-align: center; 
 }
 
 .titleLayout
@@ -153,6 +153,16 @@ p
 {
     padding-top: 7.5em;
     padding-bottom: 7.55em;
+}
+
+.file-input
+{
+    display: none;
+}
+
+.warningMsg
+{
+    color:darkred;
 }
 
 @media screen and (max-width: 768px) {

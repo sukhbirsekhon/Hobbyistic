@@ -30,17 +30,44 @@ img:not(#addIcon)
     margin-top: 1.5em;
     width: 4em;
     float: right;
+    rotate: -45deg;
 }
 
 #addIcon:hover
 {
-    background-color: #27473A;
+    background-color: #ff6459;
     border-radius: 100%;
+}
+
+#add
+{
+    float: right;
+    background-color: #27473A;
+    text-decoration: none;
+    color: #DBE4EE;
+    border-radius: 2.5px;
+    padding-left: 0.6em;
+    padding-right: 0.6em;
+    padding-bottom: 0.2em;
+    margin-bottom: 1em;
+    border: .075em solid #4A442D;
+}
+
+#add:hover
+{
+    background-color: #DBE4EE;
+    color: #4A442D;
 }
 
 p, .title, h2
 {
     color: #DBE4EE;
+}
+
+form
+{
+    padding-top: 2em;
+    padding-bottom: 2em;
 }
 
 .template
@@ -61,7 +88,7 @@ p, .title, h2
 .template a
 {
     font-size: 2.5em;
-    color: #27473A;
+    color: #386150;
     text-decoration: none;
 }
 
@@ -88,11 +115,6 @@ h2
     padding-top: 0.5em;
 }
 
-.dropdown
-{
-    text-align: left;
-}
-
 .topLayout
 {
     background-color: #27473A;
@@ -105,13 +127,35 @@ h2
 
 .hobbyBox
 {
+    padding-left: 7em;
     border: 1px solid #333;
     border-radius: 2.5px;
 }
 
+.leftSpace
+{
+    padding-left: 7em;
+}
+
+.deleteBtn
+{
+    border: 1px solid black;
+    padding: 0.2em;
+}
+
+.deleteBtn:hover
+{
+    border: none;
+}
+
+.topSpace
+{
+    padding-top: 1.5em;
+}
+
 .boxLayout
 {
-    text-align: center; 
+    text-align: center;
 }
 
 .titleLayout
@@ -133,7 +177,18 @@ h2
 .myHobbiesTxt
 {
     padding-top: 1.5em;
-    padding-left: 15em;
+    padding-left: 12em;
+}
+
+.addHobbytxt
+{
+    color: black;
+    font-size: 1.5em;
+}
+
+.addHobbyInput
+{
+    font-size: 1.5em;
 }
 
 @media screen and (max-width: 768px) {
@@ -151,11 +206,5 @@ h2
     .iconLayout img
     {
         margin-top: 1.5em;
-    }
-}
-
-@media (min-width: 1200px) {
-    .container {
-        width: 1400px;
     }
 }

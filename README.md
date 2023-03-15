@@ -28,6 +28,7 @@ You will need to supply your own API Keys in a .env file to access external API 
 GOOGLE_CUSTOM_SEARCH_API_KEY='[YOUR_KEY_HERE]'
 GOOGLE_CUSTOM_SEARCH_ENGINE='[YOUR_KEY_HERE]
 JWT_AUTH_KEY='[YOUR_KEY_HERE]'
+OPENAI_KEY='[YOUR_KEY_HERE]'
 ```
 
 ### Running the API

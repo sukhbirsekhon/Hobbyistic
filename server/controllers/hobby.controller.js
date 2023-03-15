@@ -36,6 +36,13 @@ module.exports.addHobby = (req, res, next) => {
                     },
                     calendarWidget: {
                         events: []
+                    },
+                    assistantWidget: {
+                        messages: [{
+                            role: 'system',
+                            content: 'You are an assistant named Erica that helps users navigate a ' + hobby.name + ' hobby, be super nice and encouraging. PRETEND YOU ARE A HUMAN',
+                            date: new Date()
+                        }]
                     }
                 });
                 newWidget.save((error, widget) => {

@@ -22,6 +22,10 @@ import { ExternalLinksComponent } from './user/dashboard/external-links/external
 import { MotivationComponent } from './user/dashboard/motivation/motivation.component';
 import { AddHobbyComponent } from './user/add-hobby/add-hobby.component';
 import { EditHobbyComponent } from './user/edit-hobby/edit-hobby.component';
+import { AddPostComponent } from './user/add-post/add-post.component';
+import { AddTaskComponent } from './user/add-task/add-task.component';
+import { EditTaskComponent } from './user/edit-task/edit-task.component';
+
 
 import { FullCalendarModule } from '@fullcalendar/angular';
 
@@ -40,7 +44,10 @@ import { FullCalendarModule } from '@fullcalendar/angular';
     ExternalLinksComponent,
     MotivationComponent,
     AddHobbyComponent,
-    EditHobbyComponent
+    EditHobbyComponent,
+    AddPostComponent
+    AddTaskComponent,
+    EditTaskComponent
   ],
   imports: [
     BrowserModule,

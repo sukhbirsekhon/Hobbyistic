@@ -4,8 +4,8 @@
         "MONGODB_URI": "mongodb://127.0.0.1:27017/Hobbyistic"
     },
     "production": {
-        "PORT": 80,
-        "MONGODB_URI": "mongodb+srv://admin:admin@cluster0.xik5f.gcp.mongodb.net/Hobbyistic"
+        "PORT": 3000,
+        "MONGODB_URI": "mongodb://hobbyistic-mongo:27017/Hobbyistic"
  
     }
 }

@@ -6,6 +6,7 @@ const Post = mongoose.model('Posts');
 const widgetService = require('../services/widgets.service')
 const { GridFSBucket } = require('mongodb');
 const concat = require('concat-stream');
+const axios = require('axios');
 
 
 module.exports.getWigets = (req, res, next) => {
@@ -27,6 +28,32 @@ module.exports.getWigets = (req, res, next) => {
         });
     });
 }
+
+module.exports.getSingleTask = (req, res, next) => {
+    if (req.auth == null) {
+        return res.status(401).json({errors: {user: "Unauthorized"}}); 
+    }
+    User.findById(req.auth.id).then(function(user){
+        if (!user) { 
+            return res.status(401).json({errors: {user: "Unauthorized"}}); 
+        }
+        Widgets.findOne(
+            { user: req.auth.id, hobby: req.params.hobbyId, 'taskWidget.tasks': { $elemMatch: { _id: req.params.taskId } } }, 
+            { 'taskWidget.tasks.$': 1 }, 
+            (err, widget) => {
+                if (err) {
+                    return next(err);
+                }
+                if (!widget) {
+                    return res.status(404).json({errors: {widget: "Widget not found"}});
+                }
+                const task = widget.taskWidget.tasks[0];
+                res.send(task);
+            }
+        );
+    });
+}
+
 
 module.exports.getTaskWidget = (req, res, next) => {
     if (req.auth == null) {
@@ -270,6 +297,25 @@ module.exports.deleteEvent = (req, res, next) => {
     });
 }
 
+module.exports.getSingleMotivationPost = (req, res, next) => {
+    if (req.auth == null) {
+      return res.status(401).json({errors: {user: "Unauthorized"}});
+    }
+    User.findById(req.auth.id).then(function(user) {
+      if (!user) {
+        return res.status(401).json({ errors: { user: 'Unauthorized' } });
+      }
+        Post.findOne({user: req.auth.id, hobby: req.params.hobbyId, _id: req.params.postId})
+          .populate({ path: 'user hobby', select: '-password -saltSecret -email' })
+          .then(function(post) {
+            if (!post || post.length === 0) {
+              return res.status(404).json({ errors: { post: 'Post not found' } });
+            }
+            return res.send(post);
+        });
+    });
+};
+
 module.exports.addMotivationPost = (req, res, next) => {
     if (req.auth == null) {
         return res.status(401).json({errors: {user: "Unauthorized"}}); 
@@ -278,7 +324,7 @@ module.exports.addMotivationPost = (req, res, next) => {
         if (!user) { 
             return res.status(401).json({errors: {user: "Unauthorized"}}); 
         }
-    Hobby.findOne({user: req.auth.id, hobby: req.params.hobbyId}, (err, hobby) => {
+    Hobby.findOne({user: req.auth.id, _id: req.params.hobbyId}, (err, hobby) => {
         if (err) {
             return next(err);
         }
@@ -309,16 +355,16 @@ module.exports.addMotivationPost = (req, res, next) => {
 }
 
 module.exports.getPostImage = (req, res, next) => {
-const bucket = new GridFSBucket(mongoose.connection.db, {bucketName: 'photo'});
-  if (req.auth == null) {
-    return res.status(401).json({ errors: { user: 'Unauthorized' } });
-  }
-  User.findById(req.auth.id)
-    .then(function (user) {
-      if (!user) {
+    const bucket = new GridFSBucket(mongoose.connection.db, {bucketName: 'photo'});
+    if (req.auth == null) {
         return res.status(401).json({ errors: { user: 'Unauthorized' } });
-      }
-      Post.findOne({ user: req.auth.id, hobby: req.params.hobbyId,_id: req.params.postId , $or: [{sharable: true, _id: req.params.postId}]}).then(function(post) {
+    }
+    User.findById(req.auth.id)
+    .then(function (user) {
+        if (!user) {
+        return res.status(401).json({ errors: { user: 'Unauthorized' } });
+        }
+        Post.findOne({$or:[{_id:req.params.postId,sharable:true},{_id:req.params.postId,sharable:false,user:req.auth.id,hobby:req.params.hobbyId}]}).then(function(post) {
         if (!post) {
             return res.status(404).json({ errors: { post: 'Post not found' } });
         }
@@ -342,9 +388,6 @@ module.exports.getMotivationPosts = (req, res, next) => {
           .populate({ path: 'user hobby', select: '-password -saltSecret -email' })
           .sort({ postDate: -1 })
           .then(function(posts) {
-            if (!posts || posts.length === 0) {
-              return res.status(404).json({ errors: { post: 'Post not found' } });
-            }
             return res.send(posts);
           });
       } else {
@@ -352,16 +395,14 @@ module.exports.getMotivationPosts = (req, res, next) => {
           .populate({ path: 'user hobby', select: '-password -saltSecret -email' })
           .sort({ postDate: -1 })
           .then(function(posts) {
-            if (!posts || posts.length === 0) {
-              return res.status(404).json({ errors: { post: 'Post not found' } });
-            }
             return res.send(posts);
           });
       }
     });
-  };
+};
 
 module.exports.deleteMotivationPost = (req, res, next) => {
+    console.log('delete called');
     const bucket = new GridFSBucket(mongoose.connection.db, {bucketName: 'photo'});
     if (req.auth == null) {
         return res.status(401).json({errors: {user: "Unauthorized"}}); 
@@ -387,3 +428,103 @@ module.exports.deleteMotivationPost = (req, res, next) => {
         });
     });
 };
+
+
+module.exports.getChatMessage = (req, res, next) => {
+    const history = req.query.history;
+    const userMessage = req.query.message;
+    if (req.auth == null) {
+        return res.status(401).json({errors: {user: "Unauthorized"}}); 
+    }
+    User.findById(req.auth.id).then(function(user){
+        if (!user) { 
+            return res.status(401).json({errors: {user: "Unauthorized"}}); 
+        }
+        const newUserConvo = {
+            role: 'user',
+            content: userMessage,
+            date: new Date()
+        }
+        if (userMessage == null || userMessage == "") {
+            console.log('made here')
+            return Widgets.findOne({ user: req.auth.id, hobby: req.params.hobbyId }).select('assistantWidget').populate('assistantWidget.messages').then(function(assistantWidget) {
+                if (!assistantWidget) {
+                    return res.status(404).json({errors: {assistantWidget: "Not Found"}});
+                }
+                const messagesReturn = assistantWidget.assistantWidget.messages.map(message => ({ role: message.role, content: message.content, date: message.date}));
+                messagesReturn.splice(0, 1);
+                return res.json(messagesReturn);
+            })
+        }
+        Widgets.findOneAndUpdate(
+            { user: req.auth.id, hobby: req.params.hobbyId }, 
+            { $push: { 'assistantWidget.messages': newUserConvo } }, 
+            { new: true },
+            (err, widget) => {
+                if (err) {
+                    return next(err);
+                }
+                if (!widget) {
+                    return res.status(404).json({errors: {widget: "Widget not found"}});
+                }
+                Widgets.findOne({ user: req.auth.id, hobby: req.params.hobbyId }).select('assistantWidget').populate('assistantWidget.messages').then(function(assistantWidget) {
+                    if (!assistantWidget) {
+                        return res.status(404).json({errors: {assistantWidget: "Not Found"}});
+                    }
+                    const messagesReturn = assistantWidget.assistantWidget.messages.map(message => ({ role: message.role, content: message.content, date: message.date}));
+                    const messages = assistantWidget.assistantWidget.messages.map(message => ({ role: message.role, content: message.content }));
+                    const data = {
+                        model: "gpt-3.5-turbo",
+                        messages: messages
+                      };
+                      axios
+                        .post("https://api.openai.com/v1/chat/completions", data, {
+                          headers: {
+                            Authorization: `Bearer ${process.env.OPENAI_KEY}`,
+                            "Content-Type": "application/json",
+                          },
+                        })
+                        .then((response) => {
+                          const content = response.data.choices[0].message.content;
+                          aiUserConvo = {
+                            role: 'assistant',
+                            content: content,
+                            date: new Date()
+                          }
+                          Widgets.findOneAndUpdate(
+                            { user: req.auth.id, hobby: req.params.hobbyId }, 
+                            { $push: { 'assistantWidget.messages': aiUserConvo } }, 
+                            { new: true },
+                            (err, widget) => {
+                                if (err) {
+                                    return next(err);
+                                }
+                                if (!widget) {
+                                    return res.status(404).json({errors: {widget: "Widget not found"}});
+                                }
+                            }
+                        );
+                        if (history != null && history == 'true') {
+                        messagesReturn.push({
+                            role: 'assistant',
+                            content: content,
+                            date: new Date()
+                        })
+                        messagesReturn.splice(0, 1);
+                        return res.json(messagesReturn);
+                        }
+                        return res.json({ message: content });
+                        })
+                        .catch((error) => {
+                          console.error(error);
+                          next(error);
+                        });
+                }).catch(next);
+            }
+        );
+    });
+}
+
+
+
+
