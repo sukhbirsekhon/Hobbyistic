@@ -43,7 +43,7 @@ import { EditTaskComponent } from './user/edit-task/edit-task.component';
     MotivationComponent,
     AddHobbyComponent,
     EditHobbyComponent,
-    AddPostComponent
+    AddPostComponent,
     AddTaskComponent,
     EditTaskComponent
   ],

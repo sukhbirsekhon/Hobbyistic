@@ -7,9 +7,14 @@ const widgetService = require('../services/widgets.service')
 const { GridFSBucket } = require('mongodb');
 const concat = require('concat-stream');
 const axios = require('axios');
+const {validationResult} = require('express-validator');
 
 
 module.exports.getWigets = (req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ error: 'Bad Request'});
+    }
     if (req.auth == null) {
         return res.status(401).json({errors: {user: "Unauthorized"}}); 
     }
@@ -30,6 +35,10 @@ module.exports.getWigets = (req, res, next) => {
 }
 
 module.exports.getSingleTask = (req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ error: 'Bad Request'});
+    }
     if (req.auth == null) {
         return res.status(401).json({errors: {user: "Unauthorized"}}); 
     }
@@ -56,6 +65,10 @@ module.exports.getSingleTask = (req, res, next) => {
 
 
 module.exports.getTaskWidget = (req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ error: 'Bad Request'});
+    }
     if (req.auth == null) {
         return res.status(401).json({errors: {user: "Unauthorized"}}); 
     }
@@ -73,6 +86,10 @@ module.exports.getTaskWidget = (req, res, next) => {
 }
 
 module.exports.addTask = (req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ error: 'Bad Request'});
+    }
     if (req.auth == null) {
         return res.status(401).json({errors: {user: "Unauthorized"}}); 
     }
@@ -99,6 +116,10 @@ module.exports.addTask = (req, res, next) => {
 }
 
 module.exports.updateTask = (req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ error: 'Bad Request'});
+    }
     if (req.auth == null) {
         return res.status(401).json({errors: {user: "Unauthorized"}}); 
     }
@@ -125,6 +146,10 @@ module.exports.updateTask = (req, res, next) => {
 }
 
 module.exports.deleteTask = (req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ error: 'Bad Request'});
+    }
     if (req.auth == null) {
         return res.status(401).json({errors: {user: "Unauthorized"}}); 
     }
@@ -150,6 +175,10 @@ module.exports.deleteTask = (req, res, next) => {
 }
 
 module.exports.updateNotes = (req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ error: 'Bad Request'});
+    }
     if (req.auth == null) {
         return res.status(401).json({errors: {user: "Unauthorized"}}); 
     }
@@ -173,6 +202,10 @@ module.exports.updateNotes = (req, res, next) => {
 }
 
 module.exports.getExternalLinksWithQuery = (req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ error: 'Bad Request'});
+    }
     if (req.auth == null) {
         return res.status(401).json({errors: {user: "Unauthorized"}}); 
     }
@@ -206,6 +239,10 @@ module.exports.getExternalLinksWithQuery = (req, res, next) => {
 }
 
 module.exports.addEvent = (req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ error: 'Bad Request'});
+    }
     if (req.auth == null) {
         return res.status(401).json({errors: {user: "Unauthorized"}}); 
     }
@@ -233,6 +270,10 @@ module.exports.addEvent = (req, res, next) => {
 
 
 module.exports.updateEvent = (req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ error: 'Bad Request'});
+    }
     if (req.auth == null) {
         return res.status(401).json({errors: {user: "Unauthorized"}}); 
     }
@@ -273,6 +314,10 @@ module.exports.updateEvent = (req, res, next) => {
 }
 
 module.exports.deleteEvent = (req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ error: 'Bad Request'});
+    }
     if (req.auth == null) {
         return res.status(401).json({errors: {user: "Unauthorized"}}); 
     }
@@ -298,6 +343,10 @@ module.exports.deleteEvent = (req, res, next) => {
 }
 
 module.exports.getSingleMotivationPost = (req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ error: 'Bad Request'});
+    }
     if (req.auth == null) {
       return res.status(401).json({errors: {user: "Unauthorized"}});
     }
@@ -317,6 +366,10 @@ module.exports.getSingleMotivationPost = (req, res, next) => {
 };
 
 module.exports.addMotivationPost = (req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ error: 'Bad Request'});
+    }
     if (req.auth == null) {
         return res.status(401).json({errors: {user: "Unauthorized"}}); 
     }
@@ -355,6 +408,10 @@ module.exports.addMotivationPost = (req, res, next) => {
 }
 
 module.exports.getPostImage = (req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ error: 'Bad Request'});
+    }
     const bucket = new GridFSBucket(mongoose.connection.db, {bucketName: 'photo'});
     if (req.auth == null) {
         return res.status(401).json({ errors: { user: 'Unauthorized' } });
@@ -376,6 +433,10 @@ module.exports.getPostImage = (req, res, next) => {
 };
 
 module.exports.getMotivationPosts = (req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ error: 'Bad Request'});
+    }
     if (req.auth == null) {
       return res.status(401).json({errors: {user: "Unauthorized"}});
     }
@@ -402,6 +463,10 @@ module.exports.getMotivationPosts = (req, res, next) => {
 };
 
 module.exports.deleteMotivationPost = (req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ error: 'Bad Request'});
+    }
     console.log('delete called');
     const bucket = new GridFSBucket(mongoose.connection.db, {bucketName: 'photo'});
     if (req.auth == null) {
@@ -431,6 +496,10 @@ module.exports.deleteMotivationPost = (req, res, next) => {
 
 
 module.exports.getChatMessage = (req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ error: 'Bad Request'});
+    }
     const history = req.query.history;
     const userMessage = req.query.message;
     if (req.auth == null) {
