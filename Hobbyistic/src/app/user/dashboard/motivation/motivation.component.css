@@ -13,7 +13,15 @@
     background-color: #DBE4EE;
 }
 
-img:not(#addIcon):not(#dropIcon)
+.postImg
+{
+    width: 30em;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+img:not(#addIcon):not(#dropIcon):not(.postImg)
 {
     width: 3em;
 }
