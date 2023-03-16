@@ -48,8 +48,11 @@
         <div class="row input-container">
             <div class="col-md-12">
                 <form (ngSubmit)="onSubmit()">
-                    <input type="text" [(ngModel)]="newMessage.content" name="message" placeholder="Type a message...">
-                    <button type="submit">Send</button>
+                    <input type="text" [(ngModel)]="newMessage.content" name="message" placeholder="Type a message..." [disabled]="loading">
+                    <button type="submit" [disabled]="loading">
+                        <div class="dot-pulse" *ngIf="loading === true"></div>
+                        <div *ngIf="loading === false">Send</div>
+                    </button>
                 </form>
             </div>
         </div>
