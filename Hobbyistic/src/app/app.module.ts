@@ -25,6 +25,7 @@ import { EditHobbyComponent } from './user/edit-hobby/edit-hobby.component';
 import { AddPostComponent } from './user/add-post/add-post.component';
 import { AddTaskComponent } from './user/add-task/add-task.component';
 import { EditTaskComponent } from './user/edit-task/edit-task.component';
+import { AssistantComponent } from './user/dashboard/assistant/assistant.component';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { EditTaskComponent } from './user/edit-task/edit-task.component';
     EditHobbyComponent,
     AddPostComponent,
     AddTaskComponent,
-    EditTaskComponent
+    EditTaskComponent,
+    AssistantComponent
   ],
   imports: [
     BrowserModule,
