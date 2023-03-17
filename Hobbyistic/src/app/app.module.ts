@@ -45,7 +45,7 @@ import { FullCalendarModule } from '@fullcalendar/angular';
     MotivationComponent,
     AddHobbyComponent,
     EditHobbyComponent,
-    AddPostComponent
+    AddPostComponent,
     AddTaskComponent,
     EditTaskComponent
   ],

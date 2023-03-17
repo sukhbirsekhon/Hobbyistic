@@ -30,7 +30,74 @@
             </div>
         </div>
     </div>
-    <full-calendar [options]="calendarOptions"></full-calendar>
+    <full-calendar 
+        [options]="calendarOptions" 
+        [style.display]="isCalendarVisible ? 'block' : 'none'" 
+    >
+    </full-calendar>
+    <!-- Add Modal -->
+    <form #addEventForm="ngForm" (ngSubmit)="onAddEvent(addEventForm)" >
+<div class="modal" id="schedule-add" [style.display]="isAddFormVisible ? 'block' : 'none'" #content>
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Add Event</h4>
+                <button type="button" class="close" button (click)="backtoCalendar()">&times;</button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body">
+                    <div class="form-group">
+                        <label>Event Title:</label>
+                        <input class="form-control" type="text" [(ngModel)]="event.title" name="title"/>
+                        <label>Event Description:</label>
+                        <input class="form-control" type="text" [(ngModel)]="event.description" name="description"/>
+                        <label>Event Start:</label>
+                        <input class="form-control" type="datetime-local" [(ngModel)]="event.startDate" name="start"/>
+                        <label>Event End:</label>
+                        <input class="form-control" type="datetime-local" [(ngModel)]="event.endDate" name="end"/>
+                        <label>Event Frequency:</label>
+                        <input class="form-control" type="text" [(ngModel)]="event.frequency" name="frequency"/>
+                    </div>
+            </div>
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" button (click)="backtoCalendar()">Close</button>
+                <button type="button" class="btn btn-success" type = "submit" >Add Event</button>
+            </div>
 </div>
+</form>
+
+
+<!-- Edit Modal -->
+<form #editEventForm="ngForm" (ngSubmit)="onEditEvent(editEventForm)" >
+<div class="modal" id="schedule-edit" [style.display]="isEditFormVisible ? 'block' : 'none'" #content>
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Edit Event</h4>
+                <button type="button" class="close" data-dismiss="modal" button (click)="backtoCalendar()">&times;</button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body">
+                    <div class="form-group">
+                        <label>Event Title:</label>
+                        <input class="form-control" type="text" [(ngModel)]="event.title" name="title"/>
+                        <label>Event Description:</label>
+                        <input class="form-control" type="text" [(ngModel)]="event.description" name="description"/>
+                        <label>Event Start:</label>
+                        <input class="form-control" type="datetime-local" [(ngModel)]="event.startDate" name="start"/>
+                        <label>Event End:</label>
+                        <input class="form-control" type="datetime-local" [(ngModel)]="event.endDate" name="end"/>
+                        <label>Event Frequency:</label>
+                        <input class="form-control" type="text" [(ngModel)]="event.frequency" name="frequency"/>
+                    </div>
+            </div>
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" button (click)="backtoCalendar()">Close</button>
+                <button type="button" class="btn btn-success" type = "submit">Update Event</button>
+            </div>
+        </div>
+    </form>
+    </div>
+
 
 

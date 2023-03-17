@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Widgets, ExternalLinksWidget, Link, NotesWidget, TaskWidget, Task} from './widgets.model';
+import { Widgets, ExternalLinksWidget, Link, NotesWidget, TaskWidget, Task, Event} from './widgets.model';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { User } from './user.model';
 import { Hobby } from './hobby.model';
@@ -52,5 +52,22 @@ export class WidgetsService {
     return this.http.get<Widgets>(`${environment.apiUrl}hobby/` + hobby.id + "/widgets/externallinks?query=" + query, {headers: header});
   }
 
+  addEvent(hobby: Hobby, event: Event): Observable<Event> {
+    let header = new HttpHeaders().set('Authorization',`Bearer ${localStorage.getItem('token')!}`);
+    return this.http.post<Event>(`${environment.apiUrl}hobby/` + hobby.id + "/widgets/calendar/events/", event, {headers: header});
+  }
+
+  updateEvent(hobby: Hobby, event: Event): Observable<Event> {
+    let header = new HttpHeaders().set('Authorization',`Bearer ${localStorage.getItem('token')!}`);
+    console.log(event._id)
+    return this.http.put<Event>(`${environment.apiUrl}hobby/` + hobby.id + "/widgets/calendar/events/" + event._id, event, {headers: header});
+  }
+
+  deleteEvent(hobby: Hobby, event: Event): Observable<Event> {
+    let header = new HttpHeaders().set('Authorization',`Bearer ${localStorage.getItem('token')!}`);
+    console.log(event._id)
+    console.log('delete is happening?')
+    return this.http.delete<Event>(`${environment.apiUrl}hobby/` + hobby.id + "/widgets/calendar/events/" + event._id, {headers: header});
+  }
 }
 
