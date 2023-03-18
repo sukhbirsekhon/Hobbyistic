@@ -2,6 +2,9 @@ const mongoose = require('mongoose');
 const multer = require('multer');
 const { GridFsStorage } = require('multer-gridfs-storage');
 
+
+mongoose.set('strictQuery', true);
+
 mongoose.connect(process.env.MONGODB_URI, (err) => {
     if (!err) {
         console.log('MongoDB connection is succeeded');
