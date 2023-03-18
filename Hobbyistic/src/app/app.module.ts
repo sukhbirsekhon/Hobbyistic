@@ -28,6 +28,8 @@ import { EditTaskComponent } from './user/edit-task/edit-task.component';
 import { AssistantComponent } from './user/dashboard/assistant/assistant.component';
 
 
+import { FullCalendarModule } from '@fullcalendar/angular';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,6 +55,7 @@ import { AssistantComponent } from './user/dashboard/assistant/assistant.compone
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    FullCalendarModule, // register FullCalendar with your app
     RouterModule.forRoot(appRoutes),
     HttpClientModule
   ],

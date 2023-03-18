@@ -240,7 +240,7 @@ module.exports.getExternalLinksWithQuery = (req, res, next) => {
 
 module.exports.addEvent = (req, res, next) => {
     const errors = validationResult(req);
-    if (!errors.isEmpty()) {
+    if (!errors.isEmpty() && req.body != null) {
         return res.status(400).json({ error: 'Bad Request'});
     }
     if (req.auth == null) {
@@ -251,6 +251,9 @@ module.exports.addEvent = (req, res, next) => {
             return res.status(401).json({errors: {user: "Unauthorized"}}); 
         }
         const newEvent = req.body;
+        if (newEvent._id != null) {
+            delete newEvent._id 
+        }
         Widgets.findOneAndUpdate(
             { user: req.auth.id, hobby: req.params.hobbyId }, 
             { $push: { 'calendarWidget.events': newEvent } }, 
@@ -295,6 +298,9 @@ module.exports.updateEvent = (req, res, next) => {
         console.log(req.body)
         console.log(req.params.eventId)
         */
+        if (req.body._id != null) {
+            delete req.body._id;
+        }
         Widgets.findOneAndUpdate(
             { user: req.auth.id, hobby: req.params.hobbyId, "calendarWidget.events._id": req.params.eventId }, 
             { $set: { 'calendarWidget.events.$': req.body } }, 
