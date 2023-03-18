@@ -6,6 +6,7 @@ import { Hobby } from './hobby.model';
 import {Router} from '@angular/router';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { Message } from './message.model';
 
 @Injectable({
   providedIn: 'root'
@@ -50,6 +51,21 @@ export class WidgetsService {
   getExternalLinksFromQuery(hobby: Hobby, query: String): Observable<Widgets> {
     let header = new HttpHeaders().set('Authorization',`Bearer ${localStorage.getItem('token')!}`);
     return this.http.get<Widgets>(`${environment.apiUrl}hobby/` + hobby.id + "/widgets/externallinks?query=" + query, {headers: header});
+  }
+
+  getAssistantMessageHistory(hobby: Hobby): Observable<Message[]> {
+    let header = new HttpHeaders().set('Authorization',`Bearer ${localStorage.getItem('token')!}`);
+    return this.http.get<Message[]>(`${environment.apiUrl}hobby/` + hobby.id + "/widgets/assistant", {headers: header});
+  }
+
+  getAssistantResponseAndMessageWithHistory(hobby: Hobby, message: Message): Observable<Message[]> {
+    let header = new HttpHeaders().set('Authorization',`Bearer ${localStorage.getItem('token')!}`);
+    return this.http.get<Message[]>(`${environment.apiUrl}hobby/` + hobby.id + "/widgets/assistant?history=true&message=" + message.content, {headers: header});
+  }
+
+  getAssistantResponseAndMessage(hobby: Hobby, message: Message): Observable<any> {
+    let header = new HttpHeaders().set('Authorization',`Bearer ${localStorage.getItem('token')!}`);
+    return this.http.get<any>(`${environment.apiUrl}hobby/` + hobby.id + "/widgets/assistant?&message=" + message.content, {headers: header});
   }
 
 }
