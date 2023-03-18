@@ -39,7 +39,7 @@
         <div [style.display]="isPublicVisible ? 'block' : 'none'" *ngFor = "let post of publicPosts">
             
             <h2>{{ post.title }}</h2>
-            <img [src]="post.dbImage" alt="An Image that motivates">
+            <img [src]="post.dbImage" alt="An Image that motivates" class="postImg">
             <p>{{ post.description }}</p>
             
             <div>
@@ -55,7 +55,7 @@
         <div [style.display]="isUserVisible ? 'block' : 'none'" *ngFor = "let upost of userPosts">
 
             <h2>{{ upost.title }}</h2>
-            <img [src]="upost.dbImage" alt="An Image that motivates">
+            <img [src]="upost.dbImage" alt="An Image that motivates" class="postImg">
             <p>{{ upost.description }}</p>
 
             <div>

@@ -1,3 +1,4 @@
+const { validationResult, param, check } = require('express-validator');
 const mongoose = require('mongoose');
 const User = mongoose.model('User');
 const Hobby = mongoose.model('Hobby');
@@ -7,6 +8,10 @@ const auth = require('../routes/auth');
 const { register } = require('./user.controller');
 
 module.exports.addHobby = (req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ error: 'Bad Request'});
+    }
     if (req.auth == null) {
         return res.status(401).json({errors: {user: "Unauthorized"}}); 
     }
@@ -62,6 +67,10 @@ module.exports.addHobby = (req, res, next) => {
 }
 
 module.exports.getHobbies = (req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ error: 'Bad Request'});
+    }
     if (req.auth == null) {
         return res.status(401).json({errors: {user: "Unauthorized"}}); 
     }
@@ -79,6 +88,10 @@ module.exports.getHobbies = (req, res, next) => {
 }
 
 module.exports.getSingleHobby = (req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ error: 'Bad Request'});
+    }
     if (req.auth == null) {
         return res.status(401).json({errors: {user: "Unauthorized"}}); 
     }
@@ -98,6 +111,10 @@ module.exports.getSingleHobby = (req, res, next) => {
 
 
 module.exports.deleteHobby = (req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ error: 'Bad Request'});
+    }
     if (req.auth == null) {
         return res.status(401).json({errors: {user: "Unauthorized"}}); 
     }
@@ -117,6 +134,10 @@ module.exports.deleteHobby = (req, res, next) => {
 }
 
 module.exports.updateHobby = (req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ error: 'Bad Request'});
+    }
     if (req.auth == null) {
         return res.status(401).json({errors: {user: "Unauthorized"}}); 
     }

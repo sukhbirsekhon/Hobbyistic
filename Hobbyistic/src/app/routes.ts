@@ -13,6 +13,7 @@ import { ChecklistComponent } from "./user/dashboard/checklist/checklist.compone
 import { AddPostComponent } from "./user/add-post/add-post.component";
 import { AddTaskComponent } from "./user/add-task/add-task.component";
 import { EditTaskComponent } from "./user/edit-task/edit-task.component";
+import { AssistantComponent } from "./user/dashboard/assistant/assistant.component";
 
 
 export const appRoutes: Routes = [
@@ -69,6 +70,10 @@ export const appRoutes: Routes = [
     children: [{ path: '', component: DashboardComponent}]
   },
   {
+    path: 'assistant/:id', component: AssistantComponent,
+    children: [{ path: '', component: DashboardComponent}]
+  },
+  {
     path: '', redirectTo: '/login', pathMatch: 'full'
   },
   {
@@ -106,7 +111,8 @@ export const appRoutes: Routes = [
   },
   {
     path: '', redirectTo: '/checklist', pathMatch: 'full'
-  }
-
-
+  },
+  {
+    path: '', redirectTo: '/assistant', pathMatch: 'full'
+  },
 ]
