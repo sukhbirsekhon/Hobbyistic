@@ -30,9 +30,6 @@ export class CalendarComponent implements OnInit {
   events: Event[] = [];
   calendarWidget: CalendarWidget = {};
   widgets: Widgets = {};
-  
-
-
 
   ngOnInit(): void {
     
@@ -42,7 +39,6 @@ export class CalendarComponent implements OnInit {
     });
 
     this.widgetService.getWidgets(this.hobby).subscribe(res => {
-      this.event = res;
       this.widgets = res;
       console.log(res);
       function renameKey ( obj: { [x: string]: any; }, oldKey: string | number, newKey: string | number ) {
@@ -114,7 +110,6 @@ export class CalendarComponent implements OnInit {
   }
 
   onEditEvent(form: NgForm){
-    this.event._id = this.route.snapshot.params['eventid'];
     if(form.invalid){return;}
     this.widgetService.updateEvent(this.hobby, this.event).subscribe(event => {
       this.event = event;
@@ -123,10 +118,10 @@ export class CalendarComponent implements OnInit {
   }
 
   deleteEvent(): void {
-    this.event._id = this.route.snapshot.params['eventid'];
     this.widgetService.deleteEvent(this.hobby, this.event).subscribe(res => {
       console.log(res)
     });
+    window.location.reload();
   }
 
 }

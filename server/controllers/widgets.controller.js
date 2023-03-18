@@ -239,7 +239,6 @@ module.exports.getExternalLinksWithQuery = (req, res, next) => {
 }
 
 module.exports.addEvent = (req, res, next) => {
-    console.log('adding')
     const errors = validationResult(req);
     if (!errors.isEmpty() && req.body != null) {
         return res.status(400).json({ error: 'Bad Request'});
@@ -255,7 +254,6 @@ module.exports.addEvent = (req, res, next) => {
         if (newEvent._id != null) {
             delete newEvent._id 
         }
-        console.log(req.body);
         Widgets.findOneAndUpdate(
             { user: req.auth.id, hobby: req.params.hobbyId }, 
             { $push: { 'calendarWidget.events': newEvent } }, 
