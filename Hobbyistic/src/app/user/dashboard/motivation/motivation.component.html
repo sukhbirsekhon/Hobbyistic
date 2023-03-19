@@ -62,6 +62,7 @@
                 <p>Posted on {{ upost.postDate }}</p>
             </div>
             <img src="../assets/images/delete.svg" (click)="viewDeleteForm(); getSinglePostInstance(upost)" class="deleteBtn" style="width: 2.25em">
+        
         </div>
 
         <img src="../assets/images/add.svg" [routerLink]="['/add-post', hobby.id]" />

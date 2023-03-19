@@ -1,12 +1,21 @@
 <div class="container">
   <div class="row topLayout">
-      <div class="col-lg-3 titleLayout">
-          <h2>Dashboard</h2>
+      <div class="col-lg-4 titleLayout">
+        <div class="dropdown">
+          <button class="dropdown-toggle dropBtn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Task List <img src="../assets/images/dropdwn.png" id="dropIcon"/></button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item drop-Item" routerLink="/main">Dashboard</a><br>
+              <a class="dropdown-item drop-Item" [routerLink]="['/dashboard', hobby.id]">My Widgets</a><br>
+              <a class="dropdown-item drop-Item" [routerLink]="['/calendar', hobby.id]">Calendar</a><br>
+              <a class="dropdown-item drop-Item" [routerLink]="['/motivation', hobby.id]">Motivation</a><br>
+              <a class="dropdown-item drop-Item" [routerLink]="['/external-links', hobby.id]">Useful Links</a>
+          </div>
+        </div>
       </div>
-      <div class="col-sm-12 col-md-6 col-lg-6 boxLayout">
+      <div class="col-sm-12 col-md-6 col-lg-4 boxLayout">
           <p><a class="title">Hobbyistic</a></p>
       </div>
-      <div class="col-md-6 col-lg-3 iconLayout">
+      <div class="col-md-6 col-lg-4 iconLayout">
           <div class="row">
               <div class="col-md-4 col-lg-4">
                   <img src="../assets/images/Logout.png" alt="Logout" routerLink="/login"/>

@@ -30,11 +30,13 @@
             </div>
         </div>
     </div>
-    <full-calendar 
+    <div class="calendarSpace">
+        <full-calendar 
         [options]="calendarOptions" 
         [style.display]="isCalendarVisible ? 'block' : 'none'" 
     >
     </full-calendar>
+    </div>
     <!-- Add Modal -->
     <form #addEventForm="ngForm" (ngSubmit)="onAddEvent(addEventForm)" >
 <div class="modal" id="schedule-add" [style.display]="isAddFormVisible ? 'block' : 'none'" #content>
@@ -93,7 +95,7 @@
             <!-- Modal footer -->
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" button (click)="backtoCalendar()">Close</button>
-                <button type="button" class="btn btn-success" type = "submit">Update Event</button>
+                <button type="button" class="btn btn-success spaceUpdate" type = "submit">Update Event</button>
                 <img src="../assets/images/delete.svg" (click)="deleteEvent();" class="deleteBtn" style="width: 2.25em">
             </div>
         </div>

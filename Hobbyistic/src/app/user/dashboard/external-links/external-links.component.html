@@ -39,7 +39,6 @@
         <div class="col-lg-2"></div>
         <div class="col-lg-8 searchInput">
             <form (ngSubmit)="searchResults(hobby.name)">
-                <p class="howto">How to </p>
                 <input class="addHobbyInput" [ngModelOptions]="{standalone: true}" [(ngModel)]="hobby.name"/>
                 <input id="add" value="Search" type="submit">
             </form>

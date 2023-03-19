@@ -21,45 +21,95 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-lg-12 hobbyName">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4 hobbyName">
             <h2 [ngModelOptions]="{standalone: true}" [(ngModel)]="hobby.name">{{ hobby.name }}</h2>
+        </div>
+        <div class="col-lg-4 assistant">
+            <label [routerLink]="['/assistant', hobby.id]">Assistant</label>
+            <img src="../assets/images/chatGPTIcon.jpg" alt="assistant" [routerLink]="['/assistant', hobby.id]"/>
         </div>
     </div>
     <div class="row allWidgets">
         <div class="row">
 
             <div class="col-lg-4 widgetBox">
-                <div class="col-lg-12">
-                    <p><a [routerLink]="['/motivation', hobby.id]">Motivation</a></p>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <p><a [routerLink]="['/motivation', hobby.id]" target="_blank">Motivation</a></p>
+                    </div>
+                </div>
+                <div class="row">
+
                 </div>
             </div>
 
             <div class="col-lg-4">
                 <div class="row">
                     <div class="col-lg-12 widgetSubBox">
-                        <div class="col-lg-12">
-                            <p><a [routerLink]="['/external-links', hobby.id]">Useful links</a></p>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <p><a [routerLink]="['/external-links', hobby.id]" target="_blank">Useful links</a></p>
+                            </div>
                         </div>
+                        <div class="row">
+                            <div class="col-lg-12 searchBarDiv">
+                                <form (ngSubmit)="searchResults(hobby.name)">
+                                    <input class="addHobbyInput" [ngModelOptions]="{standalone: true}" [(ngModel)]="hobby.name"/>
+                                    <input id="add" value="Search" type="submit">
+                                </form>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12 searchResultsDiv">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <p>Test</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <p>Test2</p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <p>Test3</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-12 widgetSubBox">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <p><a [routerLink]="['/checklist', hobby.id]" target="_blank">Task list</a></p>
+                            </div>
+                        </div>
+                        <div class="row">
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-lg-4 widgetBox">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <p><a [routerLink]="['/calendar', hobby.id]" target="_blank">Calendar</a></p>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-12 widgetSubBox">
-                        <div class="col-lg-12">
-                            <p><a [routerLink]="['/checklist', hobby.id]">Task list</a></p>
-                        </div>
+                    <div class="col-lg-12">
+                        <!--<full-calendar [options]="calendarOptions"></full-calendar>-->
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 widgetBox">
-                <div class="col-lg-12">
-                    <p><a [routerLink]="['/calendar', hobby.id]">Calendar</a></p>
-                </div>
-            </div>
-            <div class="col-lg-4 widgetBox">
-                <div class="col-lg-12">
-                    <p><a [routerLink]="['/assistant', hobby.id]">Assistant</a></p>
-                </div>
-            </div>
+
         </div>
     </div>
 </div>

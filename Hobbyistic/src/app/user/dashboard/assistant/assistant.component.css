@@ -156,9 +156,11 @@ p
 }
 
 .chat-box {
-    height: 800px;
+    height: 400px;
     overflow-y: scroll;
     background-color: #EFEFF4;
+    padding-top: 1em;
+    padding-bottom: 0.5em;
 }
     
 .chat-list {
@@ -182,38 +184,47 @@ p
     font-weight: bold;
     margin: 0;
     font-size: 16px;
-    color: #007AFF;
+    color: black;
 }
     
 .message-date {
     margin: 0;
     font-size: 14px;
-    color: #8E8E93;
+    padding-bottom: 2.5px;
+    color: black;
 }
     
 .message-content {
+    background-color: #FFFFFF;
+    color: black;
+    padding: 10px;
+    border-radius: 20px;
+    font-size: 16px;
+    max-width: fit-content;
+    text-align: left;
+}
+    
+.user-message {
     background-color: #007AFF;
     color: #FFFFFF;
     padding: 10px;
     border-radius: 20px;
     font-size: 16px;
-    max-width: 70%;
+    max-width: fit-content;
+    text-align: left;
 }
-    
-.user-message {
-    background-color: #FFFFFF;
-    color: #000000;
-    padding: 10px;
-    border-radius: 20px;
-    font-size: 16px;
-    max-width: 70%;
+
+.container-fluid
+{
+  margin-bottom: 2em;
 }
     
 .input-container {
     background-color: #EFEFF4;
     display: flex;
     align-items: center;
-    padding: 5px;
+    padding: 15px 5px 15px 5px;
+    border-top: 1px solid black;
 }
     
 .input-container form {

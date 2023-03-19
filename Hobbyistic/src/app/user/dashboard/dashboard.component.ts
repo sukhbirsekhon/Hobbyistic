@@ -25,4 +25,9 @@ export class DashboardComponent implements OnInit {
     });
   }
 
+  searchResults(querySearch: String)
+  {
+
+  }
+
 }

@@ -2,13 +2,13 @@
     <div class="row topLayout">
         <div class="col-lg-4 titleLayout">
             <div class="dropdown">
-                <button class="dropdown-toggle dropBtn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Assistant<img src="../assets/images/dropdwn.png" id="dropIcon"/></button>
+                <button class="dropdown-toggle dropBtn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Assistant <img src="../assets/images/dropdwn.png" id="dropIcon"/></button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <a class="dropdown-item drop-Item" routerLink="/main">Dashboard</a><br>
-                    <a class="dropdown-item drop-Item" [routerLink]="['/dashboard', '']">My Widgets</a><br>
-                    <a class="dropdown-item drop-Item" [routerLink]="['/motivation', '']">Motivation</a><br>
-                    <a class="dropdown-item drop-Item" [routerLink]="['/checklist', '']">Task List</a><br>
-                    <a class="dropdown-item drop-Item" [routerLink]="['/external-links', '']">Useful Links</a>
+                    <a class="dropdown-item drop-Item" [routerLink]="['/dashboard', hobby.id]">My Widgets</a><br>
+                    <a class="dropdown-item drop-Item" [routerLink]="['/motivation', hobby.id]">Motivation</a><br>
+                    <a class="dropdown-item drop-Item" [routerLink]="['/checklist', hobby.id]">Task List</a><br>
+                    <a class="dropdown-item drop-Item" [routerLink]="['/external-links', hobby.id]">Useful Links</a>
                 </div>
             </div>
         </div>
@@ -31,6 +31,9 @@
         </div>
     </div>
     <div class="container-fluid">
+        <div class="row hobbyName">
+            <h2>Chat with Erica</h2>
+        </div>
         <div class="row chat-box" #chatBox>
             <div class="col-md-12">
                 <ul class="chat-list">
