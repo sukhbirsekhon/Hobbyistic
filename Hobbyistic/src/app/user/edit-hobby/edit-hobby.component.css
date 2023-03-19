@@ -186,6 +186,11 @@ h2
     font-size: 1.5em;
 }
 
+.dropdown
+{
+    text-align: left;
+}
+
 .addHobbyInput
 {
     font-size: 1.5em;
@@ -206,5 +211,11 @@ h2
     .iconLayout img
     {
         margin-top: 1.5em;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        width: 1400px;
     }
 }

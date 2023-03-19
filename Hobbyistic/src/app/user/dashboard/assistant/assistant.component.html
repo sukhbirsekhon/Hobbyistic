@@ -6,6 +6,7 @@
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <a class="dropdown-item drop-Item" routerLink="/main">Dashboard</a><br>
                     <a class="dropdown-item drop-Item" [routerLink]="['/dashboard', hobby.id]">My Widgets</a><br>
+                    <a class="dropdown-item drop-Item" [routerLink]="['/calendar', hobby.id]">Calendar</a><br>
                     <a class="dropdown-item drop-Item" [routerLink]="['/motivation', hobby.id]">Motivation</a><br>
                     <a class="dropdown-item drop-Item" [routerLink]="['/checklist', hobby.id]">Task List</a><br>
                     <a class="dropdown-item drop-Item" [routerLink]="['/external-links', hobby.id]">Useful Links</a>

@@ -8,7 +8,8 @@
                     <a class="dropdown-item drop-Item" [routerLink]="['/dashboard', hobby.id]">My Widgets</a><br>
                     <a class="dropdown-item drop-Item" [routerLink]="['/calendar', hobby.id]">Calendar</a><br>
                     <a class="dropdown-item drop-Item" [routerLink]="['/checklist', hobby.id]">Task List</a><br>
-                    <a class="dropdown-item drop-Item" [routerLink]="['/external-links', hobby.id]">Useful Links</a>
+                    <a class="dropdown-item drop-Item" [routerLink]="['/external-links', hobby.id]">Useful Links</a><br>
+                    <a class="dropdown-item drop-Item" [routerLink]="['/assistant', hobby.id]">Assistant</a>
                 </div>
             </div>
         </div>
@@ -31,44 +32,51 @@
         </div>
     </div>
 
-    <div [style.display]="isPostsVisible ? 'block' : 'none'">
-
-        <div [style.display]="isPublicVisible ? 'block' : 'none'"> 
-            <h1>Public Posts</h1>
-        </div>
-        <div [style.display]="isPublicVisible ? 'block' : 'none'" *ngFor = "let post of publicPosts">
-            
-            <h2>{{ post.title }}</h2>
-            <img [src]="post.dbImage" alt="An Image that motivates" class="postImg">
-            <p>{{ post.description }}</p>
-            
-            <div>
-                <p>Posted on {{ post.postDate }}</p>
-            </div>
-            <img src="../assets/images/delete.svg" (click)="viewDeleteForm(); getSinglePostInstance(post)" class="deleteBtn" style="width: 2.25em">
-        </div>
-
-        <div [style.display]="isUserVisible ? 'block' : 'none'">
-            <h1>Your Posts</h1>
-        </div>
-
-        <div [style.display]="isUserVisible ? 'block' : 'none'" *ngFor = "let upost of userPosts">
-
-            <h2>{{ upost.title }}</h2>
-            <img [src]="upost.dbImage" alt="An Image that motivates" class="postImg">
-            <p>{{ upost.description }}</p>
-
-            <div>
-                <p>Posted on {{ upost.postDate }}</p>
-            </div>
-            <img src="../assets/images/delete.svg" (click)="viewDeleteForm(); getSinglePostInstance(upost)" class="deleteBtn" style="width: 2.25em">
-        
-        </div>
+    <div class="row">
 
         <img src="../assets/images/add.svg" [routerLink]="['/add-post', hobby.id]" />
         <button (click)="viewUserPosts()">My Posts</button>
         <button (click)="viewPublicPosts()">Public Posts</button>
-        
+    
+    </div>
+
+    <div class="row marginTop">
+
+        <div [style.display]="isPostsVisible ? 'block' : 'none'">
+
+            <div [style.display]="isPublicVisible ? 'block' : 'none'"> 
+                <h1 class="postLabel">Public Posts</h1>
+            </div>
+            <div [style.display]="isPublicVisible ? 'block' : 'none'" *ngFor = "let post of publicPosts">
+                
+                <h2>{{ post.title }}</h2>
+                <img [src]="post.dbImage" alt="An Image that motivates" class="postImg">
+                <p>{{ post.description }}</p>
+                
+                <div class="footerPost">
+                    <p>Posted on {{ post.postDate }}</p>
+                </div>
+            </div>
+    
+            <div [style.display]="isUserVisible ? 'block' : 'none'">
+                <h1 class="postLabel">Your Posts</h1>
+            </div>
+    
+            <div [style.display]="isUserVisible ? 'block' : 'none'" *ngFor = "let upost of userPosts">
+    
+                <h2>{{ upost.title }}</h2>
+                <img [src]="upost.dbImage" alt="An Image that motivates" class="postImg">
+                <p>{{ upost.description }}</p>
+    
+                <div>
+                    <p>Posted on {{ upost.postDate }}</p>
+                </div>
+                <img src="../assets/images/delete.svg" (click)="viewDeleteForm(); getSinglePostInstance(upost)" class="deleteBtn" style="width: 2.25em">
+            
+            </div>
+            
+        </div>
+
     </div>
 
     <div [style.display]="isDeleteFormVisible ? 'block' : 'none'">
