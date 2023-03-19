@@ -32,15 +32,21 @@
         </div>
     </div>
 
-    <div class="row">
+    <div class="row myHobbiesTxt">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4">
+            <h2>{{ hobby.name }} Timeline</h2>
+        </div>
 
-        <img src="../assets/images/add.svg" [routerLink]="['/add-post', hobby.id]" />
-        <button (click)="viewUserPosts()">My Posts</button>
-        <button (click)="viewPublicPosts()">Public Posts</button>
-    
+        <div class="col-lg-4 postButtonsRow">
+            <button (click)="viewUserPosts()" class="postButton">My Posts</button>
+            <button (click)="viewPublicPosts()" class="postButton">Public Posts</button>
+            <img src="../assets/images/add.svg" [routerLink]="['/add-post', hobby.id]" id="addIcon"/>
+        </div>
+
     </div>
 
-    <div class="row marginTop">
+    <div class="row marginTop" [style.overflow-y] = "isPostsVisible ? 'scroll' : 'hidden'" [style.background-color] = "isPostsVisible ? '#DBE4EE' : '#FFFFFF'" [style.border] = "isPostsVisible ? '1px solid black' : 'none'">
 
         <div [style.display]="isPostsVisible ? 'block' : 'none'">
 
@@ -49,9 +55,9 @@
             </div>
             <div [style.display]="isPublicVisible ? 'block' : 'none'" *ngFor = "let post of publicPosts">
                 
-                <h2>{{ post.title }}</h2>
+                <h2 class="postTitle">{{ post.title }}</h2>
                 <img [src]="post.dbImage" alt="An Image that motivates" class="postImg">
-                <p>{{ post.description }}</p>
+                <p class="postDescription">{{ post.description }}</p>
                 
                 <div class="footerPost">
                     <p>Posted on {{ post.postDate }}</p>
@@ -63,27 +69,37 @@
             </div>
     
             <div [style.display]="isUserVisible ? 'block' : 'none'" *ngFor = "let upost of userPosts">
-    
-                <h2>{{ upost.title }}</h2>
-                <img [src]="upost.dbImage" alt="An Image that motivates" class="postImg">
-                <p>{{ upost.description }}</p>
-    
-                <div>
-                    <p>Posted on {{ upost.postDate }}</p>
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h2 class="postTitle">{{ upost.title }}</h2>
+                    </div>
                 </div>
-                <img src="../assets/images/delete.svg" (click)="viewDeleteForm(); getSinglePostInstance(upost)" class="deleteBtn" style="width: 2.25em">
-            
+
+                
+                <img [src]="upost.dbImage" alt="An Image that motivates" class="postImg">
+                <p class="postDescription">{{ upost.description }}</p>
+    
+                <div class="row footerPost">
+                    <img src="../assets/images/delete.svg" (click)="viewDeleteForm(); getSinglePostInstance(upost)" class="deleteBtn" style="width: 2em"><label>Posted on {{ upost.postDate }}</label>
+                </div>
             </div>
             
         </div>
 
+        <div [style.display]="isDeleteFormVisible ? 'block' : 'none'" class="deleteForm">
+            <div class="row">
+                <p>Are you sure you'd like to delete this post?</p>
+            </div>
+            <div class="row deleteOpts">
+                <button (click)="deletePost(); reload();">Yes</button>
+                <button (click)="viewPosts()">No</button>
+            </div>
+        </div>
+
     </div>
 
-    <div [style.display]="isDeleteFormVisible ? 'block' : 'none'">
-        <p>Are you sure you'd like to delete this post?</p>
-        <button (click)="deletePost(); reload();">Yes</button>
-        <button (click)="viewPosts()">No</button>
-    </div>
+    
 </div>
 
 

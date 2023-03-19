@@ -86,11 +86,6 @@ h2, .dropBtn
     margin-top: 0;
 }
 
-h2
-{
-    padding-top: 0.5em;
-}
-
 .topLayout
 {
     background-color: #27473A;
@@ -163,6 +158,59 @@ p
 .warningMsg
 {
     color:darkred;
+}
+
+.addPostForm
+{
+    margin-left: 35%;
+    margin-top: 5em;
+    border: 1px solid black;
+    width: fit-content;
+    border-radius: 5px;
+    padding: 1em;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.titleInput
+{
+    float: left;
+    width: 100%;
+}
+
+.descInput
+{
+    width: 100%;
+    float: left;
+}
+
+.checkBox
+{
+    width: 1em;
+    height: 1em;
+    vertical-align: top;
+    margin-left: 0.25em;
+    margin-top: 1.25em;
+}
+
+label
+{
+    font-weight: 300;
+    vertical-align: bottom;
+    margin-bottom: 0;
+    margin-top: 1em;
+    float: left;
+}
+
+.submitButton
+{
+    margin-right: 1em;
+}
+
+.titleAdd
+{
+    color: black;
+    font-size: 2em;
 }
 
 @media screen and (max-width: 768px) {

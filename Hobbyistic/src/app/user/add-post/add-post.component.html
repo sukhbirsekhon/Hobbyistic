@@ -49,10 +49,12 @@
     </div>
 
     <div>
-        <form #addPostForm="ngForm" (ngSubmit)="submitPost(addPostForm)">
-            <input [ngModelOptions]="{standalone: true}" [(ngModel)]="motivationWidget.title" placeholder="Add Title"/><br>
-            <input [ngModelOptions]="{standalone: true}" [(ngModel)]="motivationWidget.description" placeholder="Add Description"/><br>
-            <input type="checkbox" [ngModelOptions]="{standalone: true}" [(ngModel)]="motivationWidget.sharable" name=""/>
+        <form #addPostForm="ngForm" (ngSubmit)="submitPost(addPostForm)" class="addPostForm">
+            <h2 class="titleAdd">Add Post</h2>
+            <input [ngModelOptions]="{standalone: true}" [(ngModel)]="motivationWidget.title" placeholder="Add Title" class="titleInput"/><br>
+            <textarea [ngModelOptions]="{standalone: true}" [(ngModel)]="motivationWidget.description" placeholder="Add Description" class="descInput"></textarea><br>
+            <label>Would you like to make this public?</label>
+            <input type="checkbox" [ngModelOptions]="{standalone: true}" [(ngModel)]="motivationWidget.sharable" name="" class="checkBox"/>
 
             <input type="file" class="file-input" (change)="onFileSelected($event)" accept="image/*" #fileUpload>
             <div class="file-upload">
@@ -63,7 +65,7 @@
             <div [style.display]="warning ? 'block' : 'none'">
                 <p class="warningMsg">Please submit an image to continue</p>
             </div>
-            <input type="submit" value="Submit"/>
+            <input type="submit" value="Submit" class="submitButton"/>
             <input type="button" value="Cancel" [routerLink]="['/motivation', hobby.id]"/> 
         </form>
     </div>
