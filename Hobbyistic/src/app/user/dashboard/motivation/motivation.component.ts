@@ -22,8 +22,8 @@ export class MotivationComponent implements OnInit {
   hobby: Hobby = {"name" : ""};
   publicPosts: MotivationWidget[] = [] 
   userPosts: MotivationWidget[] = []
-  isPublicVisible: boolean = true;
-  isUserVisible: boolean = false;
+  isPublicVisible: boolean = false;
+  isUserVisible: boolean = true;
   isPostsVisible: boolean = true;
   isDeleteFormVisible: boolean = false;
   motivation: MotivationWidget = { }

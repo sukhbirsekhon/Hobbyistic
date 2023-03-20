@@ -49,7 +49,7 @@ export class DashboardComponent implements OnInit {
       console.log(res)
     })
 
-    this.motivationWidgetService.getAllPublicPosts(this.hobby).subscribe(response =>{ 
+    this.motivationWidgetService.getAllPosts(this.hobby).subscribe(response =>{ 
       this.publicPosts = response;
       for (let post of this.publicPosts) {
         this.displayImage(post);

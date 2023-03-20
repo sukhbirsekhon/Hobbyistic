@@ -22,9 +22,17 @@
     border: 1px solid black;
 }
 
-.iconLayout img, .assistImg
+.iconLayout img
 {
     width: 3em;
+}
+
+.assistImg
+{
+    width: 5em;
+    height: 5em;
+    margin-bottom: 0.5em;
+    margin-left: -0.8em;
 }
 
 .centerAlign
