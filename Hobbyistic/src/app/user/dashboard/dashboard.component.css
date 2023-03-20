@@ -13,7 +13,16 @@
     background-color: #DBE4EE;
 }
 
-img:not(#addIcon):not(#dropIcon)
+.postImg
+{
+    width: 25em;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid black;
+}
+
+.iconLayout img, .assistImg
 {
     width: 3em;
 }
@@ -41,6 +50,12 @@ img:not(#addIcon):not(#dropIcon)
 p, .title, h2
 {
     color: #DBE4EE;
+}
+
+.upcomingEvent
+{
+    color: black;
+    margin-bottom: 0.75em;
 }
 
 h2
@@ -134,7 +149,52 @@ h2
     height: 135px;
     overflow-y: scroll;
     top: 40%;
-    left: -10px;
+    left: 5px;
+    width: 100%;
+    overflow-x: hidden;
+    padding-left: 10px;
+}
+
+.taskResultsDiv
+{
+    height: 155px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    width: 100%;
+    padding-right: 2.5em;
+    margin-left: 0.45em;
+}
+
+.widgetSubAlt
+{
+    height: 237.5px;
+}
+
+.strikeText
+{
+    text-decoration: line-through;
+}
+
+input.checkbox
+{
+    width: 2em;
+    height: 2em;
+    float: right;
+    margin: 0;
+}
+
+.editImg
+{
+    float: left;
+    width: 2em;
+}
+
+label:not(#assistant)
+{
+    font-size: 1.25em;
+    display: flex;
+    flex-direction: row-reverse;
+    padding-right: 1em;
 }
 
 .usefulBox, .taskBox
@@ -142,7 +202,7 @@ h2
     overflow-x: hidden;
 }
 
-.widgetBox, .widgetSubBox
+.widgetBox, .widgetSubBox, .widgetSubAlt
 {
     border-radius: 20px;
     padding-top: 1em;
@@ -150,7 +210,7 @@ h2
     outline-offset: -10px;
 }
 
-a
+.widgetLink
 {
     font-size: 2em;
     font-family: 'Caveat', cursive;
@@ -162,6 +222,11 @@ p
     text-align: center;
 }
 
+p:not(.widgetLink), .postTitle
+{
+    color: black;
+}
+
 .allWidgets
 {
     margin-bottom: 1em;
@@ -169,12 +234,66 @@ p
 
 .widgetBox
 {
-    padding-bottom: 33em;
+    padding-bottom: 3em;
+    height: 500px;
+}
+
+.postDisplay
+{
+    height: 400px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    width: 100%;
+    margin-left: 0.35em;
+}
+
+.linkTitle
+{
+    font-weight: 800;
+}
+
+.linkDesc
+{
+    border-bottom: 1px solid black;
+    padding-bottom: 15px;
 }
 
 .widgetSubBox
 {
     padding-bottom: 14.15em;
+}
+
+.footerPost p
+{
+    border-bottom: 1px solid black;
+    padding-bottom: 15px;
+}
+
+.inline
+{
+    display: inline;
+}
+
+.offSet
+{
+    margin-left: 22%;
+}
+
+.middleSet
+{
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+.deleteBtn
+{
+    cursor: pointer;
+}
+
+.eventRow
+{
+    margin-bottom: 1em;
+    font-size: 1.5em;
 }
 
 @media screen and (max-width: 768px) {

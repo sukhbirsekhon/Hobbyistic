@@ -22,6 +22,11 @@
     border: 1px solid black;
 }
 
+.inlineChange
+{
+    width: fit-content;
+}
+
 img:not(#addIcon):not(#dropIcon):not(.postImg)
 {
     width: 3em;
