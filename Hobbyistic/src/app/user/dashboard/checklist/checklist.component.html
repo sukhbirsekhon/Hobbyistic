@@ -8,14 +8,18 @@
                     <a class="dropdown-item drop-Item" [routerLink]="['/dashboard', hobby.id]">My Widgets</a><br>
                     <a class="dropdown-item drop-Item" [routerLink]="['/calendar', hobby.id]">Calendar</a><br>
                     <a class="dropdown-item drop-Item" [routerLink]="['/motivation', hobby.id]">Motivation</a><br>
-                    <a class="dropdown-item drop-Item" [routerLink]="['/external-links', hobby.id]">Useful Links</a>
+                    <a class="dropdown-item drop-Item" [routerLink]="['/external-links', hobby.id]">Useful Links</a><br>
+                    <a class="dropdown-item drop-Item" [routerLink]="['/assistant', hobby.id]">Assistant</a>
                 </div>
             </div>
         </div>
+
         <div class="col-sm-12 col-md-6 col-lg-4 boxLayout">
             <p><a class="title" routerLink="/main">Hobbyistic</a></p>
         </div>
+
         <div class="col-lg-1"></div>
+
         <div class="col-md-6 col-lg-3 iconLayout">
             <div class="row">
                 <div class="col-md-4 col-lg-4">
@@ -29,36 +33,44 @@
                 </div>
             </div>
         </div>
-        <div class="row myHobbiesTxt">
-          <div class="col-lg-10">
-              <h2>My Tasks</h2>
-          </div>
-          <div class="col-lg-2">
-              <img src="../assets/images/add.svg" alt="Add" [routerLink]="['/add-task', hobby.id]" id="addIcon"/>
-          </div>
-      </div>
+    </div>
+    <div class="row myHobbiesTxt">
+        <div class="col-lg-10">
+            <h2>My Tasks</h2>
+        </div>
+        <div class="col-lg-2 noSpaceRight">
+            <img src="../assets/images/add.svg" alt="Add" [routerLink]="['/add-task', hobby.id]" id="addIcon"/>
+        </div>
     </div>
     <div class="row hobbyBox">
-      <div *ngFor="let task of widgets.taskWidget?.tasks; let i = index">
-          <div class="row">
-              <div class="col-lg-8 centerAlign">
+        <div *ngFor="let task of widgets.taskWidget?.tasks; let i = index">
+            <div class="row">
+                <div class="col-lg-12 centerAlign">
 
-                <div *ngIf="task.completed == true; else unchecked">
-                  <input type="checkbox" value= "{{task.task}}" checked id="id" ng-model="check" (click)="handleSelected(task)">
-                <label> {{task.task}}</label><br>
+                    <div *ngIf="task.completed == true; else unchecked">
+                        <div class="col-lg-11">
+                            <input type="checkbox" value= "{{task.task}}" class="checkbox" checked id="id" ng-model="check" (click)="handleSelected(task)">
+                            <label class="strikeText">{{task.task}}</label>
+                        </div>
+                        <div class="col-lg-1">
+                            <img src="../assets/images/edit.png" alt="Edit" [routerLink]="['/edit-task', hobby.id, task._id]" class="editImg"/>
+                        </div>
+                    </div>
+
+                    <ng-template #unchecked>
+                        <div class="col-lg-11">
+                            <input type="checkbox" value= "{{task.task}}" id="id" class="checkbox" ng-model="check" (click)="handleSelected(task)">
+                            <label>{{task.task}}</label>
+                        </div>
+                        <div class="col-lg-1 fitEdit">
+                            <img src="../assets/images/edit.png" alt="Edit" [routerLink]="['/edit-task', hobby.id, task._id]" class="editImg"/>
+                        </div>   
+                    </ng-template>
+
                 </div>
 
-                <ng-template #unchecked>
-                  <input type="checkbox" value= "{{task.task}}" id="id" ng-model="check" (click)="handleSelected(task)">
-                <label> {{task.task}}</label><br>
-                </ng-template>
-
-              </div>
-              <div class="col-lg-4 centerAlign">
-                <img src="../assets/images/edit.png" alt="Edit" [routerLink]="['/edit-task', hobby.id, task._id]"/>
             </div>
-           </div>
-      </div>
-  </div>
+        </div>
+    </div>
 </div>
 

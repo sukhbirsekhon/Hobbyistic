@@ -36,6 +36,7 @@ img:not(#addIcon)
 {
     background-color: #27473A;
     border-radius: 100%;
+    cursor: pointer;
 }
 
 p, .title, h2

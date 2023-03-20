@@ -18,6 +18,27 @@ img:not(#addIcon):not(#dropIcon)
     width: 3em;
 }
 
+input.checkbox
+{
+    width: 3em;
+    height: 3em;
+    float: right;
+    margin: 0;
+}
+
+label
+{
+    font-size: 2em;
+    display: flex;
+    flex-direction: row-reverse;
+    padding-right: 1em;
+}
+
+.fitEdit
+{
+    width: fit-content;
+}
+
 .centerAlign
 {
     margin-top: 1.5em;
@@ -31,6 +52,11 @@ img:not(#addIcon):not(#dropIcon)
     color:#DBE4EE;
     border: none;
     padding-top: 0.35em;
+}
+
+.strikeText
+{
+    text-decoration: line-through;
 }
 
 .dropdown
@@ -103,6 +129,7 @@ h2
 
 .hobbyBox
 {
+    padding-top: 1em;
     border: 1px solid #ffffff;
     border-radius: 2.5px;
 }
@@ -142,6 +169,28 @@ a
 p
 {
     text-align: center;
+}
+
+.myHobbiesTxt h2
+{
+    color: black;
+}
+
+.myHobbiesTxt
+{
+    padding-top: 1.5em;
+    padding-left: 15em;
+    border-bottom: 1px solid black;
+}
+
+.editImg
+{
+    float: left;
+}
+
+.noSpaceRight
+{
+    padding-right: 0em;
 }
 
 .allWidgets

@@ -21,45 +21,141 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-lg-12 hobbyName">
-            <h2 [ngModelOptions]="{standalone: true}" [(ngModel)]="hobby.name">{{ hobby.name }}</h2>
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4 hobbyName">
+            <h2 [ngModelOptions]="{standalone: true}" [(ngModel)]="hobby.name">{{ hobbyNameDisplay }}</h2>
+        </div>
+        <div class="col-lg-4 assistant">
+            <label id="assistant" [routerLink]="['/assistant', hobby.id]">Assistant</label>
+            <img src="../assets/images/chatGPTIcon.png" class="assistImg" alt="assistant" [routerLink]="['/assistant', hobby.id]"/>
         </div>
     </div>
     <div class="row allWidgets">
         <div class="row">
 
             <div class="col-lg-4 widgetBox">
-                <div class="col-lg-12">
-                    <p><a [routerLink]="['/motivation', hobby.id]">Motivation</a></p>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <p><a [routerLink]="['/motivation', hobby.id]" class="widgetLink">Motivation</a></p>
+                    </div>
+                </div>
+                <div class="row postDisplay">
+                    <div *ngFor = "let post of publicPosts">
+                
+                        <h2 class="postTitle">{{ post.title }}</h2>
+                        <img [src]="post.dbImage" alt="An Image that motivates" class="postImg">
+                        <p class="postDescription">{{ post.description }}</p>
+                        
+                        <div class="footerPost">
+                            <p>Posted on {{ post.postDate }}</p>
+                        </div>
+
+                    </div>
                 </div>
             </div>
 
             <div class="col-lg-4">
                 <div class="row">
                     <div class="col-lg-12 widgetSubBox">
-                        <div class="col-lg-12">
-                            <p><a [routerLink]="['/external-links', hobby.id]">Useful links</a></p>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <p><a [routerLink]="['/external-links', hobby.id]" class="widgetLink">Useful links</a></p>
+                            </div>
                         </div>
+                        <div class="row">
+                            <div class="col-lg-12 searchBarDiv">
+                                <form (ngSubmit)="searchResults(hobby.name)">
+                                    <input class="addHobbyInput" [ngModelOptions]="{standalone: true}" [(ngModel)]="hobby.name"/>
+                                    <input id="add" value="Search" type="submit">
+                                </form>
+                            </div>
+                        </div>
+                        <div class="row searchResultsDiv">
+
+                            <div class="col-lg-12" *ngFor = "let link of widgets.externalLinksWidget?.links">
+                                
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <p class="linkTitle">{{ link.title }}</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <p>Link: <a>{{ link.link }}</a></p>
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <p class="linkDesc">{{ link.snippet }}</p>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-12 widgetSubAlt">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <p><a [routerLink]="['/checklist', hobby.id]" class="widgetLink">Task list</a></p>
+                            </div>
+                        </div>
+                        <div class="row taskResultsDiv">
+                            <div *ngFor="let task of widgets.taskWidget?.tasks; let i = index">
+                                <div class="row">
+                                    <div class="col-lg-12 centerAlign">
+                    
+                                        <div *ngIf="task.completed == true; else unchecked">
+                                            <div class="col-lg-11">
+                                                <input type="checkbox" value= "{{task.task}}" class="checkbox" checked id="id" ng-model="check" (click)="handleSelected(task)">
+                                                <label class="strikeText">{{task.task}}</label>
+                                            </div>
+                                            <div class="col-lg-1">
+                                                <img src="../assets/images/edit.png" alt="Edit" [routerLink]="['/edit-task', hobby.id, task._id]" class="editImg"/>
+                                            </div>
+                                        </div>
+                    
+                                        <ng-template #unchecked>
+                                            <div class="col-lg-11">
+                                                <input type="checkbox" value= "{{task.task}}" id="id" class="checkbox" ng-model="check" (click)="handleSelected(task)">
+                                                <label>{{task.task}}</label>
+                                            </div>
+                                            <div class="col-lg-1 fitEdit">
+                                                <img src="../assets/images/edit.png" alt="Edit" [routerLink]="['/edit-task', hobby.id, task._id]" class="editImg"/>
+                                            </div>   
+                                        </ng-template>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-lg-4 widgetBox">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <p><a [routerLink]="['/calendar', hobby.id]" class="widgetLink">Calendar</a></p>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-12 widgetSubBox">
-                        <div class="col-lg-12">
-                            <p><a [routerLink]="['/checklist', hobby.id]">Task list</a></p>
-                        </div>
+                    <div class="row">
+                        <h2 class="upcomingEvent">Upcoming Events</h2>
+                    </div>
+                    <div class="col-lg-12 eventRow" *ngFor="let event of events">
+                        <p class="inline offSet">{{ event.title }}</p>
+                        <p class="inline middleSet">{{ event.startDate | date:'short' }}</p>
+                        <img src="../assets/images/delete.svg" (click)="deleteEvent();" class="deleteBtn" style="width: 1em"/>             
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 widgetBox">
-                <div class="col-lg-12">
-                    <p><a [routerLink]="['/calendar', hobby.id]">Calendar</a></p>
-                </div>
-            </div>
-            <div class="col-lg-4 widgetBox">
-                <div class="col-lg-12">
-                    <p><a [routerLink]="['/assistant', hobby.id]">Assistant</a></p>
-                </div>
-            </div>
+
         </div>
     </div>
 </div>

@@ -38,7 +38,7 @@ export class ExternalLinksComponent implements OnInit {
 
   searchResults(querySearch: String)
   {
-    this.search = "How to " + querySearch;
+    this.search = querySearch;
 
     this.WidgetService.getExternalLinksFromQuery(this.hobby, this.search).subscribe(response => {
         this.widgets = response;

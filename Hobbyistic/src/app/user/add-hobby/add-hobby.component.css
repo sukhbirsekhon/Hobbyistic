@@ -53,6 +53,11 @@ img:not(#addIcon)
     border: .075em solid #4A442D;
 }
 
+.dropdown
+{
+    text-align: left;
+}
+
 #add:hover
 {
     background-color: #DBE4EE;
@@ -195,5 +200,11 @@ h2
     .iconLayout img
     {
         margin-top: 1.5em;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        width: 1400px;
     }
 }
