@@ -14,6 +14,7 @@ import { AddPostComponent } from "./user/add-post/add-post.component";
 import { AddTaskComponent } from "./user/add-task/add-task.component";
 import { EditTaskComponent } from "./user/edit-task/edit-task.component";
 import { AssistantComponent } from "./user/dashboard/assistant/assistant.component";
+import { SettingsComponent } from "./user/settings/settings.component";
 
 
 export const appRoutes: Routes = [
@@ -74,6 +75,10 @@ export const appRoutes: Routes = [
     children: [{ path: '', component: DashboardComponent}]
   },
   {
+    path: 'settings', component: UserComponent,
+    children: [{ path: '', component: SettingsComponent}]
+  },
+  {
     path: '', redirectTo: '/login', pathMatch: 'full'
   },
   {
@@ -115,4 +120,7 @@ export const appRoutes: Routes = [
   {
     path: '', redirectTo: '/assistant', pathMatch: 'full'
   },
+  {
+    path: '', redirectTo: '/settings', pathMatch: 'full'
+  }
 ]
