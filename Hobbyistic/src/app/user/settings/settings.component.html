@@ -4,7 +4,7 @@
           <h2 class="dropdown">Dashboard</h2>
       </div>
       <div class="col-sm-12 col-md-6 col-lg-6 boxLayout">
-          <p><a class="title">Hobbyistic</a></p>
+          <p><a class="title" routerLink="/main">Hobbyistic</a></p>
       </div>
       <div class="col-md-6 col-lg-3 iconLayout">
           <div class="row">
@@ -12,54 +12,98 @@
                   <img src="../assets/images/Logout.png" alt="Logout" routerLink="/login"/>
               </div>
               <div class="col-md-4 col-lg-4">
-                  <img src="../assets/images/Home.png" alt="Home"/>
+                  <img src="../assets/images/Home.png" alt="Home" routerLink="/main"/>
               </div>
               <div class="col-md-4 col-lg-4">
-                  <img src="../assets/images/Settings.png" alt="Settings" routerLink="/settings"/>
+                  <img src="../assets/images/Settings.png" alt="Settings"/>
               </div>
           </div>
       </div>
   </div>
   <div class="row myHobbiesTxt">
       <div class="col-lg-10">
-          <h2>Settings</h2>
+          <h2>User Information</h2>
       </div>
 
   </div>
   <div class="row hobbyBox">
-    <div class="col-lg-8">
+
+    <div class="col-lg-8 boxWidth">
+
       <div class="card mb-4">
-        <div class="card-body">
-          <div class="row">
+
+        <div class="card-body cardLength">
+
+          <div class="row verticalLength addBorder">
+
             <div class="col-sm-3">
-              <p class="mb-0" style="color: black;">Full Name</p>
+              <p class="mb-0">Full Name:</p>
             </div>
             <div class="col-sm-9">
-              <p class="text-muted mb-0">Johnatan Smith</p>
+              <p class="textRight mb-0">Johnatan Smith</p>
             </div>
-          </div>
-          <hr>
-          <div class="row">
-            <div class="col-sm-3">
-              <p class="mb-0">Email</p>
-            </div>
-            <div class="col-sm-9">
-              <p class="text-muted mb-0">example@example.com</p>
-            </div>
-          </div>
-          <hr>
-          <div class="row">
-            <div class="col-sm-3">
-              <p class="mb-0">Password</p>
-            </div>
-            <div class="col-sm-9">
-              <p class="text-muted mb-0">(097) 234-5678</p>
-            </div>
-          </div>
-          <hr>
 
           </div>
+
+          <div class="row verticalLength">
+
+            <div class="col-sm-3">
+              <p class="mb-0">Email:</p>
+            </div>
+            <div class="col-sm-9">
+              <p class="textRight mb-0">example@example.com</p>
+            </div>
+
+          </div>
+          
         </div>
+      
       </div>
+    
+    </div>
+  
   </div>
+
+  <div class="row myHobbiesTxt">
+    <div class="col-lg-10">
+        <h2>Display Widget Preferences</h2>
+    </div>
+  </div>
+
+  <div class="row hobbyBox addBtmSpace">
+
+    <div class="row rowPadding">
+      <label class="labelTitle">Motivation Widget</label>
+      <label class="switch">
+        <input type="checkbox" checked>
+        <span class="slider round"></span>
+      </label>
+    </div>
+
+    <div class="row rowPadding">
+      <label class="labelTitle">Task List Widget</label>
+      <label class="switch">
+        <input type="checkbox" checked>
+        <span class="slider round"></span>
+      </label>
+    </div>
+
+    <div class="row rowPadding">
+      <label class="labelTitle">Calendar Widget</label>
+      <label class="switch">
+        <input type="checkbox" checked>
+        <span class="slider round"></span>
+      </label>
+    </div>
+
+    <div class="row rowPadding">
+      <label class="labelTitle">Useful Links Widget</label>
+      <label class="switch">
+        <input type="checkbox" checked>
+        <span class="slider round"></span>
+      </label>
+    </div>
+
+  </div>
+
 </div>
