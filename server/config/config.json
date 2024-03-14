@@ -1,11 +1,10 @@
 {
     "development": {
         "PORT": 3000,
-        "MONGODB_URI": "mongodb://127.0.0.1:27017/Hobbyistic"
+        "MONGODB_URI": "mongodb://mongo-0.mongo.default.svc.cluster.local:27017,mongo-2.mongo.default.svc.cluster.local:27017/mongo?replicaSet=rs0"
     },
     "production": {
         "PORT": 3000,
-        "MONGODB_URI": "mongodb://hobbyistic-mongo:27017/Hobbyistic"
- 
+        "MONGODB_URI": "mongodb://mongo-0.mongo.default.svc.cluster.local:27017,mongo-2.mongo.default.svc.cluster.local:27017/mongo?replicaSet=rs0"
     }
 }

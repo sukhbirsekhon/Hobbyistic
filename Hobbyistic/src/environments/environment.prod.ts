@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://hobbyistics.com/service/api/'
+  apiUrl: 'https://localhost/service/api/'
 };

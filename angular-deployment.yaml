@@ -9,7 +9,7 @@ metadata:
     io.kompose.service: angular
   name: angular
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       io.kompose.service: angular
@@ -25,8 +25,9 @@ spec:
         io.kompose.service: angular
     spec:
       containers:
-        - image: angular
-          name: hobbyistic-angular
+        - image: jmchughdai/angular-hobby:latest
+          name: angular
+          imagePullPolicy: Always
           ports:
             - containerPort: 443
           resources: {}

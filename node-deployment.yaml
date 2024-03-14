@@ -9,13 +9,14 @@ metadata:
     io.kompose.service: node
   name: node
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       io.kompose.service: node
   strategy: {}
   template:
     metadata:
+      name: hobbyistic-node-service
       annotations:
         kompose.cmd: kompose convert
         kompose.version: 1.28.0 (HEAD)
@@ -25,8 +26,9 @@ spec:
         io.kompose.service: node
     spec:
       containers:
-        - image: node
-          name: hobbyistic-node
+        - image: jmchughdai/node-hobby:v4
+          name: node
+          imagePullPolicy: Always
           ports:
             - containerPort: 3000
           resources: {}
